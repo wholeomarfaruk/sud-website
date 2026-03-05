@@ -1,13 +1,13 @@
 {
-  "_sortable-BIJr7XEr.css": {
-    "file": "assets/sortable-BIJr7XEr.css",
-    "src": "_sortable-BIJr7XEr.css"
+  "_sortable-DJh9ZL_h.css": {
+    "file": "assets/sortable-DJh9ZL_h.css",
+    "src": "_sortable-DJh9ZL_h.css"
   },
-  "_sortable.esm-CejFJHuB.js": {
-    "file": "assets/sortable.esm-CejFJHuB.js",
+  "_sortable.esm-1876EP3Y.js": {
+    "file": "assets/sortable.esm-1876EP3Y.js",
     "name": "sortable.esm",
     "css": [
-      "assets/sortable-BIJr7XEr.css"
+      "assets/sortable-DJh9ZL_h.css"
     ]
   },
   "node_modules/boxicons/fonts/boxicons.eot": {
@@ -31,7 +31,7 @@
     "src": "node_modules/boxicons/fonts/boxicons.woff2"
   },
   "resources/css/admin.css": {
-    "file": "assets/app-cBY97goo.css",
+    "file": "assets/app-D5uzVhjU.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "admin",
@@ -41,7 +41,7 @@
     ]
   },
   "resources/css/app.css": {
-    "file": "assets/app-cBY97goo.css",
+    "file": "assets/app-D5uzVhjU.css",
     "src": "resources/css/app.css",
     "isEntry": true,
     "name": "admin",
@@ -51,29 +51,35 @@
     ]
   },
   "resources/js/admin.js": {
-    "file": "assets/admin-CWXGNse-.js",
+    "file": "assets/admin-Co9zrQop.js",
     "name": "admin",
     "src": "resources/js/admin.js",
     "isEntry": true,
     "imports": [
-      "_sortable.esm-CejFJHuB.js"
+      "_sortable.esm-1876EP3Y.js"
+    ],
+    "css": [
+      "assets/admin-B00NR0mh.css"
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-zQcwIxf4.js",
+    "file": "assets/app-Bz3j8T_v.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "imports": [
-      "_sortable.esm-CejFJHuB.js"
+      "_sortable.esm-1876EP3Y.js"
+    ],
+    "css": [
+      "assets/app-CacEx4oq.css"
     ]
   },
   "resources/sass/admin.scss": {
-    "file": "assets/admin-tn0RQdqM.css",
+    "file": "assets/admin-C719Rj9N.css",
     "src": "resources/sass/admin.scss"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-PPsI0JRQ.css",
+    "file": "assets/app-CCn83d1G.css",
     "src": "resources/sass/app.scss"
   }
 }
