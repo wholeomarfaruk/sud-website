@@ -8,6 +8,7 @@ class Offers extends Component
 {
     public function render()
     {
-        return view('livewire.website.offers.offers');
+        return view('livewire.website.offers.offers')->layout('layouts.website.website');
+    }
     }
 }
