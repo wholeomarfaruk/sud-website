@@ -26,17 +26,22 @@
         <div class="wrapper">
             <div class="header-area">
                 <div class="logo" style="width: 50px;">
-                    <img src="{{asset('assets/logo/sud-logo.png')}}" alt="Logo">
+                    <img src="{{ asset('assets/logo/sud-logo.png') }}" alt="Logo">
                 </div>
                 <nav class="navbar">
                     <ul>
-                        <li> <a href="/" class="active">Home</a></li>
-                        <li> <a href="/projects.html" >Projects</a></li>
-                        <li> <a href="/offers.html">Offers</a></li>
+                        <li> <a href="/"
+                                class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a></li>
+                        <li> <a href="{{ route('projects') }}"
+                                class="{{ Route::currentRouteName() == 'projects' ? 'active' : '' }}">Projects</a></li>
+                        <li> <a href="{{ route('offers') }}"
+                                class="{{ Route::currentRouteName() == 'offers' ? 'active' : '' }}">Offers</a></li>
 
-                                               <li> <a href="/blogs.html">Blog</a></li>
+                        <li> <a href="{{ route('blogs') }}"
+                                class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blog</a></li>
 
-                        <li> <a href="/contact.html">Contact</a></li>
+                        <li> <a href="{{ route('contact') }}"
+                                class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Contact</a></li>
                         <li> <a href="#" class="btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     class="size-5">
@@ -61,10 +66,26 @@
                     <button class="offcanvas-close" id="menuClose">×</button>
 
                     <nav class="offcanvas-nav">
-                        <a href="#">Home</a>
-                        <a href="#">About</a>
-                        <a href="#">Services</a>
-                        <a href="#">Contact</a>
+                        <a href="/"
+                                class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a>
+                        <a href="{{ route('projects') }}"
+                                class="{{ Route::currentRouteName() == 'projects' ? 'active' : '' }}">Projects</a>
+                        <a href="{{ route('offers') }}"
+                                class="{{ Route::currentRouteName() == 'offers' ? 'active' : '' }}">Offers</a>
+
+                        <a href="{{ route('blogs') }}"
+                                class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blog</a>
+
+                        <a href="{{ route('contact') }}"
+                                class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Contact</a>
+                        <a href="#" class="btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                    class="size-5">
+                                    <path
+                                        d="M11.983 1.907a.75.75 0 0 0-1.292-.657l-8.5 9.5A.75.75 0 0 0 2.75 12h6.572l-1.305 6.093a.75.75 0 0 0 1.292.657l8.5-9.5A.75.75 0 0 0 17.25 8h-6.572l1.305-6.093Z" />
+                                </svg>
+                                Login</a>
+
                     </nav>
                 </div>
 
@@ -74,10 +95,10 @@
     </header>
     <!-- heading  END ==========================================-->
     <main class="main-content">
-   {{ $slot }}
+        {{ $slot }}
     </main>
 
-      <footer class="footer-2 main-footer" >
+    <footer class="footer-2 main-footer">
 
         <div class="wrapper top-footer">
             <div class=" footer-card">
@@ -93,8 +114,8 @@
 
                         <li class="nav-item">
                             <a class="nav-link" style="" target="_blank" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22 22 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202z">
                                     </path>
@@ -105,8 +126,8 @@
 
                         <li class="nav-item">
                             <a target="_blank" class="nav-link " style="" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M20.947 8.305a6.5 6.5 0 0 0-.419-2.216 4.6 4.6 0 0 0-2.633-2.633 6.6 6.6 0 0 0-2.186-.42c-.962-.043-1.267-.055-3.709-.055s-2.755 0-3.71.055a6.6 6.6 0 0 0-2.185.42 4.6 4.6 0 0 0-2.633 2.633 6.6 6.6 0 0 0-.419 2.185c-.043.963-.056 1.268-.056 3.71s0 2.754.056 3.71c.015.748.156 1.486.419 2.187a4.6 4.6 0 0 0 2.634 2.632 6.6 6.6 0 0 0 2.185.45c.963.043 1.268.056 3.71.056s2.755 0 3.71-.056a6.6 6.6 0 0 0 2.186-.419 4.62 4.62 0 0 0 2.633-2.633c.263-.7.404-1.438.419-2.187.043-.962.056-1.267.056-3.71-.002-2.442-.002-2.752-.058-3.709m-8.953 8.297c-2.554 0-4.623-2.069-4.623-4.623s2.069-4.623 4.623-4.623a4.623 4.623 0 0 1 0 9.246m4.807-8.339a1.077 1.077 0 0 1-1.078-1.078 1.077 1.077 0 1 1 2.155 0c0 .596-.482 1.078-1.077 1.078">
                                     </path>
@@ -118,8 +139,8 @@
 
                         <li class="nav-item">
                             <a target="_blank" class="nav-link " style="" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M21.593 7.203a2.5 2.5 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.52 2.52 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831M9.996 15.005l.005-6 5.207 3.005z">
                                     </path>
@@ -130,8 +151,8 @@
 
                         <li class="nav-item">
                             <a target="_blank" class="nav-link " style="" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M13.68 10.62 20.24 3h-1.55L13 9.62 8.45 3H3.19l6.88 10.01L3.19 21h1.55l6.01-6.99 4.8 6.99h5.24l-7.13-10.38Zm-2.13 2.47-.7-1-5.54-7.93H7.7l4.47 6.4.7 1 5.82 8.32H16.3z">
                                     </path>
@@ -142,8 +163,8 @@
 
                         <li class="nav-item">
                             <a target="_blank" class="nav-link " style="" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1M8.339 18.337H5.667v-8.59h2.672zM7.003 8.574a1.548 1.548 0 1 1 0-3.096 1.548 1.548 0 0 1 0 3.096m11.335 9.763h-2.669V14.16c0-.996-.018-2.277-1.388-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248h-2.667v-8.59h2.56v1.174h.037c.355-.675 1.227-1.387 2.524-1.387 2.704 0 3.203 1.778 3.203 4.092v4.71z">
                                     </path>
@@ -154,8 +175,8 @@
 
                         <li class="nav-item">
                             <a target="_blank" class="nav-link " style="" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                    viewBox="0 0 24 24">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
                                     <path
                                         d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 3 3 0 0 1 .88.13V9.4a7 7 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a5 5 0 0 1-1-.1z">
                                     </path>
@@ -185,9 +206,9 @@
                         <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
                             About Us</a>
                     </li>
-                      <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link " href="/posts/recent"><i class="fa-solid fa-arrow-right-long"></i>
-                           Contact Us </a>
+                            Contact Us </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
@@ -333,7 +354,7 @@
             });
             const heroSwiper = new Swiper(".mySwiper", {
                 spaceBetween: 30,
-                loop:true,
+                loop: true,
                 centeredSlides: false, // 👈 এটা off করো
                 effect: 'fade', // Smooth transitions
 
