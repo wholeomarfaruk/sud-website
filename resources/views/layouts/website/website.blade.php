@@ -41,7 +41,7 @@
                                 class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blog</a></li>
 
                         <li> <a href="{{ route('contact') }}"
-                                class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Contact</a></li>
+                                class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a></li>
                         <li> <a href="#" class="btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     class="size-5">
@@ -51,6 +51,7 @@
                                 Login</a></li>
                     </ul>
                 </nav>
+
                 <div class="mobile-menu">
                     <button id="menuToggle" class="hamburger">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
