@@ -77,7 +77,7 @@
                                 class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blog</a>
 
                         <a href="{{ route('contact') }}"
-                                class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Contact</a>
+                                class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a>
                         <a href="#" class="btn">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                     class="size-5">
