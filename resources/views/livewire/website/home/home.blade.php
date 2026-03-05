@@ -429,7 +429,7 @@
                         harum at laboriosam porro iure nam ab eaque nihil facere assumenda!</p>
                 </div>
                 <div class="grid-box">
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <div class="img-box">
 
                             <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
@@ -439,7 +439,7 @@
                             <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <div class="img-box">
 
                             <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
@@ -449,7 +449,7 @@
                             <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <div class="img-box">
 
                             <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
@@ -459,7 +459,7 @@
                             <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <div class="img-box">
 
                             <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
@@ -472,7 +472,7 @@
 
                 </div>
                 <div class="explore-btn-group">
-                    <a href="/projects.html" class="btn">Explore
+                    <a href="{{route('projects')}}" class="btn">Explore
                         More
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor">

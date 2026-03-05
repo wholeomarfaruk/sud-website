@@ -60,7 +60,7 @@
         <section class="projects-section ">
             <div class="wrapper">
                 <div class="projects-grid">
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <img src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -70,7 +70,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <img src="{{asset('assets/images/buildings/2.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -80,7 +80,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <img src="{{asset('assets/images/buildings/3.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -91,7 +91,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <img src="{{asset('assets/images/buildings/4.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -101,7 +101,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <img src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -111,7 +111,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <img src="{{asset('assets/images/buildings/2.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -121,7 +121,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <img src="{{asset('assets/images/buildings/3.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -132,7 +132,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="/project-details.html" class="item">
+                    <a href="{{route('projects/1')}}" class="item">
                         <img src="{{asset('assets/images/buildings/4.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
