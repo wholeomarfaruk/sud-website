@@ -1,4 +1,5 @@
 @section('bodyClass', 'home-page')
+@section('headerClass', 'overlay-header')
 <div>
         <section class="hero-sec">
 
@@ -262,7 +263,7 @@
                                 </div>
                             </div>
                         </div>
-                       
+
 
                     </div>
                     <div class="player-box">

@@ -1,4 +1,6 @@
 @section('bodyClass', 'contact-page')
+@section('headerClass', 'overlay-header')
+
 <div>
 
         <section class="breadcrumb-section" style="background-image: url('assets/images/2.webp');">
@@ -144,12 +146,12 @@
                     </div>
 
                 </div>
-                
+
             </div>
         </section>
         <section class="map-sec">
-            
-                
+
+
                             <div class="map">
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.1302063341727!2d90.4264554740239!3d23.671301191810954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b93fe4d4be69%3A0xa1466c731900ce4c!2sStar%20Unity!5e0!3m2!1sen!2sbd!4v1772530783296!5m2!1sen!2sbd"
@@ -157,6 +159,6 @@
                                     referrerpolicy="no-referrer-when-downgrade">
                                 </iframe>
                             </div>
-           
+
         </section>
 </div>

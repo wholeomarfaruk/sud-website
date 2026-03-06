@@ -1,6 +1,7 @@
 @section('bodyClass', 'offers-page')
+
 <div>
-    
+
         <section class="offer">
             <div class="wrapper">
                 <div class="section-header offer_h">

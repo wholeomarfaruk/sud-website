@@ -1,4 +1,5 @@
 @section('bodyClass', 'project-details-page')
+@section('headerClass', 'overlay-header')
 <div>
             <section class="details-hero-sec">
             <!-- Swiper -->
@@ -706,7 +707,7 @@
                     prevEl: ".swiper-button-prev"
                 },
             });
-       
+
 
 
             //fancy box
@@ -724,7 +725,7 @@
     </script>
 
     <script>
-       
+
     </script>
 
 @endpush

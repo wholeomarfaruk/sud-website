@@ -1,4 +1,5 @@
 @section('bodyClass', 'blogs-page')
+@section('headerClass', 'overlay-header')
 <div>
          <section class="breadcrumb-section" style="background-image: url('{{asset('assets/images/2.webp')}}');">
             <div class="wrapper">
@@ -116,7 +117,7 @@
                     <ul class="pagination-list">
                         <li class="pagination-item">
                             <a href="#" class="pagination-link pagination-link-prev">
-                         
+
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round"

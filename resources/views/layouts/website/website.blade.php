@@ -22,7 +22,7 @@
 
 <body class="@yield('bodyClass')">
     <!-- heading  start ======================================= -->
-    <header class="main-header overlay-header">
+    <header class="main-header @yield('headerClass')">
         <div class="wrapper">
             <div class="header-area">
                 <div class="logo" style="width: 50px;">
