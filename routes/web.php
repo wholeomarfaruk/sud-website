@@ -12,6 +12,7 @@ Route::get('/clients',\App\Livewire\Website\Clients\Clients::class)->name('clien
 Route::get('/landowners',\App\Livewire\Website\Landowners\Landowners::class)->name('landowners');
 Route::get('/terms-and-conditions',\App\Livewire\Website\Pages\Terms::class)->name('terms');
 Route::get('/privacy-policy',\App\Livewire\Website\Pages\PrivacyPolicy::class)->name('privacy');
+Route::get('/about-us',\App\Livewire\Website\Pages\About::class)->name('about');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

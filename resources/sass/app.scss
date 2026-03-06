@@ -709,16 +709,16 @@ body {
 
 // hero section start=========================
 .hero-sec {
-    min-height: 100vh;
+
     position: relative;
-   @include mixins.breakpoint(md) {
-                 height: 95vh;
-            }
+
     & .mySwiper {
         height: 100vh;
-      @include mixins.breakpoint(md) {
-                 height: 95vh;
-            }
+
+        @include mixins.breakpoint(md) {
+            height: 96vh;
+        }
+
         .swiper-slide {
             position: relative;
             text-align: center;
@@ -867,6 +867,7 @@ body {
             opacity: 0.5;
             box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
             cursor: pointer;
+
             @include mixins.breakpoint(md) {
                 border-radius: 10px;
             }
@@ -887,6 +888,10 @@ body {
         width: 80%;
         margin: 0 auto;
         text-align: center;
+
+        @include mixins.breakpoint(md) {
+            width: 100%;
+        }
     }
 
     .grid-box {
@@ -896,6 +901,7 @@ body {
 
         @include mixins.breakpoint(xl) {
             grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
 
@@ -969,6 +975,10 @@ body {
     & .wrapper .section-header {
         width: 50%;
         text-align: left;
+
+        @include mixins.breakpoint(md) {
+            width: 100%;
+        }
     }
 
     & .wrapper .grid-box {
@@ -1179,6 +1189,7 @@ body {
 
         @include mixins.breakpoint(xl) {
             grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
         & .item {
@@ -1270,7 +1281,11 @@ body {
                 text-decoration: none;
 
                 & i {
-                    font-size: 40px
+                    font-size: 40px;
+
+                    @include mixins.breakpoint(md) {
+                        font-size: 24px;
+                    }
                 }
             }
 
@@ -1304,6 +1319,11 @@ body {
             transition: all 0.5s ease-in-out;
             padding: 10px;
 
+            @include mixins.breakpoint(md) {
+                padding: 0px;
+
+            }
+
             .img-box {
                 height: 90%;
 
@@ -1319,7 +1339,12 @@ body {
 
             }
 
-            & .text-box {}
+            & .text-box {
+                @include mixins.breakpoint(md) {
+                    padding: 10px;
+
+                }
+            }
 
             &:hover {
                 box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
@@ -1791,6 +1816,7 @@ body {
                         font-size: 18px;
                         transform: translateY(50px);
                         opacity: 0;
+
                     }
 
                     & .btn {
@@ -1872,6 +1898,10 @@ body {
                 color: #d6d6d6;
                 font-size: mixins.rem(16px);
                 text-align: right;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: mixins.rem(10px);
 
                 & svg {
                     width: mixins.rem(18px);
@@ -3147,3 +3177,95 @@ body {
 }
 
 //landowner page end=======================================
+
+// about page start ===============================
+.about-page {
+
+
+    .count-sec {
+        .grid-box {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+
+            @include mixins.breakpoint(xl) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include mixins.breakpoint(md) {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .item {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background: #fff;
+                border-radius: 5px;
+                padding: 40px 10px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+                transition: all 0.3s ease-in-out;
+
+                .count {
+                    font-size: mixins.rem(32px);
+                    font-weight: 600;
+                    color: variables.$primary-color;
+                }
+
+                .label {
+                    font-size: mixins.rem(18px);
+                    font-weight: 500;
+                    color: variables.$heading-color;
+                }
+
+            }
+        }
+
+    }
+        .details-sec {
+        .flex-box {
+            display: flex;
+            gap: 20px;
+
+            @include mixins.breakpoint(xl) {
+                flex-wrap: wrap;
+            }
+
+            .text-box {
+                width: 60%;
+
+                @include mixins.breakpoint(xl) {
+                    width: 100%;
+                }
+            }
+
+            .img-box {
+                width: 40%;
+                border-radius: 5px;
+                overflow: hidden;
+
+                @include mixins.breakpoint(xl) {
+                    width: 100%;
+                    order: -1;
+                }
+
+                img {
+
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    transition: all 1s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+// about page end ===============================

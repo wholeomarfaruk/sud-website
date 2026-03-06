@@ -204,7 +204,7 @@
                             News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('about') }}"><i class="fa-solid fa-arrow-right-long"></i>
                             About Us</a>
                     </li>
                     <li class="nav-item">
