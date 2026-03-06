@@ -498,14 +498,14 @@
                     <div class="landowner" style="background-image: url('{{asset('assets/images/1.webp')}}');">
                       <h3>Land Owners Reviews</h3>
                                           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                        <a href="#" class="btn">Details</a>
+                        <a href="{{ route('landowners') }}" class="btn">Details</a>
 
                     </div>
                     <div class="client" style="background-image: url('{{asset('assets/images/2.webp')}}');">
 
                     <h3> clients Reviews</h3>
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
-                        <a href="#" class="btn">Details</a>
+                        <a href="{{ route('clients') }}" class="btn">Details</a>
                     </div>
 
                 </div>

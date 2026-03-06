@@ -1415,7 +1415,7 @@ body {
     }
 
     @include mixins.breakpoint(xl) {
-        height: 30vh;
+        height: 40vh;
     }
 
     .wrapper {
@@ -2823,7 +2823,12 @@ body {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-
+            @include mixins.breakpoint(xl) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            @include mixins.breakpoint(md) {
+                grid-template-columns: repeat(1, 1fr);
+            }
             .item {
                 margin: 20px 0 0;
 
