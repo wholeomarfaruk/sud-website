@@ -71,13 +71,13 @@
                             <h2 class="section-title">Project Overview</h2>
                             <div class="feature-overview">
                                 <div class="item">
-                                    <div>
+                                    <div class="value">
                                         <span class="name">Flat</span>
                                     </div>
                                     <p class="type-name">Property Type</p>
                                 </div>
                                 <div class="item">
-                                    <div>
+                                    <div  class="value">
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="2 2 20 20">
@@ -92,7 +92,7 @@
                                     <p class="type-name">Bedrooms</p>
                                 </div>
                                 <div class="item">
-                                    <div>
+                                    <div  class="value">
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
@@ -107,7 +107,7 @@
                                     <p class="type-name">Bathroom</p>
                                 </div>
                                 <div class="item">
-                                    <div>
+                                    <div  class="value">
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" stroke-width="1" fill="currentColor"
                                                 viewBox="2 2 20 20">
@@ -126,7 +126,7 @@
                                     <p class="type-name">Parking</p>
                                 </div>
                                 <div class="item">
-                                    <div>
+                                    <div  class="value">
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" stroke-width="1" fill="currentColor"
                                                 viewBox="2 2 20 20">

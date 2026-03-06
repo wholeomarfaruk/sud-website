@@ -143,6 +143,7 @@ window.Sortable = Sortable;
 import { Fancybox } from "@fancyapps/ui";
 import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
+window.Fancybox = Fancybox;
 // fancybox==================================================END
 //import sticky header
 import './website/sticky';
