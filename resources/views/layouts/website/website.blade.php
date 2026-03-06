@@ -192,15 +192,15 @@
                 <h3 class="mb-3 footer-card-title">Quick Links</h3>
                 <ul class="navbar-nav ">
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="/"><i class="fa-solid fa-arrow-right-long"></i>
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('projects') }}"><i class="fa-solid fa-arrow-right-long"></i>
                             Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('blogs') }}"><i class="fa-solid fa-arrow-right-long"></i>
                             News</a>
                     </li>
                     <li class="nav-item">
@@ -208,24 +208,24 @@
                             About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="/posts/recent"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('contact') }}"><i class="fa-solid fa-arrow-right-long"></i>
                             Contact Us </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('privacy') }}"><i class="fa-solid fa-arrow-right-long"></i>
                             Privacy Policy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('terms') }}"><i class="fa-solid fa-arrow-right-long"></i>
                             Terms & Conditions</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('landowners') }}"><i class="fa-solid fa-arrow-right-long"></i>
                             Land Owners</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('clients') }}"><i class="fa-solid fa-arrow-right-long"></i>
                             Clients</a>
                     </li>
                 </ul>

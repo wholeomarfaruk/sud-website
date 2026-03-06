@@ -146,3 +146,4 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 // fancybox==================================================END
 //import sticky header
 import './website/sticky';
+import './website/offcanvas-menu';
