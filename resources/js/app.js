@@ -148,3 +148,4 @@ window.Fancybox = Fancybox;
 //import sticky header
 import './website/sticky';
 import './website/offcanvas-menu';
+import './website/preloader';

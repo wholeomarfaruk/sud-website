@@ -22,6 +22,14 @@
 </head>
 
 <body class="@yield('bodyClass')">
+              <!-- Preloader -->
+        <div class="loader-mask">
+            <div class="loader">
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <!-- Preloader -->
     <!-- heading  start ======================================= -->
     <header class="main-header @yield('headerClass')">
         <div class="wrapper">
@@ -114,7 +122,7 @@
                     <ul class="navbar-nav d-flex flex-row gap-2 justify-content-start align-items-center">
 
                         <li class="nav-item">
-                            <a class="nav-link" style="" target="_blank" href="#">
+                            <a class="nav-link"  target="_blank" href="https://www.facebook.com/starunity.developmentlt/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -126,7 +134,7 @@
 
 
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link " style="" href="#">
+                            <a target="_blank" class="nav-link "  href="https://www.instagram.com/starunity.developmentltd">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -139,7 +147,7 @@
 
 
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link " style="" href="#">
+                            <a target="_blank" class="nav-link "  href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -151,7 +159,7 @@
 
 
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link " style="" href="#">
+                            <a target="_blank" class="nav-link "  href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -163,7 +171,7 @@
 
 
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link " style="" href="#">
+                            <a target="_blank" class="nav-link "  href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path

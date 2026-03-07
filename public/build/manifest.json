@@ -63,7 +63,7 @@
     ]
   },
   "resources/js/app.js": {
-    "file": "assets/app-DsRRyNB4.js",
+    "file": "assets/app-D7ade1KM.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -79,7 +79,7 @@
     "src": "resources/sass/admin.scss"
   },
   "resources/sass/app.scss": {
-    "file": "assets/app-CNPeS_hH.css",
+    "file": "assets/app-CvM5Ktfe.css",
     "src": "resources/sass/app.scss"
   }
 }

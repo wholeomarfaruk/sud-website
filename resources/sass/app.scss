@@ -86,7 +86,61 @@ body {
 $offcanvas-width: 280px;
 $transition-speed: .4s;
 $primary-color: #0fd850;
+/* Preloader
+-------------------------------------------------------*/
+.loader-mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    z-index: 99999;
+  }
 
+  .loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 0;
+    color: #fff;
+    display: inline-block;
+    margin: -25px 0 0 -25px;
+    text-indent: -9999em;
+    transform: translateZ(0);
+  }
+
+  .lead {
+    font-size: 13px;
+  }
+
+  .loader div {
+    background-color: variables.$primary-color;
+    display: inline-block;
+    float: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: ballPulseDouble 2s ease-in-out infinite;
+  }
+
+  .loader div:last-child {
+    animation-delay: -1s;
+  }
+  @keyframes ballPulseDouble {
+    0%, 100% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+  }
 // common css END==========================================
 // layout
 body {
