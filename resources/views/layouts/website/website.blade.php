@@ -107,8 +107,7 @@
                 <h3 class=" mb-3 footer-card-title">Star Unity <br> Development Ltd</h3>
                 <p class=" mb-2 footer-card-text">
 
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus delectus soluta nobis, nam
-                    cum iste obcaecati doloremque officiis debitis accusantium.
+                    Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.
                 </p>
                 <div class="social">
 
@@ -248,7 +247,7 @@
                         <div>
                             <h5 class="title">Contact</h5>
                             <p class="text">
-                                01684285963
+                                01730-711003
                             </p>
                         </div>
 
@@ -269,7 +268,7 @@
                         <div>
                             <h5 class="title">Email Adress</h5>
                             <p class="text">
-                                starunityd@gmail.com
+                                starunityrv@gmail.com
                             </p>
                         </div>
 
