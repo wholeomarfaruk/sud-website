@@ -6,7 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @stack('meta')
+    <link rel="shortcut icon" href="{{ asset('assets/logo/sud-logo.png') }}" type="image/x-icon">
+    @stack('meta_data')
     @vite(['resources/sass/app.scss', 'resources/css/app.css'])
     @livewireStyles
     @stack('styles')
@@ -32,13 +33,13 @@
                     <ul>
                         <li> <a href="/"
                                 class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a></li>
-                        <li> <a href="{{ route('projects') }}"
-                                class="{{ Route::currentRouteName() == 'projects' ? 'active' : '' }}">Projects</a></li>
+                        <li> <rties href="{{ route('properties') }}"
+                                class="{{ Route::currentRouteName() == 'properties' ? 'active' : '' }}">Properties</a></li>
                         <li> <a href="{{ route('offers') }}"
                                 class="{{ Route::currentRouteName() == 'offers' ? 'active' : '' }}">Offers</a></li>
 
                         <li> <a href="{{ route('blogs') }}"
-                                class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blog</a></li>
+                                class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blogs</a></li>
 
                         <li> <a href="{{ route('contact') }}"
                                 class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a></li>
@@ -69,8 +70,8 @@
                     <nav class="offcanvas-nav">
                         <a href="/"
                                 class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a>
-                        <a href="{{ route('projects') }}"
-                                class="{{ Route::currentRouteName() == 'projects' ? 'active' : '' }}">Projects</a>
+                        <a href="{{ route('properties') }}"
+                                class="{{ Route::currentRouteName() == 'properties' ? 'active' : '' }}">Properties</a>
                         <a href="{{ route('offers') }}"
                                 class="{{ Route::currentRouteName() == 'offers' ? 'active' : '' }}">Offers</a>
 
@@ -196,8 +197,8 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('projects') }}"><i class="fa-solid fa-arrow-right-long"></i>
-                            Projects</a>
+                        <a class="nav-link " href="{{ route('properties') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                            Properties</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="{{ route('blogs') }}"><i class="fa-solid fa-arrow-right-long"></i>

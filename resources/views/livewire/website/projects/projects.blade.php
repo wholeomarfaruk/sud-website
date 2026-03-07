@@ -6,7 +6,7 @@
                 <div class="breadcrumb-area">
 
 
-                    <h1 class="title">Projects</h1>
+                    <h1 class="title">Properties</h1>
 
                     <p class="description">your dreams can come true. we are here to help you.</p>
                 </div>
@@ -61,7 +61,7 @@
         <section class="projects-section ">
             <div class="wrapper">
                 <div class="projects-grid">
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <img src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -71,7 +71,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <img src="{{asset('assets/images/buildings/2.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -81,7 +81,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <img src="{{asset('assets/images/buildings/3.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -92,7 +92,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <img src="{{asset('assets/images/buildings/4.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -102,7 +102,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <img src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -112,7 +112,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <img src="{{asset('assets/images/buildings/2.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -122,7 +122,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <img src="{{asset('assets/images/buildings/3.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
@@ -133,7 +133,7 @@
                             <p>Bashundhara Riverview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <img src="{{asset('assets/images/buildings/4.jpg')}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>

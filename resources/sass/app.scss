@@ -1148,6 +1148,8 @@ body {
 .featured-sec {
     min-height: 80vh;
     position: relative;
+    background-position: center;
+    background-attachment: fixed;
 
 
     &::after {
@@ -1164,11 +1166,13 @@ body {
 
     .section-header {
         h2 {
+            text-align:left;
             color: #fff;
         }
 
         p {
-            color: #b9b9b9;
+            text-align: left;
+            color: #cccccc;
         }
     }
 

@@ -111,10 +111,8 @@
 
 
                 <div class="section-header">
-                    <h2 class="text-center font-bold text-2xl primary-color">WE MAKE THE ORDINARY...EXTRAORDINARY !</h2>
-                    <p class="text-center text-gray-500">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Nostrum
-                        harum at laboriosam porro iure nam ab eaque nihil facere assumenda!</p>
+                    <h2 class="text-center font-bold text-2xl primary-color">SIGNATURE DEVELOPMENTS</h2>
+                    <p class="text-center text-gray-500">A showcase of our finest properties, combining visionary design, premium craftsmanship, and functional spaces for contemporary living.</p>
                 </div>
                 <div class="grid-box">
                     <div class="item">
@@ -165,10 +163,8 @@
 
             <div class="wrapper">
                 <div class="section-header">
-                    <h2>Your Luxeries Dreams</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Nostrum
-                        harum at laboriosam porro iure nam ab eaque nihil facere assumenda!</p>
+                    <h2>DISCOVER YOUR DREAM PROPERTY</h2>
+                    <p>Take a closer look at our exceptional developments through video highlights and virtual walkthroughs.</p>
                 </div>
                 <div class="grid-box" id="video-sec-area" x-data="videoGallery()">
                     <div class="inner-grid-box">
@@ -294,11 +290,9 @@
         <section style="background-image: url('{{asset('assets/images/2.webp')}}')" class="featured-sec section">
             <div class="wrapper z-10 relative">
                 <div class="section-header">
-                    <h2 class="text-center font-bold text-2xl text-white mb-4">WE MAKE THE ORDINARY...EXTRAORDINARY !
+                    <h2 class="text-center font-bold text-2xl text-white mb-4">WHY CHOOSE US
                     </h2>
-                    <p class="text-center text-gray-200 ">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Nostrum
-                        harum at laboriosam porro iure nam ab eaque nihil facere assumenda!</p>
+                    <p class="text-center text-gray-200 ">Transforming everyday spaces into exceptional living environments. With innovative design, trusted expertise, and uncompromising quality, we create properties that inspire modern lifestyles and lasting value.</p>
                 </div>
                 <div class="grid-box">
 
@@ -317,52 +311,41 @@
 
                             <h3 class="text-xl ">Experience</h3>
                         </div>
-                        <p>Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur
-                            adipisicing elit</p>
+                        <p>Years of industry expertise allow us to deliver thoughtfully designed properties that combine comfort, functionality, and long-term value for homeowners and investors.</p>
 
                     </div>
                     <div class="item">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24 " stroke-width="1"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" >
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+</svg>
+
 
                         </span>
                         <h3>Credit Rating</h3>
-                        <p>Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur
-                            adipisicing elit</p>
+                        <p>Our strong financial credibility and trusted partnerships ensure secure investments and reliable project delivery for every client.</p>
                     </div>
                     <div class="item">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24 " stroke-width="1"
-                                stroke="currentColor" class="size-25">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                            </svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor" >
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+</svg>
+
 
                         </span>
                         <h3>Trust</h3>
-                        <p>Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur
-                            adipisicing elit</p>
+                        <p>Built on transparency and integrity, we prioritize lasting relationships with our clients through dependable service and honest communication.</p>
                     </div>
                     <div class="item">
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24 " stroke-width="1"
-                                stroke="currentColor" class="size-25">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
-                            </svg>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+</svg>
+
 
                         </span>
                         <h3>Quality</h3>
-                        <p>Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. sit amet consectetur adipisicing elit. sit amet consectetur
-                            adipisicing elit</p>
+                        <p>We focus on premium materials, modern construction standards, and meticulous attention to detail to ensure every property meets the highest level of quality.</p>
                     </div>
 
 
@@ -424,13 +407,13 @@
         <section class="projects section">
             <div class="wrapper">
                 <div class="section-header">
-                    <h2 class="">Recent Projects</h2>
+                    <h2 class="">Recent Properties</h2>
                     <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                         Nostrum
                         harum at laboriosam porro iure nam ab eaque nihil facere assumenda!</p>
                 </div>
                 <div class="grid-box">
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <div class="img-box">
 
                             <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
@@ -440,7 +423,7 @@
                             <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <div class="img-box">
 
                             <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
@@ -450,7 +433,7 @@
                             <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <div class="img-box">
 
                             <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
@@ -460,7 +443,7 @@
                             <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
                         </div>
                     </a>
-                    <a href="{{route('projects.details',1)}}" class="item">
+                    <a href="{{route('properties.details',1)}}" class="item">
                         <div class="img-box">
 
                             <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
@@ -473,7 +456,7 @@
 
                 </div>
                 <div class="explore-btn-group">
-                    <a href="{{route('projects')}}" class="btn">Explore
+                    <a href="{{route('properties')}}" class="btn">Explore
                         More
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor">
@@ -496,15 +479,15 @@
                 </div> -->
                 <div class="grid-box">
                     <div class="landowner" style="background-image: url('{{asset('assets/images/1.webp')}}');">
-                      <h3>Land Owners Reviews</h3>
-                                          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                      <h3>Land Owners</h3>
+                                          <p>Develop your land with a trusted partner and unlock its true potential.</p>
                         <a href="{{ route('landowners') }}" class="btn">Details</a>
 
                     </div>
                     <div class="client" style="background-image: url('{{asset('assets/images/2.webp')}}');">
 
-                    <h3> clients Reviews</h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                    <h3> clients</h3>
+                    <p>Explore client reviews and experiences with our properties and services.</p>
                         <a href="{{ route('clients') }}" class="btn">Details</a>
                     </div>
 
