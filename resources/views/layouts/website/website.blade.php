@@ -33,7 +33,7 @@
                     <ul>
                         <li> <a href="/"
                                 class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a></li>
-                        <li> <rties href="{{ route('properties') }}"
+                        <li> <a href="{{ route('properties') }}"
                                 class="{{ Route::currentRouteName() == 'properties' ? 'active' : '' }}">Properties</a></li>
                         <li> <a href="{{ route('offers') }}"
                                 class="{{ Route::currentRouteName() == 'offers' ? 'active' : '' }}">Offers</a></li>
