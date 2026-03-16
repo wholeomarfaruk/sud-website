@@ -25,8 +25,7 @@ import Splide from '@splidejs/splide';
 import '@splidejs/splide/css'; // default theme
 
 
-
-//Filepond ===================================================START
+// Filepond ===================================================START
 
 import * as FilePond from 'filepond';
 import 'filepond/dist/filepond.min.css';
@@ -36,6 +35,9 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 
+// expose to window for Alpine / Livewire
+window.FilePond = FilePond;
+
 // Register plugins
 FilePond.registerPlugin(
     FilePondPluginImagePreview,
@@ -44,13 +46,19 @@ FilePond.registerPlugin(
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function () {
+    console.log('Filepond');
+    console.log(FilePond);
     document.querySelectorAll('.filepond').forEach(input => {
+
         FilePond.create(input, {
             allowMultiple: true,
             acceptedFileTypes: ['image/*'],
         });
+
     });
+
 });
+    
 // Filepond ===================================================END
 //-------------------------------------------------------------
 //-------------------------------------------------------------

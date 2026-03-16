@@ -18,7 +18,7 @@
 
                 <div class="filter-inner">
                     <div class="filter-item">
-                        <div class="visual_studio_item">
+                        {{-- <div class="visual_studio_item">
                             <!--toggle button-->
 
                             <input type="radio" name="tabs" id="tab1" checked>
@@ -32,11 +32,11 @@
 
                             <input type="radio" name="tabs" id="tab4" checked>
                             <label for="tab4">Office Related</label>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="filter-item">
                         <label for="">Search</label>
-                        <input type="text" placeholder="type something...">
+                        <input wire:model.live="search" type="text" placeholder="type something...">
                     </div>
                 </div>
             </div>
@@ -45,75 +45,28 @@
         <section class="post-section">
             <div class="wrapper">
                 <div class="post-box">
-                    <div class="item">
-                        <div class="img">
-                            <img src="{{asset('assets/images/salmon.jpg')}}"  alt="travel_guys">
-                        </div>
-                        <div class="text">
-                            <p class="tt_p1">17</p>
-                            <p class="tt_p2">March 2026</p>
-                            <a href="#"><button>Planning</button></a>
-                            <h5>TOP 10 BEST Real Estate Agents in Bangladesh</h5>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img">
-                            <img src="{{asset('assets/images/salmon.jpg')}}"  alt="travel_guys">
-                        </div>
-                        <div class="text">
-                            <p class="tt_p1">17</p>
-                            <p class="tt_p2">March 2026</p>
-                            <a href="#"><button>Planning</button></a>
-                            <h5>TOP 10 BEST Real Estate Agents in Bangladesh</h5>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img">
-                            <img src="{{asset('assets/images/salmon.jpg')}}"  alt="travel_guys">
-                        </div>
-                        <div class="text">
-                            <p class="tt_p1">17</p>
-                            <p class="tt_p2">March 2026</p>
-                            <a href="#"><button>Planning</button></a>
-                            <h5>TOP 10 BEST Real Estate Agents in Bangladesh</h5>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img">
-                            <img src="{{asset('assets/images/salmon.jpg')}}"  alt="travel_guys">
-                        </div>
-                        <div class="text">
-                            <p class="tt_p1">17</p>
-                            <p class="tt_p2">March 2026</p>
-                            <a href="#"><button>Planning</button></a>
-                            <h5>TOP 10 BEST Real Estate Agents in Bangladesh</h5>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img">
-                            <img src="{{asset('assets/images/salmon.jpg')}}"  alt="travel_guys">
-                        </div>
-                        <div class="text">
-                            <p class="tt_p1">17</p>
-                            <p class="tt_p2">March 2026</p>
-                            <a href="#"><button>Planning</button></a>
-                            <h5>TOP 10 BEST Real Estate Agents in Bangladesh</h5>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="img">
-                            <img src="{{asset('assets/images/salmon.jpg')}}"  alt="travel_guys">
-                        </div>
-                        <div class="text">
-                            <p class="tt_p1">17</p>
-                            <p class="tt_p2">March 2026</p>
-                            <a href="#"><button>Planning</button></a>
-                            <h5>TOP 10 BEST Real Estate Agents in Bangladesh</h5>
-                        </div>
-                    </div>
+                    @if ($blogs && $blogs->count()>0)
+                    @foreach ($blogs as $blog_item)
+
+
+
+                        <a href="{{ route('blogs.details', $blog_item->id) }}" class="item">
+                            <div class="img">
+                                <img src="{{ file_path($blog_item->featured_image)}}"  alt="travel_guys">
+                            </div>
+                            <div class="text">
+                                <p class="tt_p1">{{ $blog_item->updated_at->format('d') }}</p>
+                                <p class="tt_p2">{{ $blog_item->updated_at->format('M Y') }}</p>
+                                {{-- <a href="#"><button>Planning</button></a> --}}
+                                <br>
+                                <h5 class="w-full">{{ $blog_item->title }}</h5>
+                            </div>
+                        </a>
+                            @endforeach
+                       @endif
 
                 </div>
-                 <div class="pagination">
+                 {{-- <div class="pagination">
                     <ul class="pagination-list">
                         <li class="pagination-item">
                             <a href="#" class="pagination-link pagination-link-prev">
@@ -160,7 +113,7 @@
                         </li>
                     </ul>
 
-                </div>
+                </div> --}}
             </div>
         </section>
 

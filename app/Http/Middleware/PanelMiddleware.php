@@ -21,6 +21,7 @@ class PanelMiddleware
             // Option: Redirect to a specific page or show 403
             abort(403, "Access Denied: You do not have the {$panel} panel permissions.");
         }
+        
 
         return $next($request);
     }

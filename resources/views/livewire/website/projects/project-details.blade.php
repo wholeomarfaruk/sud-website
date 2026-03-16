@@ -1,22 +1,30 @@
 @section('bodyClass', 'project-details-page')
 @section('headerClass', 'overlay-header')
 <div>
-            <section class="details-hero-sec">
+    @if ($property->hero_image_id)
+        <section class="details-hero-sec">
             <!-- Swiper -->
             <div class="swiper mySwiper">
+
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="{{asset('assets/images/1.webp')}}" alt="">
 
-                    </div>
-                    <div class="swiper-slide"><img src="{{asset('assets/images/2.webp')}}" alt="">
+                    @if (!empty($property->hero_image_id))
+                        @foreach ($property->hero_image_id as $hero_image_item)
+                            <div class="swiper-slide">
+                                <img src="{{ file_path($hero_image_item) }}">
+                            </div>
+                        @endforeach
+                    @endif
 
-                    </div>
-                    <div class="swiper-slide"><img src="{{asset('assets/images/3.jpg')}}" alt="">
+                    {{-- <div class="swiper-slide"><img src="{{ asset('assets/images/2.webp') }}" alt="">
 
-                    </div>
-                    <div class="swiper-slide"><img src="{{asset('assets/images/4.jpg')}}" alt="">
+                </div>
+                <div class="swiper-slide"><img src="{{ asset('assets/images/3.jpg') }}" alt="">
 
-                    </div>
+                </div>
+                <div class="swiper-slide"><img src="{{ asset('assets/images/4.jpg') }}" alt="">
+
+                </div> --}}
 
                 </div>
                 <div class="swiper-button-next"></div>
@@ -29,8 +37,8 @@
                     <span></span>
                 </div>
                 <div class="overlay">
-                    <h1>Star Complex</h1>
-                    <p>Bashundhara Riverview
+                    <h1>{{ $property->title }}</h1>
+                    <p>{{ $property->location }}
                         <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                             <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
                             <path
@@ -44,9 +52,9 @@
                     </p>
                     <div class="btns">
 
-                        <a href="{{asset('assets/videos/Ads - 002_2.mp4')}}" data-fancybox="hero-video" class="play-btn"><svg
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
-                                stroke="currentColor">
+                        <a href="{{ file_path($property->hero_video_id) }}" data-fancybox="hero-video"
+                            class="play-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -62,22 +70,26 @@
             </div>
             <!-- Swiper JS -->
         </section>
-        <section class="project-details-section">
-            <div class="wrapper">
-                <div class="layout">
-                    <div class="content" id="project-overview">
-                        <div class="project-overview">
+    @endif
+    <section class="project-details-section">
+        <div class="wrapper">
+            <div class="layout">
+                <div class="content" id="project-overview">
+                    <div class="project-overview">
 
-                            <h2 class="section-title">Project Overview</h2>
-                            <div class="feature-overview">
+                        <h2 class="section-title">Project Overview</h2>
+                        <div class="feature-overview">
+                            @if ($property->type)
                                 <div class="item">
                                     <div class="value">
-                                        <span class="name">Flat</span>
+                                        <span class="name capitalize">{{ $property->type }}</span>
                                     </div>
                                     <p class="type-name">Property Type</p>
                                 </div>
+                            @endif
+                            @if ($property->bedroom_count)
                                 <div class="item">
-                                    <div  class="value">
+                                    <div class="value">
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="2 2 20 20">
@@ -87,12 +99,14 @@
                                             </svg>
                                         </span>
 
-                                        <span class="name">4</span>
+                                        <span class="name">{{ $property->bedroom_count }}</span>
                                     </div>
                                     <p class="type-name">Bedrooms</p>
                                 </div>
+                            @endif
+                            @if ($property->bathroom_count)
                                 <div class="item">
-                                    <div  class="value">
+                                    <div class="value">
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                 viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
@@ -102,12 +116,14 @@
                                             </svg>
                                         </span>
 
-                                        <span class="name">2</span>
+                                        <span class="name">{{ $property->bathroom_count }}</span>
                                     </div>
                                     <p class="type-name">Bathroom</p>
                                 </div>
+                            @endif
+                            @if ($property->bathroom_count)
                                 <div class="item">
-                                    <div  class="value">
+                                    <div class="value">
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" stroke-width="1" fill="currentColor"
                                                 viewBox="2 2 20 20">
@@ -121,12 +137,14 @@
                                             </svg>
                                         </span>
 
-                                        <span class="name">1</span>
+                                        <span class="name">{{ $property->parking_count }}</span>
                                     </div>
                                     <p class="type-name">Parking</p>
                                 </div>
+                            @endif
+                            @if ($property->area_measurement)
                                 <div class="item">
-                                    <div  class="value">
+                                    <div class="value">
                                         <span class="icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" stroke-width="1" fill="currentColor"
                                                 viewBox="2 2 20 20">
@@ -137,489 +155,233 @@
                                             </svg>
                                         </span>
 
-                                        <span class="name">1050 Sq Ft</span>
+                                        <span class="name">{{ $property->area_measurement }}</span>
                                     </div>
                                     <p class="type-name">Area Size</p>
                                 </div>
-                            </div>
-                            <hr class="dividor">
-                            <div class="overview-description">
-                                <p>
-
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad
-                                    minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-                                    aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in
-                                    vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis
-                                    at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril
-                                    delenit augue duis dolore te feugait nulla facilisi.
-                                    <br>
-                                    <br>
-                                    Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id
-                                    quod mazim placerat facer possim assum. Typi non habent claritatem insitam; est usus
-                                    legentis in iis qui facit eorum claritatem. Investigationes demonstraverunt lectores
-                                    legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui
-                                    sequitur mutationem consuetudium lectorum. Mirum est notare quam littera gothica,
-                                    quam nunc putamus parum claram, anteposuerit litterarum formas humanitatis per
-                                    seacula quarta decima et quinta decima. Eodem modo typi, qui nunc nobis videntur
-                                    parum clari, fiant sollemnes in futurum.
-                                </p>
-                            </div>
+                            @endif
                         </div>
+                        <hr class="dividor">
+                        <div class="overview-description">
+                            {!! $property->description !!}
+                        </div>
+                    </div>
+                    @if ($property->amenities)
+
+
                         <div class="features">
                             <h2 class="section-title">Features</h2>
                             <hr class="dividor">
                             <div class="feature-grid">
+                                @foreach ($property->amenities as $amenity_item)
+                                    <div class="item">
+                                        <span class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            </svg>
+                                        </span>
+                                        <span class="name">{{ $amenity_item }}
+                                        </span>
+                                    </div>
+                                @endforeach
 
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Air Conditioning
-                                    </span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Gym</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Microwave</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Sauna</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Washer</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Barbeque</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Laundry</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Outdoor Shower</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Swimming Pool</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">TV Cable</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Window Coverings</span>
-                                </div>
-                                <div class="item">
-                                    <span class="icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                        </svg>
-                                    </span>
-                                    <span class="name">Refrigerator</span>
-                                </div>
                             </div>
                         </div>
+                    @endif
+                    @if ($property->additional_info)
+
+
                         <div class="additional-details">
                             <h2 class="section-title">Additional Details</h2>
                             <hr class="dividor">
                             <div class="grid-box">
+                                @foreach ($property->additional_info as $additional_info_item)
+                                    <div class="item">
 
-                                <div class="item">
-
-                                    <span class="name">Deposit
-                                    </span>
-                                    <span class="value">
-                                        20%
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">
-                                        Pool Size
-                                    </span>
-                                    <span class="value">
-                                        300 Sqft
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">Last remodel year
-                                    </span>
-                                    <span class="value">
-                                        2025
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">
-                                        Amenities
-                                    </span>
-                                    <span class="value">
-                                        Clubhouse
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">
-                                        Amenities
-                                    </span>
-                                    <span class="value">
-                                        Clubhouse
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">
-                                        Equipment
-                                    </span>
-                                    <span class="value">
-                                        Grill - Gas
-                                    </span>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="tour-gallery">
-                            <h2 class="section-title">Gallery</h2>
-                            <div class="gallery-container">
-
-
-
-                                <div class="gallery-item">
-                                    <a data-fancybox="gallery" href="{{asset('assets/images/1.webp')}}" data-caption="Dushanbe">
-                                        <img src="{{asset('assets/images/1.webp')}}" alt="">
-                                    </a>
-                                </div>
-
-
-                                <div class="gallery-item">
-                                    <a data-fancybox="gallery" href="{{asset('assets/images/2.webp')}}" data-caption="Dushanbe">
-                                        <img src="{{asset('assets/images/2.webp')}}" alt="">
-                                    </a>
-                                </div>
-
-                                <div class="gallery-item">
-                                    <a data-fancybox="gallery" href="{{asset('assets/images/buildings/4.jpg')}}"
-                                        data-caption="Dushanbe">
-                                        <img src="{{asset('assets/images/buildings/4.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <div class="gallery-item">
-                                    <a data-fancybox="gallery" href="{{asset('assets/images/3.jpg')}}" data-caption="Dushanbe">
-                                        <img src="{{asset('assets/images/3.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <div class="gallery-item">
-                                    <a data-fancybox="gallery" href="{{asset('assets/images/buildings/1.jpg')}}"
-                                        data-caption="Dushanbe">
-                                        <img src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
-                                    </a>
-                                </div>
-                                <div class="gallery-item">
-                                    <a data-fancybox="gallery" href="{{asset('assets/images/4.jpg')}}" data-caption="Dushanbe">
-                                        <img src="{{asset('assets/images/4.jpg')}}" alt="">
-                                    </a>
-                                </div>
-
-
-
-
-
-                            </div>
-                        </div>
-                        <div class="video-gallery">
-                            <h2 class="section-title">Videos</h2>
-                            <hr class="dividor">
-                            <div class="video-grid">
-                                <div href="{{asset('assets/videos/Ads - 002_2.mp4')}}" data-fancybox="video-gallery" class="item"
-                                    style="background-image: url({{asset('assets/videos/thumbnail.png')}})">
-                                    <div class="inner-box">
-                                        <span class="play-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
-                                                </path>
-                                                <path d="m9 17 8-5-8-5z"></path>
-                                            </svg>
+                                        <span
+                                            class="name">{{ isset($additional_info_item['name']) ? $additional_info_item['name'] : '' }}
                                         </span>
-                                        <div class="footer-area">
-                                            <h3>Flat overview</h3>
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                    class="size-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                                02:30</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div href="{{asset('assets/videos/Ads - 001.mp4')}}" data-fancybox="video-gallery" class="item"
-                                    style="background-image: url({{asset('assets/videos/thumbnail-2.png')}})">
-                                    <div class="inner-box">
-                                        <span class="play-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
-                                                </path>
-                                                <path d="m9 17 8-5-8-5z"></path>
-                                            </svg>
+                                        <span class="value">
+                                            {{ isset($additional_info_item['value']) ? $additional_info_item['value'] : '' }}
                                         </span>
-                                        <div class="footer-area">
-                                            <h3>Flat overview</h3>
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                    class="size-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
-                                                </svg>
-                                                02:30</span>
-                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
+                               
+
                             </div>
                         </div>
-                        <div class="address">
-                            <h2 class="section-title">Address</h2>
-                            <hr class="dividor">
-                            <div class="grid-box">
-
-                                <div class="item">
-
-                                    <span class="name">Deposit
-                                    </span>
-                                    <span class="value">
-                                        20%
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">
-                                        Pool Size
-                                    </span>
-                                    <span class="value">
-                                        300 Sqft
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">Last remodel year
-                                    </span>
-                                    <span class="value">
-                                        2025
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">
-                                        Amenities
-                                    </span>
-                                    <span class="value">
-                                        Clubhouse
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">
-                                        Amenities
-                                    </span>
-                                    <span class="value">
-                                        Clubhouse
-                                    </span>
-                                </div>
-                                <div class="item">
-
-                                    <span class="name">
-                                        Equipment
-                                    </span>
-                                    <span class="value">
-                                        Grill - Gas
-                                    </span>
-                                </div>
-
-                            </div>
-
-
-                            <div class="map">
-                                <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3654.1302063341727!2d90.4264554740239!3d23.671301191810954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b93fe4d4be69%3A0xa1466c731900ce4c!2sStar%20Unity!5e0!3m2!1sen!2sbd!4v1772530783296!5m2!1sen!2sbd"
-                                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                                    referrerpolicy="no-referrer-when-downgrade">
-                                </iframe>
-                            </div>
+                    @endif
+                    <div class="tour-gallery">
+                        <h2 class="section-title">Gallery</h2>
+                        <div class="gallery-container">
+                            @if (!empty($property->gallery))
+                                @foreach ($property->gallery as $gallery_item)
+                                    <div class="gallery-item">
+                                        <a data-fancybox="gallery" href="{{ file_path($gallery_item) }}"
+                                            data-caption="">
+                                            <img src="{{ file_path($gallery_item) }}" alt="">
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
-                    <aside class="sidebar">
-                        <div class="scrollable">
-                            <div class="sticky">
-
-
-                                <form action="#" class="custom-form inquiry">
-                                    <h3 class="form-title">Get a Free Quote</h3>
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Name">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Email">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Phone">
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea placeholder="Message"></textarea>
-                                    </div>
-                                    <button type="submit" class="submit-btn">Submit</button>
-                                </form>
-                                <div class="cta-area">
-                                    <div class="col-multple">
-                                        <a href="#" class="btn">
-
-                                            <div class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-                                                    <path fill-rule="evenodd"
-                                                        d="M18.403 5.633A8.92 8.92 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a9 9 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.93 8.93 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.45 7.45 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.45 7.45 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.4 7.4 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73s-.354-.112-.504.112-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393s.149-.224.224-.374.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a10 10 0 0 0-.429-.008.83.83 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321 1.582 2.415 3.832 3.387c.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066s.187-.973.131-1.067-.207-.151-.43-.263"
-                                                        clip-rule="evenodd"></path>
+                    @if($property->videos)
+                    <div class="video-gallery">
+                        <h2 class="section-title">Videos</h2>
+                        <hr class="dividor">
+                        <div class="video-grid">
+                            @foreach ($property->videos as $video_item)
+                                
+                      
+                                <div href="{{ file_path($video_item['video_id']) }}" data-fancybox="video-gallery"
+                                    class="item"
+                                    style="background-image: url({{ file_path($video_item['thumbnail_id']) }})">
+                                    <div class="inner-box">
+                                        <span class="play-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path
+                                                    d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
+                                                </path>
+                                                <path d="m9 17 8-5-8-5z"></path>
+                                            </svg>
+                                        </span>
+                                        <div class="footer-area">
+                                            <h3>{{ $video_item['title'] }}</h3>
+                                            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                    class="size-5">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>
-
-                                            </div>
-                                            <div class="text">
-
-
-                                                <p>WhatsApp</p>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="btn">
-
-                                            <div class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-                                                    <path
-                                                        d="M12 3c-4.92 0-8.91 3.729-8.91 8.332 0 2.616 1.291 4.952 3.311 6.479V21l3.041-1.687c.811.228 1.668.35 2.559.35 4.92 0 8.91-3.73 8.91-8.331C20.91 6.729 16.92 3 12 3m.938 11.172-2.305-2.394-4.438 2.454 4.865-5.163 2.305 2.395 4.439-2.455z">
-                                                    </path>
-                                                </svg>
-
-                                            </div>
-                                            <div class="text">
-
-
-                                                <p>Messager</p>
-                                            </div>
-                                        </a>
+                                                    {{ gmdate('i:s', $video_item['duration']) }}</span>
+                                        </div>
                                     </div>
+                                </div>
+                            @endforeach
+                           
+                        </div>
+                    </div>
+                    @endif
+                    @if($property->address)
+                    <div class="address">
+                        <h2 class="section-title">Address</h2>
+                        <hr class="dividor">
+                        <div class="grid-box">
+ @foreach ($property->address as $address_item)
+                                    <div class="item">
 
+                                        <span
+                                            class="name">{{ isset($address_item['name']) ? $address_item['name'] : '' }}
+                                        </span>
+                                        <span class="value">
+                                            {{ isset($address_item['value']) ? $address_item['value'] : '' }}
+                                        </span>
+                                    </div>
+                                @endforeach
+                          
+                        </div>
+
+                        @if ($property->embaded_map)
+                            
+                     
+                        <div class="map">
+                            <iframe
+                                src="{{ $property->embaded_map }}"
+                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                           @endif
+                    </div>
+                    @endif
+                </div>
+                <aside class="sidebar">
+                    <div class="scrollable">
+                        <div class="sticky">
+
+
+                            <form action="#" class="custom-form inquiry">
+                                <h3 class="form-title">Get a Free Quote</h3>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Name">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" placeholder="Phone">
+                                </div>
+                                <div class="form-group">
+                                    <textarea placeholder="Message"></textarea>
+                                </div>
+                                <button type="submit" class="submit-btn">Submit</button>
+                            </form>
+                            <div class="cta-area">
+                                <div class="col-multple">
                                     <a href="#" class="btn">
+
                                         <div class="icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                fill="currentColor">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
                                                 <path fill-rule="evenodd"
-                                                    d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
-                                                    clip-rule="evenodd" />
+                                                    d="M18.403 5.633A8.92 8.92 0 0 0 12.053 3c-4.948 0-8.976 4.027-8.978 8.977 0 1.582.413 3.126 1.198 4.488L3 21.116l4.759-1.249a9 9 0 0 0 4.29 1.093h.004c4.947 0 8.975-4.027 8.977-8.977a8.93 8.93 0 0 0-2.627-6.35m-6.35 13.812h-.003a7.45 7.45 0 0 1-3.798-1.041l-.272-.162-2.824.741.753-2.753-.177-.282a7.45 7.45 0 0 1-1.141-3.971c.002-4.114 3.349-7.461 7.465-7.461a7.4 7.4 0 0 1 5.275 2.188 7.42 7.42 0 0 1 2.183 5.279c-.002 4.114-3.349 7.462-7.461 7.462m4.093-5.589c-.225-.113-1.327-.655-1.533-.73s-.354-.112-.504.112-.58.729-.711.879-.262.168-.486.056-.947-.349-1.804-1.113c-.667-.595-1.117-1.329-1.248-1.554s-.014-.346.099-.458c.101-.1.224-.262.336-.393s.149-.224.224-.374.038-.281-.019-.393c-.056-.113-.505-1.217-.692-1.666-.181-.435-.366-.377-.504-.383a10 10 0 0 0-.429-.008.83.83 0 0 0-.599.28c-.206.225-.785.767-.785 1.871s.804 2.171.916 2.321 1.582 2.415 3.832 3.387c.536.231.954.369 1.279.473.537.171 1.026.146 1.413.089.431-.064 1.327-.542 1.514-1.066s.187-.973.131-1.067-.207-.151-.43-.263"
+                                                    clip-rule="evenodd"></path>
                                             </svg>
 
                                         </div>
                                         <div class="text">
 
 
-                                            <p>CALL NOW</p>
+                                            <p>WhatsApp</p>
                                         </div>
                                     </a>
+                                    <a href="#" class="btn">
+
+                                        <div class="icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                                <path
+                                                    d="M12 3c-4.92 0-8.91 3.729-8.91 8.332 0 2.616 1.291 4.952 3.311 6.479V21l3.041-1.687c.811.228 1.668.35 2.559.35 4.92 0 8.91-3.73 8.91-8.331C20.91 6.729 16.92 3 12 3m.938 11.172-2.305-2.394-4.438 2.454 4.865-5.163 2.305 2.395 4.439-2.455z">
+                                                </path>
+                                            </svg>
+
+                                        </div>
+                                        <div class="text">
 
 
+                                            <p>Messager</p>
+                                        </div>
+                                    </a>
                                 </div>
+
+                                <a href="#" class="btn">
+                                    <div class="icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                                            fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+
+                                    </div>
+                                    <div class="text">
+
+
+                                        <p>CALL NOW</p>
+                                    </div>
+                                </a>
+
+
                             </div>
-                            <!-- <div class="related-projects">
+                        </div>
+                        <!-- <div class="related-projects">
                                 <h3 class="title">Related Projects</h3>
                                 <hr class="dividor">
                                 <div class="grid-box">
@@ -645,15 +407,14 @@
                                     </div>
                                 </div>
                             </div> -->
-                        </div>
-                    </aside>
-                </div>
+                    </div>
+                </aside>
             </div>
-        </section>
+        </div>
+    </section>
 </div>
 
 @push('scripts')
-
     <script>
         function videoGallery() {
             return {
@@ -712,20 +473,17 @@
 
             //fancy box
 
-             Fancybox.bind('[data-fancybox="video-gallery"]', {
-            // Your custom options for a specific gallery
-        });
-        Fancybox.bind('[data-fancybox="gallery"]', {
-            // Your custom options for a specific gallery
-        });
-        Fancybox.bind('[data-fancybox="hero-video"]', {
-            // Your custom options for a specific gallery
-        });
+            Fancybox.bind('[data-fancybox="video-gallery"]', {
+                // Your custom options for a specific gallery
+            });
+            Fancybox.bind('[data-fancybox="gallery"]', {
+                // Your custom options for a specific gallery
+            });
+            Fancybox.bind('[data-fancybox="hero-video"]', {
+                // Your custom options for a specific gallery
+            });
         })
     </script>
 
-    <script>
-
-    </script>
-
+    <script></script>
 @endpush

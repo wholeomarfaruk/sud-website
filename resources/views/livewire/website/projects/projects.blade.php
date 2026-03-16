@@ -19,12 +19,14 @@
                     <div class="filter-inner">
                         <div class="filter-item">
                             <label for="">Location</label>
-                            <select name="" id="">
+                            <select wire:model.live="location" id="">
                                 <option value="">Select Location</option>
-                                <option value="dhaka">Dhaka</option>
-                                <option value="chittagong">Chittagong</option>
-                                <option value="khulna">Khulna</option>
-                                <option value="rajshahi">Rajshahi</option>
+                                @foreach ($locations as $location_item)
+
+                                <option value="{{ $location_item->id }}">{{ $location_item->name }}</option>
+
+                                @endforeach
+
 
                             </select>
                         </div>
@@ -32,10 +34,10 @@
                             <label for="">Type</label>
                             <select name="" id="">
                                 <option value="">Select type</option>
-                                <option value="luxary">Luxary</option>
-                                <option value="residentials">Residentials</option>
-                                <option value="classic">Classic</option>
-                                <option value="commercial">Commercial</option>
+                                 @foreach (\App\Enums\Project\ProjectType::cases() as $type_item)
+                                <option value="{{ $type_item->value }}">{{ $type_item->value }}</option>
+                                @endforeach
+
 
                             </select>
                         </div>
@@ -43,16 +45,16 @@
                             <label for="">Status</label>
                             <select name="" id="">
                                 <option value="">Select status</option>
-                                <option value="On Sale">On Sale</option>
-                                <option value="On Progress">On Progress</option>
-                                <option value="completed">Completed</option>
-                                <option value="Upcomming">Upcomming</option>
+                                   @foreach (\App\Enums\Project\ProjectStatus::cases() as $status_item)
+                                <option value="{{ $status_item->value }}">{{ $status_item->value }}</option>
+                                @endforeach
+
 
                             </select>
                         </div>
                         <div class="filter-item">
                             <label for="">Search</label>
-                            <input type="text" placeholder="type something...">
+                            <input wire:model.live="search" type="text" placeholder="type something...">
                         </div>
                     </div>
                 </div>
@@ -61,90 +63,23 @@
         <section class="projects-section ">
             <div class="wrapper">
                 <div class="projects-grid">
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <img src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
-                        <span class="overlay-icon">
-                            <i class="bx bx-link bx-flashing"></i>
-                        </span>
-                        <div class="overlay">
-                            <h2>Star Complex</h2>
-                            <p>Bashundhara Riverview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <img src="{{asset('assets/images/buildings/2.jpg')}}" alt="">
-                        <span class="overlay-icon">
-                            <i class="bx bx-link bx-flashing"></i>
-                        </span>
-                        <div class="overlay">
-                            <h2>Star Complex</h2>
-                            <p>Bashundhara Riverview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <img src="{{asset('assets/images/buildings/3.jpg')}}" alt="">
-                        <span class="overlay-icon">
-                            <i class="bx bx-link bx-flashing"></i>
-                        </span>
-                        <div class="overlay">
+                    @foreach ($properties as $property)
 
-                            <h2>Star Complex</h2>
-                            <p>Bashundhara Riverview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <img src="{{asset('assets/images/buildings/4.jpg')}}" alt="">
-                        <span class="overlay-icon">
-                            <i class="bx bx-link bx-flashing"></i>
-                        </span>
-                        <div class="overlay">
-                            <h2>Star Complex</h2>
-                            <p>Bashundhara Riverview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <img src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
-                        <span class="overlay-icon">
-                            <i class="bx bx-link bx-flashing"></i>
-                        </span>
-                        <div class="overlay">
-                            <h2>Star Complex</h2>
-                            <p>Bashundhara Riverview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <img src="{{asset('assets/images/buildings/2.jpg')}}" alt="">
-                        <span class="overlay-icon">
-                            <i class="bx bx-link bx-flashing"></i>
-                        </span>
-                        <div class="overlay">
-                            <h2>Star Complex</h2>
-                            <p>Bashundhara Riverview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <img src="{{asset('assets/images/buildings/3.jpg')}}" alt="">
-                        <span class="overlay-icon">
-                            <i class="bx bx-link bx-flashing"></i>
-                        </span>
-                        <div class="overlay">
 
-                            <h2>Star Complex</h2>
-                            <p>Bashundhara Riverview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <img src="{{asset('assets/images/buildings/4.jpg')}}" alt="">
+                    <a href="{{route('properties.details',$property->slug)}}" class="item">
+                        <img src="{{file_path($property->featured_image_id)}}" alt="">
                         <span class="overlay-icon">
                             <i class="bx bx-link bx-flashing"></i>
                         </span>
                         <div class="overlay">
-                            <h2>Star Complex</h2>
-                            <p>Bashundhara Riverview</p>
+                            <h2>{{ $property->title }}</h2>
+                            <p>{{ $property->location }}</p>
                         </div>
                     </a>
+                     @endforeach
+
                 </div>
-                <div class="pagination">
+                {{-- <div class="pagination">
                     <ul class="pagination-list">
                         <li class="pagination-item">
                             <a href="#" class="pagination-link pagination-link-prev">
@@ -191,7 +126,7 @@
                         </li>
                     </ul>
 
-                </div>
+                </div> --}}
             </div>
         </section>
 

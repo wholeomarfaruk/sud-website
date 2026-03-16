@@ -6,82 +6,26 @@
             <!-- Swiper -->
             <div class="swiper mySwiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="{{asset('assets/images/1.webp')}}" alt="">
-                        <div class="overlay ">
-                            <div class="line"></div>
-                            <p>Location - Bashundhara Riverview</p>
-                            <h2>Jolshiri RA</h2>
-                            <p class="text-sm text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Iusto sunt assumenda quaerat. Eligendi vero cupiditate, velit fuga itaque dolores sunt?
-                            </p>
-                            <a href="#" class="btn">See
-                                Details
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
+                    @foreach ($sliders as $slide_item)
+                        <div class="swiper-slide"><img src="{{file_path($slide_item->image_id)}}" alt="">
+                            <div class="overlay ">
+                                <div class="line"></div>
+                                <p>Location - {{ $slide_item->sub_title }}</p>
+                                <h2>{{ $slide_item->title }}</h2>
+                                <p class="text-sm text-gray-300">{{ $slide_item->description }}
+                                </p>
+                                <a href="{{ $slide_item->link }}" class="btn">See
+                                    Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
 
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="swiper-slide"><img src="{{asset('assets/images/2.webp')}}" alt="">
-                        <div class="overlay ">
-                            <div class="line"></div>
-                            <p>Location - Bashundhara Riverview</p>
-                            <h2>Jolshiri RA</h2>
-                            <p class="text-sm text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Iusto sunt assumenda quaerat. Eligendi vero cupiditate, velit fuga itaque dolores sunt?
-                            </p>
-                            <a href="#" class="btn">See
-                                Details
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
-
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide"><img src="{{asset('assets/images/3.jpg')}}" alt="">
-                        <div class="overlay ">
-                            <div class="line"></div>
-                            <p>Location - Bashundhara Riverview</p>
-                            <h2>Jolshiri RA</h2>
-                            <p class="text-sm text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Iusto sunt assumenda quaerat. Eligendi vero cupiditate, velit fuga itaque dolores sunt?
-                            </p>
-                            <a href="#" class="btn">See
-                                Details
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
-
-                            </a>
-                        </div>
-                    </div>
-                    <div class="swiper-slide"><img src="{{asset('assets/images/4.jpg')}}" alt="">
-                        <div class="overlay ">
-                            <div class="line"></div>
-                            <p>Location - Bashundhara Riverview</p>
-                            <h2>Jolshiri RA</h2>
-                            <p class="text-sm text-gray-300">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Iusto sunt assumenda quaerat. Eligendi vero cupiditate, velit fuga itaque dolores sunt?
-                            </p>
-                            <a href="#" class="btn">See
-                                Details
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
-
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
                 <div class="swiper-button-next"></div>
@@ -96,10 +40,10 @@
                 <!-- Thumbnail Slider -->
                 <div class="swiper thumbSwiper mt-4">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img src="{{asset('assets/images/1.webp')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('assets/images/2.webp')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('assets/images/3.jpg')}}" alt=""></div>
-                        <div class="swiper-slide"><img src="{{asset('assets/images/4.jpg')}}" alt=""></div>
+                         @foreach ($sliders as $slide_item)
+                            <div class="swiper-slide"><img src="{{file_path($slide_item->image_id)}}" alt=""></div>
+                        @endforeach
+
                     </div>
                 </div>
             </div>
@@ -115,17 +59,21 @@
                     <p class="text-center text-gray-500">A showcase of our finest properties, combining visionary design, premium craftsmanship, and functional spaces for contemporary living.</p>
                 </div>
                 <div class="grid-box">
+                    @foreach ($featured_properties as $featured_item)
+
                     <div class="item">
-                        <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
+                        <img class="" src="{{file_path($featured_item->property->featured_image_id)}}" alt="">
                         <div class="overlay">
                             <div class="text-box">
-                                <h3>Jolshiri</h3>
-                                <p>Bashundhara Riverview</p>
+                                <h3>{{ $featured_item->property->title }}</h3>
+                                <p>{{ $featured_item->property->location }}</p>
                             </div>
 
                         </div>
                     </div>
-                    <div class="item">
+
+                    @endforeach
+                    {{-- <div class="item">
                         <img class="" src="{{asset('assets/images/buildings/2.jpg')}}" alt="">
                         <div class="overlay">
                             <div class="text-box">
@@ -154,10 +102,13 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
+
+        @if ($videos -> count() > 0)
+
 
         <section class="video-sec section">
 
@@ -167,10 +118,14 @@
                     <p>Take a closer look at our exceptional developments through video highlights and virtual walkthroughs.</p>
                 </div>
                 <div class="grid-box" id="video-sec-area" x-data="videoGallery()">
+
                     <div class="inner-grid-box">
-                        <div class="item" style="background-image: url({{asset('assets/videos/thumbnail.png')}})"
-                            @click="changeVideo('{{asset('assets/videos/Ads - 002_2.mp4')}}')">
-                            <div class="inner-box">
+                        @foreach ($videos as $video_item)
+
+
+                        <div class="item" style="background-image: url({{file_path($video_item->thumbnail)}})"
+                            @click="changeVideo('{{ file_path($video_item->video_id) }}')">
+                            <div wire:key="video-{{$video_item->id}}" class="inner-box" >
                                 <span class="play-btn">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                                         <path
@@ -186,79 +141,12 @@
                                             d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round"
                                             stroke-linejoin="round" />
                                     </svg>
-                                    02:30
+                                    {{ gmdate('i:s', $video_item->duration) }}
                                 </div>
                             </div>
                         </div>
-                        <!-- Item 2 -->
-                        <div class="item" style="background-image: url({{asset('assets/videos/thumbnail-2.png')}})"
-                            @click="changeVideo('{{asset('assets/videos/Ads - 001.mp4')}}')">
-                            <div class="inner-box">
-                                <span class="play-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
-                                        </path>
-                                        <path d="m9 17 8-5-8-5z"></path>
-                                    </svg>
-                                </span>
-                                <div class="footer-area">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2" stroke="currentColor" class="size-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    02:30
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item 3 -->
-                        <div class="item" style="background-image: url({{asset('assets/videos/thumbnail-2.png')}})"
-                            @click="changeVideo('{{asset('assets/videos/Ads - 001.mp4')}}')">
-                            <div class="inner-box">
-                                <span class="play-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
-                                        </path>
-                                        <path d="m9 17 8-5-8-5z"></path>
-                                    </svg>
-                                </span>
-                                <div class="footer-area">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2" stroke="currentColor" class="size-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    02:30
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Item 4 -->
-                        <div class="item" style="background-image: url({{asset('assets/videos/thumbnail.png')}})"
-                            @click="changeVideo('{{asset('assets/videos/Ads - 002_2.mp4')}}')">
-                            <div class="inner-box">
-                                <span class="play-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
-                                        </path>
-                                        <path d="m9 17 8-5-8-5z"></path>
-                                    </svg>
-                                </span>
-                                <div class="footer-area">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2" stroke="currentColor" class="size-5">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    02:30
-                                </div>
-                            </div>
-                        </div>
+
+                        @endforeach
 
 
                     </div>
@@ -285,7 +173,7 @@
             </div>
 
         </section>
-
+ @endif
 
         <section style="background-image: url('{{asset('assets/images/2.webp')}}')" class="featured-sec section">
             <div class="wrapper z-10 relative">
@@ -352,107 +240,51 @@
                 </div>
             </div>
         </section>
+@if ($partners)
+
 
         <section class="trust_partners-sec section">
             <div class="wrapper">
 
                 <div class="grid-box">
+                    @foreach ($partners as $partner_item)
+
+
                     <div class="item">
-                        <img class="h-full object-cover" src="{{asset('assets/images/sfs-1k-771378.webp')}}" alt="">
-                        <a href="#" class="overlay">
+                        <img class="h-full object-cover" src="{{file_path($partner_item->image_id)}}" alt="">
+                        <a href="{{ $partner_item->link }}" target="_blank" class="overlay">
                             <i class="bx bx-link bx-flashing text-4xl text-white"></i>
                             <span class="text-gray-50 secondary-font">Click For Details</span>
                         </a>
                     </div>
-                    <div class="item">
-                        <img class="h-full object-cover" src="{{asset('assets/images/sfs-1k-771378.webp')}}" alt="">
-                        <a href="#" class="overlay">
-                            <i class="bx bx-link bx-flashing text-4xl text-white"></i>
-                            <span class="text-gray-50 secondary-font">Click For Details</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <img class="h-full object-cover" src="{{asset('assets/images/sfs-1k-771378.webp')}}" alt="">
-                        <a href="#" class="overlay">
-                            <i class="bx bx-link bx-flashing text-4xl text-white"></i>
-                            <span class="text-gray-50 secondary-font">Click For Details</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <img class="h-full object-cover" src="{{asset('assets/images/sfs-1k-771378.webp')}}" alt="">
-                        <a href="#" class="overlay">
-                            <i class="bx bx-link bx-flashing text-4xl text-white"></i>
-                            <span class="text-gray-50 secondary-font">Click For Details</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <img class="h-full object-cover" src="{{asset('assets/images/sfs-1k-771378.webp')}}" alt="">
-                        <a href="#" class="overlay">
-                            <i class="bx bx-link bx-flashing text-4xl text-white"></i>
-                            <span class="text-gray-50 secondary-font">Click For Details</span>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <img class="h-full object-cover" src="{{asset('assets/images/sfs-1k-771378.webp')}}" alt="">
-                        <a href="#" class="overlay">
-                            <i class="bx bx-link bx-flashing text-4xl text-white"></i>
-                            <span class="text-gray-50 secondary-font">Click For Details</span>
-                        </a>
-                    </div>
+                      @endforeach
 
                 </div>
             </div>
         </section>
-
+@endif
         <section class="projects section">
             <div class="wrapper">
                 <div class="section-header">
                     <h2 class="">Recent Properties</h2>
-                    <p class="text-gray-600">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Nostrum
-                        harum at laboriosam porro iure nam ab eaque nihil facere assumenda!</p>
+                    <p class="text-gray-600">We take pride in our work and ensure that every property is developed to the highest standards of quality, safety and environmental responsibility.</p>
                 </div>
                 <div class="grid-box">
-                    <a href="{{route('properties.details',1)}}" class="item">
+                    @foreach ($properties as $property)
+
+
+                    <a href="{{route('properties.details',$property->slug)}}" class="item">
                         <div class="img-box">
 
-                            <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
+                            <img class="" src="{{ file_path($property->featured_image_id)}}" alt="">
                         </div>
                         <div class="text-box">
-                            <h3 class="text-2xl title-font">Apon shopno</h3>
-                            <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
+                            <h3 class="text-2xl title-font">{{ $property->title }}</h3>
+                            <p class="text-gray-600 text-sm secondary-font">{{ $property->location }}</p>
                         </div>
                     </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <div class="img-box">
-
-                            <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
-                        </div>
-                        <div class="text-box">
-                            <h3 class="text-2xl title-font">Apon shopno</h3>
-                            <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <div class="img-box">
-
-                            <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
-                        </div>
-                        <div class="text-box">
-                            <h3 class="text-2xl title-font">Apon shopno</h3>
-                            <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
-                        </div>
-                    </a>
-                    <a href="{{route('properties.details',1)}}" class="item">
-                        <div class="img-box">
-
-                            <img class="" src="{{asset('assets/images/buildings/1.jpg')}}" alt="">
-                        </div>
-                        <div class="text-box">
-                            <h3 class="text-2xl title-font">Apon shopno</h3>
-                            <p class="text-gray-600 text-sm secondary-font">Bashundara Revierview</p>
-                        </div>
-                    </a>
+                     @endforeach
+                    
 
                 </div>
                 <div class="explore-btn-group">
@@ -501,7 +333,7 @@
    <script>
         function videoGallery() {
             return {
-                currentVideo: "{{ asset('assets/videos/Ads - 002_2.mp4') }}",
+                currentVideo: "{{ file_path($videos?->first()?->video_id ?? '') }}",
 
                 init() {
                     this.setVideo(this.currentVideo);

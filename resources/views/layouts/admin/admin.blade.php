@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-        @vite(['resources/sass/admin.scss','resources/css/admin.css', 'resources/js/admin.js'])
+    @vite(['resources/sass/admin.scss', 'resources/css/admin.css', 'resources/js/admin.js'])
     @livewireStyles
+    @stack('styles')
+    <style>
+        .swal2-container.swal2-top-end .swal2-popup {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 
-<body x-data class=" mx-auto antialiased flex justify-between">
+<body x-data="{ visibleClass: 'sm:block' }" class=" mx-auto antialiased flex justify-between">
 
 
     <!-- Mobile Menu Toggle -->
@@ -98,7 +105,7 @@
                             d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
                     <h1 x-cloak
-                        x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full  ?
+                        x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full ?
                             'sm:hidden' : ''">
                         Dashboard</h1>
                 </a>
@@ -164,10 +171,10 @@
                         Products</h1>
                 </a> --}}
                 <!-- Invoices -->
-                {{-- <a href="{{ route('admin.invoice.list') }}" x-data="tooltip" x-on:mouseover="show = true"
+                <a href="{{ route('admin.uploads') }}" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
                     class="relative flex items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer justify-start text-gray-400
-                    {{ Route::currentRouteName() == 'admin.invoice.list' ? 'text-gray-200 bg-gray-800' : '' }}
+                    {{ Route::currentRouteName() == 'admin.uploads' ? 'text-gray-200 bg-gray-800' : '' }}
 
                     ">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
@@ -179,46 +186,88 @@
                     <h1 x-cloak
                         x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ?
                             'sm:hidden' : ''">
-                        Invoices</h1>
-                </a> --}}
+                        Uploads</h1>
+                </a>
                 <!-- Stock -->
-                {{-- <a href="{{ route('admin.stocklist') }}" x-data="tooltip" x-on:mouseover="show = true"
+                <a href="{{ route('admin.sliders') }}" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
                     class="relative flex items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer justify-start text-gray-400
-                    {{ Route::currentRouteName() == 'admin.stocklist' ? 'text-gray-200 bg-gray-800' : '' }}
+                    {{ Route::currentRouteName() == 'admin.sliders' ? 'text-gray-200 bg-gray-800' : '' }}
 
                     ">
-
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
+                            d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                     </svg>
+
+
 
 
                     <h1 x-cloak
                         x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ?
                             'sm:hidden' : ''">
-                        Stocks</h1>
-                </a> --}}
-                <!-- transection -->
-                {{-- <a href="{{ route('admin.transection.list') }}" x-data="tooltip" x-on:mouseover="show = true"
+                        Sliders</h1>
+                </a>
+                <!-- partners -->
+                <a href="{{ route('admin.partners') }}" x-data="tooltip" x-on:mouseover="show = true"
                     x-on:mouseleave="show = false"
                     class="relative flex items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer justify-start text-gray-400
-                    {{ Route::currentRouteName() == 'admin.transection.list' ? 'text-gray-200 bg-gray-800' : '' }}
+                    {{ Route::currentRouteName() == 'admin.partners' ? 'text-gray-200 bg-gray-800' : '' }}
 
                     ">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 8.25.22-.22a.75.75 0 0 1 1.28.53v6.441c0 .472.214.934.64 1.137a3.75 3.75 0 0 0 4.994-1.77c.205-.428-.152-.868-.627-.868h-.507m-6-2.25h7.5M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" stroke="currentColor"
+                        stroke-width="2">
+
+                        <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                        <path
+                            d="M20.24 4.76c-2.3-2.29-5.87-2.35-8.24-.19-2.37-2.16-5.93-2.09-8.24.2-2.36 2.37-2.36 6.07 0 8.43l7.53 7.52c.2.19.45.29.71.29s.51-.1.71-.29l7.53-7.52c2.36-2.36 2.36-6.06 0-8.43ZM12 18.59l-6.82-6.81a3.92 3.92 0 0 1 0-5.6C5.97 5.39 6.98 5 7.99 5s2.02.39 2.8 1.18l.5.5-2.38 2.39c-.51.52-.51 1.36 0 1.88.49.49 1.13.73 1.77.73s1.28-.24 1.77-.73l1.64-1.64 3.59 3.59-1.04 1.04-2.3-2.3-.71.71 2.3 2.3-.79.79-2.3-2.3-.71.71 2.3 2.3-.79.79-2.29-2.29-.71.71 2.29 2.29-.94.94Zm6.82-6.81-.42.42-3.59-3.59 1.24-1.24-.71-.71-3.59 3.59c-.58.58-1.54.58-2.12 0a.33.33 0 0 1 0-.47l3.42-3.44.16-.16c1.57-1.57 4.04-1.57 5.62 0 1.57 1.58 1.57 4.04 0 5.6Z">
+                        </path>
                     </svg>
 
+                    <h1 x-cloak
+                        x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ?
+                            'sm:hidden' : ''">
+                        Partners</h1>
+                </a>
+                <!-- offers -->
+                <a href="{{ route('admin.offers') }}" x-data="tooltip" x-on:mouseover="show = true"
+                    x-on:mouseleave="show = false"
+                    class="relative flex items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer justify-start text-gray-400
+                    {{ Route::currentRouteName() == 'admin.offers' ? 'text-gray-200 bg-gray-800' : '' }}
+
+                    ">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"  class="h-6 w-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m8.99 14.993 6-6m6 3.001c0 1.268-.63 2.39-1.593 3.069a3.746 3.746 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043 3.745 3.745 0 0 1-3.068 1.593c-1.268 0-2.39-.63-3.068-1.593a3.745 3.745 0 0 1-3.296-1.043 3.746 3.746 0 0 1-1.043-3.297 3.746 3.746 0 0 1-1.593-3.068c0-1.268.63-2.39 1.593-3.068a3.746 3.746 0 0 1 1.043-3.297 3.745 3.745 0 0 1 3.296-1.042 3.745 3.745 0 0 1 3.068-1.594c1.268 0 2.39.63 3.068 1.593a3.745 3.745 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.297 3.746 3.746 0 0 1 1.593 3.068ZM9.74 9.743h.008v.007H9.74v-.007Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm4.125 4.5h.008v.008h-.008v-.008Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+</svg>
 
 
                     <h1 x-cloak
                         x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ?
                             'sm:hidden' : ''">
-                        Transections</h1>
-                </a> --}}
+                        Offers</h1>
+                </a>
+                <!-- blogs -->
+                <a href="{{ route('admin.blogs') }}" x-data="tooltip" x-on:mouseover="show = true"
+                    x-on:mouseleave="show = false"
+                    class="relative flex items-center hover:text-gray-200 hover:bg-gray-800 space-x-2 rounded-md p-2 cursor-pointer justify-start text-gray-400
+                    {{ Route::currentRouteName() == 'admin.blogs' ? 'text-gray-200 bg-gray-800' : '' }}
+
+                    ">
+
+  
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="h-6 w-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+</svg>
+
+
+                    <h1 x-cloak
+                        x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full && !show ?
+                            'sm:hidden' : ''">
+                        Blogs</h1>
+                </a>
                 <!-- Reports -->
                 <div x-data="dropdown" class="relative">
                     <!-- Dropdown head -->
@@ -242,8 +291,10 @@
                             </svg>
 
 
+
+
                             <h1 x-cloak
-                                x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full  ?
+                                x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full ?
                                     'sm:hidden' : ''">
                                 User Management</h1>
                         </div>
@@ -259,8 +310,60 @@
                     <!-- Dropdown content -->
                     <div x-cloak x-show="open" @click.outside="open=false"
                         x-bind:class="$store.sidebar.full && show ? expandedClass : shrinkedClass"
-                        class="text-gray-400 space-y-3">
+                        class="text-gray-400 space-y-3 ">
                         <a href="{{ route('admin.users') }}" class="hover:text-gray-200 cursor-pointer">Users</a>
+                    </div>
+                </div>
+                <!-- property management -->
+                <div x-data="dropdown" class="relative">
+                    <!-- Dropdown head -->
+                    <div @click="toggle('properties')" x-data="tooltip" x-on:mouseover="show = true"
+                        x-on:mouseleave="show = false"
+                        class="flex justify-between text-gray-400 hover:text-gray-200 hover:bg-gray-800 items-center space-x-2 rounded-md p-2 cursor-pointer"
+                        x-bind:class="{
+                            'justify-start': $store.sidebar.full,
+                            'sm:justify-center': !$store.sidebar
+                                .full,
+                            'text-gray-200 bg-gray-800': $store.sidebar.active == 'Reports',
+                            'text-gray-400 ': $store
+                                .sidebar.active != 'Reports'
+                        }">
+                        <div class="relative flex items-center gap-2">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Zm0 3h.008v.008h-.008v-.008Z" />
+                            </svg>
+
+
+                            <h1 x-cloak
+                                x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full ?
+                                    'sm:hidden' : ''">
+                                Property Manage</h1>
+                        </div>
+
+                        <svg x-cloak x-bind:class="$store.sidebar.full ? '' : 'sm:hidden'"
+                            xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 size-6" viewBox="0 0 20 20"
+                            stroke-width="1.5" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <!-- Dropdown content -->
+                    <div x-cloak x-show="open" @click.outside="open=false"
+                        x-bind:class="$store.sidebar.full && show ? expandedClass : shrinkedClass"
+                        class="text-gray-400 space-y-3 ml-3">
+                        <a href="{{ route('admin.properties.locations') }}"
+                            class="hover:text-gray-200 cursor-pointer">Locations</a><br>
+                        <a href="{{ route('admin.properties') }}" class="hover:text-gray-200 cursor-pointer">All
+                            Properties</a><br>
+                        <a href="{{ route('admin.properties.create') }}"
+                            class="hover:text-gray-200 cursor-pointer">Add Property</a><br>
+                        <a href="{{ route('admin.properties.featured') }}"
+                            class="hover:text-gray-200 cursor-pointer">Featued Properties</a>
+
                     </div>
                 </div>
 
@@ -280,15 +383,15 @@
                     {{ Route::currentRouteName() == 'admin.roles.list' || Route::currentRouteName() == 'admin.roles.create' || Route::currentRouteName() == 'admin.roles.edit' ? 'text-gray-200 bg-gray-800' : '' }}
                     ">
 
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor"  class="h-6 w-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
                     </svg>
 
                     <h1 x-cloak
-                        x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full  ?
-                                    'sm:hidden' : ''">
+                        x-bind:class="!$store.sidebar.full && show ? visibleClass : '' || !$store.sidebar.full ?
+                            'sm:hidden' : ''">
                         Permissions</h1>
 
                 </a>
@@ -461,16 +564,36 @@
                     showConfirmButton: false,
                     timer: 3000,
                     timerProgressBar: true
-                })
+                });
+
+
             })
         })
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let data = @json(session()->get('toast'));
+            if (data) {
+                Swal.fire({
+                    toast: true,
+                    position: 'top-end',
+                    icon: data.type,
+                    title: data.message,
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true
+                });
+            }
+
+
+        });
     </script>
 
     <script>
         document.addEventListener('alpine:init', () => {
             // Stores variable globally
             Alpine.store('sidebar', {
-                full: false,
+                full: true,
                 active: 'pos',
                 navOpen: false,
             });
@@ -486,6 +609,7 @@
                     this.open = !this.open;
                     Alpine.store('sidebar').active = tab;
                 },
+                visibleClass: 'sm:block',
                 activeClass: 'bg-gray-800 text-gray-200',
                 expandedClass: 'border-l border-gray-400 ml-4 pl-4',
                 shrinkedClass: 'sm:absolute top-0 left-20 sm:shadow-md sm:z-10 sm:bg-gray-900 sm:rounded-md sm:p-4 border-l sm:border-none border-gray-400 ml-4 pl-4 sm:ml-0 w-28'
@@ -504,10 +628,71 @@
                 show: false,
                 visibleClass: 'block sm:absolute -top-7 sm:border border-gray-800 left-5 sm:text-sm sm:bg-gray-900 sm:px-2 sm:py-1 sm:rounded-md'
             }))
-            console.log(Alpine.store('sidebar').active);
+
+        })
+    </script>
+    <script>
+        document.addEventListener('livewire:init', () => {
+
+            function initVideoPreviews() {
+
+                document.querySelectorAll('.replace-video-preview').forEach(img => {
+
+                    // prevent running twice
+                    if (img.dataset.previewLoaded) return;
+                    img.dataset.previewLoaded = true;
+
+                    const videoUrl = img.getAttribute('src');
+
+                    const video = document.createElement('video');
+                    video.src = videoUrl;
+                    video.crossOrigin = "anonymous";
+                    video.muted = true;
+                    video.playsInline = true;
+                    video.preload = "metadata";
+
+                    video.addEventListener('loadedmetadata', () => {
+                        video.currentTime = Math.min(2, video.duration * 0.25);
+                    });
+
+
+                    video.addEventListener('seeked', () => {
+
+                        const canvas = document.createElement('canvas');
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                        img.src = canvas.toDataURL('image/png');
+
+                    });
+
+                });
+
+            }
+
+            // first run
+            initVideoPreviews();
+
+            // run again after Livewire updates DOM
+            Livewire.hook('morph.updated', () => {
+                initVideoPreviews();
+            });
+
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            Fancybox.bind("[data-fancybox]", {
+
+            })
         })
     </script>
     @livewireScripts
     @stack('scripts')
 </body>
+
 </html>
