@@ -208,7 +208,7 @@
                                         </span>
                                     </div>
                                 @endforeach
-                               
+
 
                             </div>
                         </div>
@@ -228,51 +228,49 @@
                             @endif
                         </div>
                     </div>
-                    @if($property->videos)
-                    <div class="video-gallery">
-                        <h2 class="section-title">Videos</h2>
-                        <hr class="dividor">
-                        <div class="video-grid">
-                            @foreach ($property->videos as $video_item)
-                                
-                      
-                                <div href="{{ file_path($video_item['video_id']) }}" data-fancybox="video-gallery"
-                                    class="item"
-                                    style="background-image: url({{ file_path($video_item['thumbnail_id']) }})">
-                                    <div class="inner-box">
-                                        <span class="play-btn">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                                viewBox="0 0 24 24">
-                                                <path
-                                                    d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
-                                                </path>
-                                                <path d="m9 17 8-5-8-5z"></path>
-                                            </svg>
-                                        </span>
-                                        <div class="footer-area">
-                                            <h3>{{ $video_item['title'] }}</h3>
-                                            <span><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                                    class="size-5">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                                        stroke-linecap="round" stroke-linejoin="round" />
+                    @if ($property->videos)
+                        <div class="video-gallery">
+                            <h2 class="section-title">Videos</h2>
+                            <hr class="dividor">
+                            <div class="video-grid">
+                                @foreach ($property->videos as $video_item)
+                                    <div href="{{ file_path($video_item['video_id']) }}"
+                                        data-fancybox="video-gallery" class="item"
+                                        style="background-image: url({{ file_path($video_item['thumbnail_id']) }})">
+                                        <div class="inner-box">
+                                            <span class="play-btn">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path
+                                                        d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
+                                                    </path>
+                                                    <path d="m9 17 8-5-8-5z"></path>
                                                 </svg>
+                                            </span>
+                                            <div class="footer-area">
+                                                <h3>{{ $video_item['title'] }}</h3>
+                                                <span><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                        viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                                        class="size-5">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
                                                     {{ gmdate('i:s', $video_item['duration']) }}</span>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
-                           
+                                @endforeach
+
+                            </div>
                         </div>
-                    </div>
                     @endif
-                    @if($property->address)
-                    <div class="address">
-                        <h2 class="section-title">Address</h2>
-                        <hr class="dividor">
-                        <div class="grid-box">
- @foreach ($property->address as $address_item)
+                    @if ($property->address)
+                        <div class="address">
+                            <h2 class="section-title">Address</h2>
+                            <hr class="dividor">
+                            <div class="grid-box">
+                                @foreach ($property->address as $address_item)
                                     <div class="item">
 
                                         <span
@@ -283,21 +281,18 @@
                                         </span>
                                     </div>
                                 @endforeach
-                          
-                        </div>
 
-                        @if ($property->embaded_map)
-                            
-                     
-                        <div class="map">
-                            <iframe
-                                src="{{ $property->embaded_map }}"
-                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                            </div>
+
+                            @if ($property->embaded_map)
+                                <div class="map">
+                                    <iframe src="{{ $property->embaded_map }}" width="100%" height="300"
+                                        style="border:0;" allowfullscreen="" loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+                            @endif
                         </div>
-                           @endif
-                    </div>
                     @endif
                 </div>
                 <aside class="sidebar">
@@ -305,21 +300,46 @@
                         <div class="sticky">
 
 
-                            <form action="#" class="custom-form inquiry">
+                            <form action="#" wire:submit.prevent="submit" class="custom-form inquiry">
                                 <h3 class="form-title">Get a Free Quote</h3>
+
+
                                 <div class="form-group">
-                                    <input type="text" placeholder="Name">
+                                    <input wire:model="name" type="text" placeholder="Name">
+                                    @error('name')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Email">
+                                    <input wire:model="phone" type="text" placeholder="Phone">
+                                    @error('phone')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" placeholder="Phone">
+                                    <input wire:model="email" type="text" placeholder="Email">
+                                    @error('email')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
+
                                 <div class="form-group">
-                                    <textarea placeholder="Message"></textarea>
+                                    <textarea wire:model="message" placeholder="Message"></textarea>
+                                    @error('message')
+                                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
                                 </div>
-                                <button type="submit" class="submit-btn">Submit</button>
+                                <button type="submit" wire:loading.attr="disabled" class="submit-btn">
+
+                                    <span wire:loading.remove wire:target="submit">
+                                        Submit
+                                    </span>
+
+                                    <span wire:loading wire:target="submit">
+                                        Submitting...
+                                    </span>
+
+                                </button>
                             </form>
                             <div class="cta-area">
                                 <div class="col-multple">
@@ -445,33 +465,34 @@
         addEventListener("DOMContentLoaded", () => {
 
 
-            // console.log(typeof Swiper);
-            const progressCircle = document.querySelector(".autoplay-progress svg");
-            const progressContent = document.querySelector(".autoplay-progress span");
 
-            const heroSwiper = new Swiper(".mySwiper", {
-                spaceBetween: 30,
-                loop: true,
-                // centeredSlides: false, // 👈 এটা off করো
-                effect: 'fade', // Smooth transitions
 
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false
-                },
-                pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev"
-                },
-            });
+
+
+                const heroSwiper = new Swiper(".mySwiper", {
+                    spaceBetween: 30,
+                    loop: true,
+                    // centeredSlides: false, // 👈 এটা off করো
+                    effect: 'fade', // Smooth transitions
+
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev"
+                    },
+                });
 
 
 
             //fancy box
+
 
             Fancybox.bind('[data-fancybox="video-gallery"]', {
                 // Your custom options for a specific gallery
@@ -485,5 +506,15 @@
         })
     </script>
 
-    <script></script>
+    <script>
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('notify', data => {
+                Swal.fire({
+                    title: data[0].title,
+                    text: data[0].message,
+                    icon: data[0].type,
+                });
+            });
+        });
+    </script>
 @endpush

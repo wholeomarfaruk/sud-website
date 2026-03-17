@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Livewire\Website\Contact;
+namespace App\Livewire\Website\Inquiry;
 
-use App\Models\Inquiry;
 use Livewire\Component;
+use App\Models\Inquiry;
 
-class ContactUs extends Component
+class Form extends Component
 {
-        public $name;
+    public $name;
     public $phone;
     public $email;
     public $subject;
@@ -15,12 +15,7 @@ class ContactUs extends Component
 
     public $source_page;
     public $property_id;
-public function mount(){
-    $this->source_page = 'contact_us';
 
-        track_visit('static', null, 'contact-us');
-
-}
     protected function rules()
     {
         return [
@@ -30,7 +25,8 @@ public function mount(){
             'message' => 'nullable|min:5',
         ];
     }
-        public function submit()
+
+    public function submit()
     {
         $this->validate();
 
@@ -49,14 +45,12 @@ public function mount(){
             'name','phone','email','subject','message'
         ]);
 
-        $this->dispatch('notify', [
-            'title' => 'Success',
-            'icon' => 'success',
-            'message' => 'Your message has been sent successfully.'
-        ]);
+        session()->flash('success','Your message has been sent.');
     }
+
+
     public function render()
     {
-        return view('livewire.website.contact.contact-us')->layout('layouts.website.website');
+        return view('livewire.website.inquiry.form');
     }
 }

@@ -170,3 +170,10 @@ import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 window.Fancybox = Fancybox;
 // fancybox==================================================END
+
+// ChartJs==================================================START
+import Chart from 'chart.js/auto';
+
+window.Chart = Chart;
+
+// ChartJs==================================================END

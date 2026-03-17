@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
-    
+
 // Filepond ===================================================END
 //-------------------------------------------------------------
 //-------------------------------------------------------------
@@ -111,17 +111,17 @@ window.notyf = new Notyf({
         y: 'top',
     },
 });
-document.addEventListener('livewire:init', () => {
+// document.addEventListener('livewire:init', () => {
 
-    Livewire.on('notify', ({ type, message }) => {
-        if (type === 'success') {
-            notyf.success(message);
-        } else {
-            notyf.error(message);
-        }
-    });
+//     Livewire.on('notify', ({ type, message }) => {
+//         if (type === 'success') {
+//             notyf.success(message);
+//         } else {
+//             notyf.error(message);
+//         }
+//     });
 
-});
+// });
 
 //Notyf==================================================END
 //-------------------------------------------------------------

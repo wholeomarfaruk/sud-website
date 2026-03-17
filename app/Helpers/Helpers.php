@@ -3,7 +3,13 @@
 
 use App\Models\File;
 
-
+use App\Services\Analytics\VisitTracker;
+if(!function_exists('track_visit')) {
+function track_visit($type, $id = null, $slug = null)
+{
+    app(VisitTracker::class)->track($type, $id, $slug);
+}
+}
 if(!function_exists('file_path')) {
 
 

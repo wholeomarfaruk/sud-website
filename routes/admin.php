@@ -48,3 +48,7 @@ Route::get('/offers/create-update', App\Livewire\Admin\Offers\CreateUpdate::clas
 //blogs
 Route::get('/blogs', App\Livewire\Admin\Blogs\Blogs::class)->name('blogs');
 Route::get('/blogs/create-update', App\Livewire\Admin\Blogs\CreateUpdate::class)->name('blogs.createupdate');
+
+
+//inquires/inbox
+Route::get('/inbox', App\Livewire\Admin\Inbox\InquiryList::class)->name('inbox');

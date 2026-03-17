@@ -6,6 +6,9 @@ use Livewire\Component;
 
 class Home extends Component
 {
+       public function mount(){
+        track_visit('static', null, 'home');
+    }
     public function render()
     {
         $sliders = \App\Models\Slider::orderBy('sort_order', 'asc')->get();

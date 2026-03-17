@@ -6,6 +6,9 @@ use Livewire\Component;
 
 class Offers extends Component
 {
+     public function mount(){
+        track_visit('static', null, 'offers');
+    }
     public function render()
     {
         $offers = \App\Models\Offer::where('status', 1)->get();

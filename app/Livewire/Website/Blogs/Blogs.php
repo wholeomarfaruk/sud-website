@@ -13,6 +13,9 @@ class Blogs extends Component
     {
         $this->resetPage(); // reset page on search update
     }
+       public function mount(){
+        track_visit('static', null, 'blogs');
+    }
     public function render()
     {
         $blogs = \App\Models\Blog::query()

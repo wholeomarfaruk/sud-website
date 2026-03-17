@@ -11,13 +11,17 @@ class Projects extends Component
 {
     use WithPagination;
     public $search = '';
-    public $type=null;
+    public $type = null;
     public $status;
     public $location;
 
     public function updatingSearch()
     {
         $this->resetPage(); // reset page on search update
+    }
+    public function mount()
+    {
+        track_visit('static', null, 'properties');
     }
     public function render()
     {
@@ -37,7 +41,7 @@ class Projects extends Component
             ->orderBy('created_at', 'desc')
             ->paginate(50); // use paginate
 
-        $locations= Location::all();
-        return view('livewire.website.projects.projects', compact('properties','locations'))->layout('layouts.website.website');
+        $locations = Location::all();
+        return view('livewire.website.projects.projects', compact('properties', 'locations'))->layout('layouts.website.website');
     }
 }
