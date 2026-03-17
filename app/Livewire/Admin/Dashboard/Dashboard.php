@@ -19,14 +19,19 @@ class Dashboard extends Component
         $this->total_blogs = \App\Models\Blog::count();
         $this->total_visitors = Visit::distinct('session_id')->count();
         $this->total_visits = Visit::count();
-        $this->popular_properties = Visit::selectRaw('page_id, count(*) as total')
-            ->where('page_type', 'property')
-            ->leftJoin('properties', 'visits.page_id', '=', 'properties.id')
-            ->selectRaw('COALESCE(properties.title, properties.featured_image_id) as title, featured_image_id, count(*) as total')
-            ->groupBy('page_id')
-            ->orderByDesc('total')
-            ->limit(4)
-            ->get();
+$this->popular_properties = Visit::query()
+    ->leftJoin('properties', 'visits.page_id', '=', 'properties.id')
+    ->selectRaw('
+        page_id, 
+        COALESCE(properties.title, CAST(properties.featured_image_id AS CHAR)) as title, 
+        featured_image_id, 
+        count(*) as total
+    ')
+    ->where('page_type', 'property')
+    ->groupBy('page_id', 'properties.title', 'properties.featured_image_id') // Fix is here
+    ->orderByDesc('total')
+    ->limit(4)
+    ->get();
         $this->startDate = date('Y-m-01');
         $this->endDate = date('Y-m-t');
         $this->dateRange = date('Y-m-d');
