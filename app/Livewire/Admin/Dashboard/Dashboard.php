@@ -37,9 +37,9 @@ class Dashboard extends Component
     {
         // dd($this->startDate, $this->endDate);
 
-      $data = Visit::selectRaw('DATE(visited_at) as date, COUNT(DISTINCT session_id) as unique_visitors')
+$data = Visit::selectRaw('DATE(visited_at) as date, COUNT(session_id) as unique_visitors')
     ->where('visited_at', '>=', now()->subDays(30))
-    ->groupBy(DB::raw('DATE(visited_at)'))
+    ->groupBy(DB::raw('DATE(visited_at)')) 
     ->orderBy('date')
     ->get();
         $chartData = [
