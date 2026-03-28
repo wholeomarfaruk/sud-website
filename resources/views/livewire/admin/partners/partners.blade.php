@@ -316,7 +316,6 @@
                         @enderror
                     </div>
 
-
                     <button type="submit"
                         class="block w-full rounded-lg border border-indigo-600 bg-white px-12 py-3 text-sm font-medium text-indigo-600 transition-colors hover:bg-indigo-500 hover:text-white cursor-pointer">
                         Submit

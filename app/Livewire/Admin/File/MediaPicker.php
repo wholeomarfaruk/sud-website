@@ -84,6 +84,15 @@ class MediaPicker extends Component
     }
     public function save()
     {
+        if (empty($this->selected)) {
+            
+            $this->dispatch('toast',[
+                'type' => 'error',
+                'message' => 'Please select at least one media item.'
+            ]);
+
+            return;
+        }
         if ($this->multiple) {
 
 

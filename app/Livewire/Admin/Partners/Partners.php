@@ -22,17 +22,7 @@ class Partners extends Component
         $partners = TrustedPartner::orderBy('sort_order')->get();
         return view('livewire.admin.partners.partners', compact('partners'))->layout('layouts.admin.admin');
     }
-    public function mediaSelected($field, $id)
-    {
-        // dd($field);
-        if (is_array($id)) {
-            $this->$field = array_unique(array_merge($this->$field ?? [], $id));
-        } else {
-            $this->$field = $id;
-        }
-        // $this->{$field} = array_merge($this->{$field} ?? [], (array)$id);
 
-    }
     public function delete($id)
     {
         $pertner = TrustedPartner::find($id);
@@ -55,6 +45,17 @@ class Partners extends Component
                 'message' => 'pertner deleted item successfully'
             ]);
         }
+    }
+        public function mediaSelected($field, $id)
+    {
+        // dd($field);
+        if (is_array($id)) {
+            $this->$field = array_unique(array_merge($this->$field ?? [], $id));
+        } else {
+            $this->$field = $id;
+        }
+        // $this->{$field} = array_merge($this->{$field} ?? [], (array)$id);
+
     }
     public function removeMedia($field, $id = null)
     {

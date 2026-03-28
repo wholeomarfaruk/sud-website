@@ -4,25 +4,27 @@
 use App\Models\File;
 
 use App\Services\Analytics\VisitTracker;
-if(!function_exists('track_visit')) {
-function track_visit($type, $id = null, $slug = null)
-{
-    app(VisitTracker::class)->track($type, $id, $slug);
-}
-}
-if(!function_exists('file_path')) {
 
-
-function file_path($id, $type = 'original')
-{
-    $file = File::with('items')->find($id);
-
-    if (!$file) {
-        return null;
+if (!function_exists('track_visit')) {
+    function track_visit($type, $id = null, $slug = null)
+    {
+        app(VisitTracker::class)->track($type, $id, $slug);
     }
-
-    $item = $file->items->firstWhere('type', $type);
-
-    return $item ? asset('storage/' . $item->path) : null;
 }
+
+if (!function_exists('file_path')) {
+
+
+    function file_path($id, $type = 'original')
+    {
+        $file = File::with('items')->find($id);
+
+        if (!$file) {
+            return null;
+        }
+
+        $item = $file->items->firstWhere('type', $type);
+
+        return $item ? asset('storage/' . $item->path) : null;
+    }
 }
