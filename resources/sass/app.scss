@@ -1595,7 +1595,61 @@ body {
 
         .member-card {
             border: 1px solid #e5e5e5;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+           
             img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                transition: all 0.3s ease-in-out;
+            }
+
+            .text {
+                text-align: center;
+                padding: 10px;
+
+                h3 {
+                    font-size: mixins.rem(18px);
+                    font-weight: 600;
+                    color: variables.$heading-color;
+                }
+
+                p {
+                    font-size: mixins.rem(14px);
+                    color: #2e2d2d;
+                }
+
+                .seemore {
+                    margin-top: 10px;
+                    color: #0a7806;
+                    display:inline-flex;
+                    gap:mixins.rem(5px);
+                    justify-content:center;
+                    align-items:center;
+                    font-weight: 600;
+                    font-family: variables.$secondary-font, sans-serif;
+                    transition: all 0.3s ease-in-out;
+                }
+            }
+
+            &:hover {
+                box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                border: 1px solid #0a7806;
+            }
+        }
+    }
+    
+
+}
+.member-detail-box{
+
+
+    .member-card {
+            border: 1px solid #e5e5e5;
+              max-width: mixins.rem(250px);
+            img {
+              
                 width: 100%;
                 height: auto;
                 object-fit: cover;
@@ -1635,50 +1689,6 @@ body {
             }
         }
     }
-    
-
-}
-    .member-card {
-            border: 1px solid #e5e5e5;
-            img {
-                width: 100%;
-                height: auto;
-                object-fit: cover;
-                transition: all 0.3s ease-in-out;
-            }
-
-            .text {
-                text-align: center;
-                padding: 10px;
-
-                h3 {
-                    font-size: mixins.rem(18px);
-                    font-weight: 600;
-                    color: variables.$heading-color;
-                }
-
-                p {
-                    font-size: mixins.rem(14px);
-                    color: #2e2d2d;
-                }
-
-                .seemore-btn {
-                    margin-top: 10px;
-                    color: #0a7806;
-                    display:flex;
-                    gap:mixins.rem(5px);
-                    justify-content:center;
-                    align-items:center;
-                    font-weight: 600;
-                    font-family: variables.$secondary-font, sans-serif;
-                    transition: all 0.3s ease-in-out;
-                }
-            }
-
-            &:hover {
-                border: 1px solid #0a7806;
-            }
-        }
 // board of members end==================================
 
 // projects page start ======================================

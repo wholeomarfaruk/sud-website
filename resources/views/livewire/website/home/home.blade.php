@@ -356,7 +356,7 @@
 
                         <h3>Sarrowar Mohammad (sunny)</h3>
                         <p>Chairman of the Board</p>
-                        <button type="button" @click="open = true" class="seemore cursor-pointer">See more... <i
+                        <button type="button" @click="open = true" class="seemore cursor-pointer">See More <i
                                 class="bx bx-chevrons-right bx-fade-right"></i></button>
                     </div>
                 </div>
@@ -365,7 +365,7 @@
                     <div class="text">
                         <h3>Sarrowar Mohammad (sunny)</h3>
                         <p>Chairman of the Board</p>
-                        <button type="button" @click="open = true" class="seemore cursor-pointer">See more... <i
+                        <button type="button" @click="open = true" class="seemore cursor-pointer">See More <i
                                 class="bx bx-chevrons-right bx-fade-right"></i></button>
                     </div>
                 </div>
@@ -375,7 +375,7 @@
 
                         <h3>Sarrowar Mohammad (sunny)</h3>
                         <p>Chairman of the Board</p>
-                        <button type="button" @click="open = true" class="seemore cursor-pointer">See more... <i
+                        <button type="button" @click="open = true" class="seemore cursor-pointer">See More <i
                                 class="bx bx-chevrons-right bx-fade-right"></i></button>
                     </div>
                 </div>
@@ -385,7 +385,7 @@
 
                         <h3>Sarrowar Mohammad (sunny)</h3>
                         <p>Chairman of the Board</p>
-                        <button type="button" @click="open = true" class="seemore cursor-pointer">See more... <i
+                        <button type="button" @click="open = true" class="seemore cursor-pointer">See More <i
                                 class="bx bx-chevrons-right bx-fade-right"></i></button>
                     </div>
                 </div>
@@ -395,15 +395,15 @@
         <div x-cloak x-show="open" x-transition.opacity @click.self="open = false"
             @keydown.escape.window="open = false"
             class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-            <div x-transition class="w-full max-w-4xl rounded-2xl bg-white p-6 shadow-xl">
+            <div x-transition class="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl">
                 <div class="flex justify-between items-center">
-                    <h2 class="text-lg font-semibold">Modal Title</h2>
+                    <h2 class="text-lg font-semibold">Member Details</h2>
                     <button @click="open = false">✕</button>
                 </div>
                 <div class="mt-4">
-                    <div class="flex gap-6">
+                    <div class="member-detail-box flex gap-6">
                         <div class="member-card">
-                            <img  src="{{ asset('assets/images/members/2.jpg') }}" class=" object-cover rounded-sm" alt="">
+                            <img  src="{{ asset('assets/images/members/2.jpg') }}" class="object-cover rounded-sm" alt="">
                             <div class="text">
                                 <h3>Sarrowar Mohammad (sunny)</h3>
                                 <p>Chairman of the Board</p>
