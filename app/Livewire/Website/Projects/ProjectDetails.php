@@ -10,7 +10,7 @@ class ProjectDetails extends Component
 {
     public $slug;
 
-      public $name;
+    public $name;
     public $phone;
     public $email;
     public $subject;
@@ -23,8 +23,8 @@ class ProjectDetails extends Component
     {
         $this->slug = $slug;
         // dd($this->slug);
-        $property= Property::where('slug', $this->slug)->first();
-        if(!$property){
+        $property = Property::where('slug', $this->slug)->first();
+        if (!$property) {
             abort(404);
         }
         $this->source_page = 'project_details';
@@ -40,7 +40,7 @@ class ProjectDetails extends Component
             'message' => 'nullable|min:5',
         ];
     }
-        public function submit()
+    public function submit()
     {
         $this->validate();
 
@@ -56,7 +56,11 @@ class ProjectDetails extends Component
         ]);
 
         $this->reset([
-            'name','phone','email','subject','message'
+            'name',
+            'phone',
+            'email',
+            'subject',
+            'message'
         ]);
 
         $this->dispatch('notify', [
@@ -68,8 +72,8 @@ class ProjectDetails extends Component
     public function render()
     {
 
-        $property= Property::where('slug', $this->slug)->first();
-        if(!$property){
+        $property = Property::where('slug', $this->slug)->first();
+        if (!$property) {
             abort(404);
         }
         $this->property = $property;

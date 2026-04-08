@@ -1,5 +1,6 @@
 @section('bodyClass', 'contact-page')
 @section('headerClass', 'overlay-header')
+@section('showCtaSection', false)
 
 <div>
 
@@ -114,7 +115,7 @@
                         </div>
                         <div class="some-text">
                             <h4>Email Support</h4>
-                            <p>starunityd@gmail.com, info@starunitydevelopment.com</p>
+                            <p>starunityd@gmail.com, starunityrv@gmail.com</p>
                         </div>
                     </div>
                 </div>
@@ -132,7 +133,7 @@
                         </div>
                         <div class="some-text">
                             <h4>Address</h4>
-                            <p>Bashundhara Revierview, Hasnabad, Keraniganj</p>
+                            <p>Star Shopping City, (1st floor), Plot #1193, Block #A, Bashundhara Riverview, Hasnabad, South-Keraniganj, Dhaka-1311</p>
                         </div>
                     </div>
                 </div>
@@ -148,9 +149,7 @@
                         </div>
                         <div class="some-text">
                             <h4>Office Hours</h4>
-                            <p> Sat - Thu : 8 am - 5 pm<br>
-                                Friday: CLOSED
-                            </p>
+                            <p> Sat - Fri : 9 am - 6 pm</p>
                         </div>
                     </div>
                 </div>
@@ -167,6 +166,7 @@
                         <div class="some-text">
                             <h4>Phone</h4>
                             <p>+88 017 1234 5678</p>
+                            <p>+88 013 3518 8088</p>
                         </div>
                     </div>
                 </div>

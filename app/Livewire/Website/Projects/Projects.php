@@ -4,6 +4,7 @@ namespace App\Livewire\Website\Projects;
 
 use App\Models\Location;
 use App\Models\Property;
+use Illuminate\Http\Request;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -19,9 +20,13 @@ class Projects extends Component
     {
         $this->resetPage(); // reset page on search update
     }
-    public function mount()
+    public function mount(Request $request)
     {
         track_visit('static', null, 'properties');
+            $this->type = $request->query('type', null);
+            $this->status = $request->query('status', null);
+            $this->location = $request->query('location', null);
+            $this->search = $request->query('search', '');
     }
     public function render()
     {

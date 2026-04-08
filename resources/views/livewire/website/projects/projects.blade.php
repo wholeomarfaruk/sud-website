@@ -8,7 +8,7 @@
 
                     <h1 class="title">Properties</h1>
 
-                    <p class="description">your dreams can come true. we are here to help you.</p>
+                    <p class="description">We Make Your Dreams.</p>
                 </div>
             </div>
         </section>

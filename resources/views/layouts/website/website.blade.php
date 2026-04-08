@@ -7,7 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('assets/logo/sud-logo.png') }}" type="image/x-icon">
+    <title>
+        @hasSection('meta_title')
+            @yield('meta_title') -
+        @endif Star Unity Development Ltd | We Make Your Dreams
+    </title>
     @stack('meta_data')
+    <style>
+        @font-face {
+            font-family: 'SolaimanLipi';
+            src: url("{{ asset('assets/fonts/SolaimanLipi.ttf') }}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'alinurtumatulv2';
+            src: url("{{ asset('assets/fonts/Li Alinur Tumatul Unicode.ttf') }}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .solaimanlipi {
+            font-family: 'SolaimanLipi', sans-serif;
+        }
+
+        .alinurtumatulv2 {
+            font-family: 'alinurtumatulv2', sans-serif;
+        }
+    </style>
     @vite(['resources/sass/app.scss', 'resources/css/app.css'])
     @livewireStyles
     @stack('styles')
@@ -22,27 +50,64 @@
 </head>
 
 <body class="@yield('bodyClass')">
-              <!-- Preloader -->
-        <div class="loader-mask">
-            <div class="loader">
-              <div></div>
-              <div></div>
-            </div>
-          </div>
-          <!-- Preloader -->
+    <!-- Preloader -->
+    <div class="loader-mask">
+        <div class="loader">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <!-- Preloader -->
     <!-- heading  start ======================================= -->
     <header class="main-header @yield('headerClass')">
         <div class="wrapper">
             <div class="header-area">
-                <div class="logo" style="width: 50px;">
-                    <img src="{{ asset('assets/logo/sud-logo.png') }}" alt="Logo">
+                <div class="logo" style="width: 150px;">
+                      <a href="/">
+                    <img src="{{ asset('assets/logo/sud-logo-black.png') }}" alt="Logo">
+                      </a>
+                </div>
+                <div class="logo-overlay" style="width: 150px;">
+                    <a href="/">
+                    <img src="{{ asset('assets/logo/sud-logo-white.png') }}" alt="Logo">
+                    </a>
                 </div>
                 <nav class="navbar">
                     <ul>
                         <li> <a href="/"
                                 class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a></li>
-                        <li> <a href="{{ route('properties') }}"
-                                class="{{ Route::currentRouteName() == 'properties' ? 'active' : '' }}">Properties</a></li>
+                        <li x-data="{ open: false }" class="relative"
+                            @mouseenter="if (window.innerWidth >= 1024) open = true"
+                            @mouseleave="if (window.innerWidth >= 1024) open = false">
+                            <a href="{{ route('properties') }}"
+                                @click.prevent="if (window.innerWidth < 1024) open = !open; else window.location='{{ route('properties') }}'"
+                                class="{{ in_array(Route::currentRouteName(), ['properties', 'properties.ongoing', 'properties.upcoming', 'properties.completed']) ? 'active' : '' }}">
+                                Properties
+                            </a>
+
+                            <ul x-show="open" x-transition
+                                class="dropdown-menu "
+                                style="display: none;">
+                                <li>
+                                    <a href="{{ route('properties', ['status' => 'ongoing']) }}"
+                                        class="block px-4 py-2 {{ Route::currentRouteName() == 'properties' && request('status') == 'ongoing' ? 'active' : '' }}">
+                                        Ongoing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('properties', ['status' => 'upcoming']) }}"
+                                        class="block px-4 py-2 {{ Route::currentRouteName() == 'properties' && request('status') == 'upcoming' ? 'active' : '' }}">
+                                        Upcoming
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('properties', ['status' => 'completed']) }}"
+                                        class="block px-4 py-2 {{ Route::currentRouteName() == 'properties' && request('status') == 'completed' ? 'active' : '' }}">
+                                        Completed
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li> <a href="{{ route('offers') }}"
                                 class="{{ Route::currentRouteName() == 'offers' ? 'active' : '' }}">Offers</a></li>
 
@@ -76,27 +141,83 @@
                     <button class="offcanvas-close" id="menuClose">×</button>
 
                     <nav class="offcanvas-nav">
-                        <a href="/"
-                                class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a>
-                        <a href="{{ route('properties') }}"
-                                class="{{ Route::currentRouteName() == 'properties' ? 'active' : '' }}">Properties</a>
+                        <a href="/" class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a>
+                      
+                            <li x-data="{ open: false, screanWidth: window.innerWidth }" class="relative"
+                            @mouseenter="if (window.innerWidth >= 1024) open = true"
+                            @mouseleave="if (window.innerWidth >= 1024) open = false">
+                            <a href="{{ route('properties') }}"
+                                @click.prevent="if (window.innerWidth < 1024) open = !open; else window.location='{{ route('properties') }}'"
+                                class="{{ in_array(Route::currentRouteName(), ['properties', 'properties.ongoing', 'properties.upcoming', 'properties.completed']) ? 'active' : '' }}">
+                                Properties
+                            </a>
+
+                            <ul x-show="open" x-transition
+                                class="dropdown-menu "
+                                style="display: none;">
+                                <li>
+                                    <a href="{{ route('properties', ['status' => 'ongoing']) }}"
+                                        class="block px-4 py-2 {{ Route::currentRouteName() == 'properties' && request('status') == 'ongoing' ? 'active' : '' }}">
+                                        Ongoing
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('properties', ['status' => 'upcoming']) }}"
+                                        class="block px-4 py-2 {{ Route::currentRouteName() == 'properties' && request('status') == 'upcoming' ? 'active' : '' }}">
+                                        Upcoming
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('properties', ['status' => 'completed']) }}"
+                                        class="block px-4 py-2 {{ Route::currentRouteName() == 'properties' && request('status') == 'completed' ? 'active' : '' }}">
+                                        Completed
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                         <a href="{{ route('offers') }}"
-                                class="{{ Route::currentRouteName() == 'offers' ? 'active' : '' }}">Offers</a>
+                            class="{{ Route::currentRouteName() == 'offers' ? 'active' : '' }}">Offers</a>
 
                         <a href="{{ route('blogs') }}"
-                                class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blog</a>
+                            class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">News & Blogs</a>
 
                         <a href="{{ route('contact') }}"
-                                class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a>
-                        <a href="#" class="btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
-                                    class="size-5">
-                                    <path
-                                        d="M11.983 1.907a.75.75 0 0 0-1.292-.657l-8.5 9.5A.75.75 0 0 0 2.75 12h6.572l-1.305 6.093a.75.75 0 0 0 1.292.657l8.5-9.5A.75.75 0 0 0 17.25 8h-6.572l1.305-6.093Z" />
-                                </svg>
-                                Login</a>
+                            class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a>
+                        <a href="{{ route('landowners') }}"
+                            class="{{ Route::currentRouteName() == 'landowners' ? 'active' : '' }}">Land Owners</a>
+                        <a href="#" class="btn btn-effect-1 flex items-center gap-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                class="size-5">
+                                <path
+                                    d="M11.983 1.907a.75.75 0 0 0-1.292-.657l-8.5 9.5A.75.75 0 0 0 2.75 12h6.572l-1.305 6.093a.75.75 0 0 0 1.292.657l8.5-9.5A.75.75 0 0 0 17.25 8h-6.572l1.305-6.093Z" />
+                            </svg>
+                            Login</a>
 
                     </nav>
+                    
+                    <div class="follow-up absolute bottom-0 left-0 w-full p-4 bg-gray-100/80">
+                        <label for="">Follow Us</label>
+                        <div class=" flex gap-1 justify-start mb-5">
+                                <a href="https://wa.me/8801730711003" target="_blank"
+                                    class="flex items-center justify-center w-12  bg-green-700 text-white! rounded-l-lg hover:bg-green-500 transition text-3xl">
+                                    <i class="bx bxl-whatsapp"></i>
+                                </a>
+
+                                <a href="https://m.me/starunity.developmentlt/" target="_blank"
+                                    class="flex items-center justify-center w-12  bg-green-700 text-white! rounded hover:bg-green-500 transition text-3xl">
+                                    <i class="bx bxl-facebook"></i>
+                                </a>
+                                <a href="https://m.me/starunity.developmentlt/" target="_blank"
+                                    class="flex items-center justify-center w-12  bg-green-700 text-white! rounded hover:bg-green-500 transition text-3xl">
+                                    <i class="bx bxl-messenger"></i>
+                                </a>
+                                <a href="tel:+8801730711003"
+                                    class="flex items-center gap-2 px-4! py-2! tracking-wider font-semibold  bg-green-700 text-white! rounded-r-lg hover:bg-green-500 transition text-lg">
+                                    <i class="bx bxs-phone text-3xl"></i>
+                                    HOTLINE
+                                </a>
+                            </div>
+                    </div>
                 </div>
 
             </div>
@@ -107,22 +228,32 @@
     <main class="main-content">
         {{ $slot }}
     </main>
-
+    @if (!View::hasSection('showCtaSection'))
+        <x-website.partial.c-t-a-section />
+    @endif
     <footer class="footer-2 main-footer">
-
+        <div class="floating-btns fixed bottom-1 right-2 z-10 flex flex-col gap-2 p-4">
+            <a href="http://wa.me/8801730711003" target="_blank" rel="noopener noreferrer"
+                class="bg-white rounded-full p-2 hover:scale-110 transition-transform">
+                <img src="https://img.icons8.com/ios-filled/40/25D366/whatsapp.png" alt="WhatsApp" />
+            </a>
+        </div>
         <div class="wrapper top-footer">
             <div class=" footer-card">
                 <h3 class=" mb-3 footer-card-title">Star Unity <br> Development Ltd</h3>
                 <p class=" mb-2 footer-card-text">
 
-                    Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.
+                    Star Unity Development Ltd. is committed to delivering high-quality residential and commercial
+                    properties with modern design, trusted construction, and exceptional value for our clients and
+                    partners.
                 </p>
                 <div class="social">
 
                     <ul class="navbar-nav d-flex flex-row gap-2 justify-content-start align-items-center">
 
                         <li class="nav-item">
-                            <a class="nav-link"  target="_blank" href="https://www.facebook.com/starunity.developmentlt/">
+                            <a class="nav-link" target="_blank"
+                                href="https://www.facebook.com/starunity.developmentlt/">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -134,7 +265,8 @@
 
 
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link "  href="https://www.instagram.com/starunity.developmentltd">
+                            <a target="_blank" class="nav-link "
+                                href="https://www.instagram.com/starunity.developmentltd">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -147,7 +279,7 @@
 
 
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link "  href="#">
+                            <a target="_blank" class="nav-link " href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -159,7 +291,7 @@
 
 
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link "  href="#">
+                            <a target="_blank" class="nav-link " href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -171,7 +303,7 @@
 
 
                         <li class="nav-item">
-                            <a target="_blank" class="nav-link "  href="#">
+                            <a target="_blank" class="nav-link " href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path
@@ -204,36 +336,44 @@
                             Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('properties') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('properties') }}"><i
+                                class="fa-solid fa-arrow-right-long"></i>
                             Properties</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('blogs') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('blogs') }}"><i
+                                class="fa-solid fa-arrow-right-long"></i>
                             News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('about') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('about') }}"><i
+                                class="fa-solid fa-arrow-right-long"></i>
                             About Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('contact') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('contact') }}"><i
+                                class="fa-solid fa-arrow-right-long"></i>
                             Contact Us </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('privacy') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('privacy') }}"><i
+                                class="fa-solid fa-arrow-right-long"></i>
                             Privacy Policy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('terms') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('terms') }}"><i
+                                class="fa-solid fa-arrow-right-long"></i>
                             Terms & Conditions</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('landowners') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('landowners') }}"><i
+                                class="fa-solid fa-arrow-right-long"></i>
                             Land Owners</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('clients') }}"><i class="fa-solid fa-arrow-right-long"></i>
+                        <a class="nav-link " href="{{ route('clients') }}"><i
+                                class="fa-solid fa-arrow-right-long"></i>
                             Clients</a>
                     </li>
                 </ul>
@@ -255,7 +395,8 @@
                         <div>
                             <h5 class="title">Contact</h5>
                             <p class="text">
-                                01730-711003
+                                <span>01730-711003</span>,
+                                <span>01335-188088</span>
                             </p>
                         </div>
 
@@ -284,23 +425,21 @@
 
                     <li class="contact-item">
                         <span class="icon">
-
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
                                 class="size-6">
                                 <path fill-rule="evenodd"
                                     d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
                                     clip-rule="evenodd" />
                             </svg>
-
                         </span>
                         <div style="flex-grow: auto;">
                             <h5 class="title">Corporate Office</h5>
                             <p class="text" style="color: rgb(212, 212, 212)">
-                                Bashundhara Revierview, Hasnabad, Keraniganj
+                                Star Shopping City, (1st floor), Plot #1193, Block #A, Bashundhara Riverview, Hasnabad,
+                                South-Keraniganj, Dhaka-1311
                             </p>
                         </div>
                     </li>
-
                 </ul>
             </div>
         </div>

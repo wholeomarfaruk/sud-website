@@ -1,5 +1,10 @@
 @section('bodyClass', 'offers-page')
+@section('meta_title','Offers')
 
+
+@push('meta_data')
+    
+@endpush
 <div>
 
         <section class="offer">
@@ -27,4 +32,7 @@
             </div>
 
         </section>
+            <section class="cta-section">
+        
+    </section>
 </div>

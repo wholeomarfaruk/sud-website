@@ -1,5 +1,10 @@
 @section('bodyClass','landowner-page')
+@section('meta_title','Land Owners')
 
+
+@push('meta_data')
+    
+@endpush
 <div>
            <section class="breadcrumb-section" style="background-image: url('assets/images/2.webp');">
             <div class="wrapper">
@@ -8,7 +13,7 @@
 
                     <h1 class="title">Our Land Owners</h1>
 
-                    <p class="description">your dreams can come true. we are here to help you.</p>
+                    <p class="description">We Make Your Dreams</p>
                 </div>
             </div>
         </section>

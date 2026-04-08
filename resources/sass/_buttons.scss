@@ -49,3 +49,33 @@
         border-color: transparent;
     }
 }
+@mixin btn-d2($width: 8em,$height: 2.5em,$text-color: #ffffff,$bg-color: #0fd850,$radius: 30em) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: $width;
+    height: $height;
+    border-radius: $radius;
+    font-size: 1rem;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: $bg-color;
+    border:1px solid #d8d8d881;
+
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    color: $text-color;
+    font-weight: 600;
+    transition: .5s ease;
+    svg {
+        width: mixins.rem(20px);
+        height:  mixins.rem(20px);
+    }
+
+    &:hover {
+        color: #fff;
+        border-color: transparent;
+    }
+}
