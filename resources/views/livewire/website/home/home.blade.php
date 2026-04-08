@@ -392,7 +392,6 @@
 
             </div>
         </div>
-
         <div x-cloak x-show="open" x-transition.opacity @click.self="open = false"
             @keydown.escape.window="open = false"
             class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
