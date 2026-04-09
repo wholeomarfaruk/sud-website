@@ -80,5 +80,6 @@
             </div>
         </div>
     </section>
+ @livewire('website.partial.board-member-section')
 
 </div>

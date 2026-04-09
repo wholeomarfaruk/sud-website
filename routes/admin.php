@@ -52,3 +52,6 @@ Route::get('/blogs/create-update', App\Livewire\Admin\Blogs\CreateUpdate::class)
 
 //inquires/inbox
 Route::get('/inbox', App\Livewire\Admin\Inbox\InquiryList::class)->name('inbox');
+
+//board members
+Route::get('/members', App\Livewire\Admin\Members\Members::class)->name('members');

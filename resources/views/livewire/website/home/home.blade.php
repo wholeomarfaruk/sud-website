@@ -113,7 +113,7 @@
         </div>
     </section>
 
-    @if ($videos->count() > 0)
+    @if ($videos->count() > 3)
 
 
         <section class="video-sec section">
@@ -341,94 +341,7 @@
         </div>
 
     </section>
-    <section x-data="{ open: false }" class="board_of_members_sec section">
-        <div class="wrapper">
-            <div class="section-header">
-                <h2 class="">Board of Members</h2>
-                <p class="text-gray-600">Meet the visionary leaders and industry experts who guide our company towards
-                    excellence and innovation in real estate development.</p>
-            </div>
-            <div class="grid-box">
-
-                <div class="member-card">
-                    <img class="" src="{{ asset('assets/images/members/1.jpg') }}" alt="">
-                    <div class="text">
-
-                        <h3>Sarrowar Mohammad (sunny)</h3>
-                        <p>Chairman of the Board</p>
-                        <button type="button" @click="open = true" class="seemore cursor-pointer">See More <i
-                                class="bx bx-chevrons-right bx-fade-right"></i></button>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img class="" src="{{ asset('assets/images/members/2.jpg') }}" alt="">
-                    <div class="text">
-                        <h3>Sarrowar Mohammad (sunny)</h3>
-                        <p>Chairman of the Board</p>
-                        <button type="button" @click="open = true" class="seemore cursor-pointer">See More <i
-                                class="bx bx-chevrons-right bx-fade-right"></i></button>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img class="" src="{{ asset('assets/images/members/3.jpg') }}" alt="">
-                    <div class="text">
-
-                        <h3>Sarrowar Mohammad (sunny)</h3>
-                        <p>Chairman of the Board</p>
-                        <button type="button" @click="open = true" class="seemore cursor-pointer">See More <i
-                                class="bx bx-chevrons-right bx-fade-right"></i></button>
-                    </div>
-                </div>
-                <div class="member-card">
-                    <img class="" src="{{ asset('assets/images/members/4.jpg') }}" alt="">
-                    <div class="text">
-
-                        <h3>Sarrowar Mohammad (sunny)</h3>
-                        <p>Chairman of the Board</p>
-                        <button type="button" @click="open = true" class="seemore cursor-pointer">See More <i
-                                class="bx bx-chevrons-right bx-fade-right"></i></button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <div x-cloak x-show="open" x-transition.opacity @click.self="open = false"
-            @keydown.escape.window="open = false"
-            class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-            <div x-transition class="w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-lg font-semibold">Member Details</h2>
-                    <button @click="open = false">✕</button>
-                </div>
-                <div class="mt-4">
-                    <div class="member-detail-box flex gap-6">
-                        <div class="member-card">
-                            <img  src="{{ asset('assets/images/members/2.jpg') }}" class="object-cover rounded-sm" alt="">
-                            <div class="text">
-                                <h3>Sarrowar Mohammad (sunny)</h3>
-                                <p>Chairman of the Board</p>
-                            </div>
-
-                        </div>
-                        <div>
-                            <h4 class="text-md font-medium">Sarrowar Mohammad (sunny) sir's words</h4>
-                            <p class="text-sm text-gray-500">
-                                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, eaque! Doloribus
-                                voluptate consequatur deleniti, cumque quisquam magnam voluptate consequatur
-                                deleniti,
-                                cumque quisquam magnam"
-                            </p>
-                        </div>
-                    </div>
-
-
-
-                </div>
-            </div>
-        </div>
-
-
-    </section>
+ @livewire('website.partial.board-member-section')
 
 </div>
 @push('scripts')
