@@ -85,11 +85,11 @@ class Members extends Component
         if ($this->editMode) {
             $partner = ModelsMembers::find($this->id);
             $partner->name = $this->name;
-            $partner->link = $this->link;
+            $partner->designation = $this->designation;
             $partner->status = $this->status;
-            $partner->image_id = $this->image_id;
+            $partner->image = $this->image;
             $partner->save();
-            $this->reset('name', 'link', 'status', 'image_id');
+            $this->reset('name', 'designation', 'status', 'image');
             $this->editMode = false;
             $this->modalOpen = false;
 
@@ -105,9 +105,9 @@ class Members extends Component
             $partner->name = $this->name;
             $partner->link = $this->link;
             $partner->status = $this->status;
-            $partner->image_id = $this->image_id;
+            $partner->image = $this->image;
             $partner->save();
-            $this->reset('name', 'link', 'status', 'image_id');
+            $this->reset('name', 'link', 'status', 'image');
             $this->dispatch('toast', [
                 'type' => 'success',
                 'message' => 'Partner added successfully'
