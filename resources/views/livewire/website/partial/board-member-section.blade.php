@@ -11,7 +11,7 @@
               <div class="grid-box">
                   @foreach ($members as $member)
                       <div class="member-card">
-                          <img class="" src="{{ $member->image ?? file_path($member->image) }}" alt="">
+                          <img class="" src="{{ $member->image ? file_path($member->image) : '' }}" alt="">
                           <div class="text">
 
                               <h3>{{ $member->name }}</h3>
