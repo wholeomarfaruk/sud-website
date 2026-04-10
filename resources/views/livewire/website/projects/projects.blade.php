@@ -65,7 +65,7 @@
                         </div>
                         <div class="filter-item">
                             <label for="">Type</label>
-                            <select name="" id="">
+                            <select wire:model.live="type" id="">
                                 <option value="">Select type</option>
                                  @foreach (\App\Enums\Project\ProjectType::cases() as $type_item)
                                 <option value="{{ $type_item->value }}">{{ $type_item->value }}</option>
@@ -76,7 +76,7 @@
                         </div>
                         <div class="filter-item">
                             <label for="">Status</label>
-                            <select name="" id="">
+                            <select wire:model.live="status" id="">
                                 <option value="">Select status</option>
                                    @foreach (\App\Enums\Project\ProjectStatus::cases() as $status_item)
                                 <option value="{{ $status_item->value }}">{{ $status_item->value }}</option>
