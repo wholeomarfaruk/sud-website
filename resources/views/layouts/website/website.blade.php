@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('assets/logo/sud-logo.png') }}" type="image/x-icon">
+      <meta name="author" content="Star Unity Development Ltd.">
+
+  <!-- Theme Color (mobile browsers) -->
+  <meta name="theme-color" content="#ffffff">
     <title>
         @hasSection('meta_title')
             @yield('meta_title') -
@@ -113,7 +117,11 @@
 
                         <li> <a href="{{ route('blogs') }}"
                                 class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blogs</a></li>
+                        <li> <a href="{{ route('landowners') }}"
+                                class="{{ Route::currentRouteName() == 'landowners' ? 'active' : '' }}">Land Owners</a></li>
 
+                        <li> <a href="{{ route('about') }}"
+                                class="{{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About</a></li>
                         <li> <a href="{{ route('contact') }}"
                                 class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a></li>
                         <li> <a href="#" class="btn">

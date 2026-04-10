@@ -1,3 +1,4 @@
+@section('meta_title', 'Terms & Conditions')
 <div>
 
         <section class="breadcrumb-section" style="background-image: url('assets/images/2.webp');">

@@ -1,5 +1,38 @@
 @section('bodyClass', 'projects-page')
 @section('headerClass', 'overlay-header')
+@section('meta_title', 'Properties')
+
+
+@push('meta_data')
+    <meta name="description" content="Explore our diverse range of properties at Star Unity Development Ltd. Discover modern residential and commercial spaces designed to meet your lifestyle and business needs. Find your dream property with us today.">
+     <meta name="keywords" content="properties, real estate, residential properties, commercial properties, modern design, Star Unity Development Ltd properties, buy property, property investment">
+
+
+    <!-- Indexing (VERY IMPORTANT) -->
+    <meta name="robots" content="index, follow">
+    <!-- Alternatives:
+           noindex, nofollow
+           index, nofollow
+           noindex, follow -->
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}" />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="Properties - Star Unity Development Ltd.">
+    <meta property="og:description" content="Explore our diverse range of properties at Star Unity Development Ltd. Discover modern residential and commercial spaces designed to meet your lifestyle and business needs. Find your dream property with us today.">
+    <meta property="og:image" content="{{ asset('assets/logo/sud-logo-black.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Star Unity Development Ltd.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Properties - Star Unity Development Ltd.">
+    <meta name="twitter:description" content="Explore our diverse range of properties at Star Unity Development Ltd. Discover modern residential and commercial spaces designed to meet your lifestyle and business needs. Find your dream property with us today.">
+    <meta name="twitter:image" content="{{ asset('assets/logo/sud-logo-black.png') }}">
+    
+@endpush
 <div>
            <section class="breadcrumb-section" style="background-image: url('{{asset('assets/images/2.webp')}}');">
             <div class="wrapper">

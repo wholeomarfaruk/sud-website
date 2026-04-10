@@ -246,6 +246,7 @@ body {
                             background: rgba(255, 255, 255, 0.15);
                             backdrop-filter: blur(5px);
                             -webkit-backdrop-filter: blur(5px);
+                            margin-top: 8px;
                             transition: all 0.3s ease-in-out;
 
                             @include mixins.breakpoint(lg) {
@@ -388,8 +389,6 @@ body {
 
         &.overlay-header {
 
-
-
             position: fixed;
             top: 0;
             left: 0;
@@ -417,10 +416,21 @@ body {
                             }
 
                             &>.dropdown-menu {
-                                background-color: transparent !important;
-                                backdrop-filter: blur(5px) !important;
-                                -webkit-backdrop-filter: blur(5px) !important;
-                                box-sizing: border-box;
+                                 position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 200px;
+                            padding: 10px 0;
+                            display: flex;
+                            flex-direction: column;
+                            border-radius: 10px;
+                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                            border: none;
+                            background: rgba(255, 255, 255, 0.15);
+                            backdrop-filter: blur(5px);
+                            -webkit-backdrop-filter: blur(5px);
+                            margin-top: 8px;
+                            transition: all 0.3s ease-in-out;
 
                                 & li {
                                     a {
@@ -475,11 +485,35 @@ body {
                 }
 
                 & .navbar {
-                    ul {
-                        li {
+                   &  ul {
+                       &  li {
                             a {
                                 color: #000;
 
+                            }
+
+                             &>.dropdown-menu {
+                                position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 200px;
+                            padding: 10px 0;
+                            display: flex;
+                            flex-direction: column;
+                            border-radius: 10px;
+                            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                            border: none;
+                            background: rgba(255, 255, 255, 0.589);
+                            backdrop-filter: blur(5px);
+                            -webkit-backdrop-filter: blur(5px);
+                            margin-top: 8px;
+                            transition: all 0.3s ease-in-out;
+
+                                & li {
+                                    a {
+                                        color: #1d1d1d;
+                                    }
+                                }
                             }
                         }
                     }

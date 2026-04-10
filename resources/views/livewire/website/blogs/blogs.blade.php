@@ -1,5 +1,38 @@
 @section('bodyClass', 'blogs-page')
 @section('headerClass', 'overlay-header')
+@section('meta_title', 'News & Blogs')
+
+
+@push('meta_data')
+    <meta name="description" content="Stay updated with the latest news and insightful blogs from Star Unity Development Ltd. Explore industry trends, real estate tips, and company updates to make informed decisions about your property investments.">
+     <meta name="keywords" content="real estate news, property blogs, real estate trends, investment tips, Star Unity Development Ltd news, real estate insights, property market updates, real estate industry news">
+
+
+    <!-- Indexing (VERY IMPORTANT) -->
+    <meta name="robots" content="index, follow">
+    <!-- Alternatives:
+           noindex, nofollow
+           index, nofollow
+           noindex, follow -->
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}" />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="News & Blogs - Star Unity Development Ltd.">
+    <meta property="og:description" content="Stay updated with the latest news and insightful blogs from Star Unity Development Ltd. Explore industry trends, real estate tips, and company updates to make informed decisions about your property investments.">
+    <meta property="og:image" content="{{ asset('assets/logo/sud-logo-black.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Star Unity Development Ltd.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="News & Blogs - Star Unity Development Ltd.">
+    <meta name="twitter:description" content="Stay updated with the latest news and insightful blogs from Star Unity Development Ltd. Explore industry trends, real estate tips, and company updates to make informed decisions about your property investments.">
+    <meta name="twitter:image" content="{{ asset('assets/logo/sud-logo-black.png') }}">
+    
+@endpush
 <div>
          <section class="breadcrumb-section" style="background-image: url('{{asset('assets/images/2.webp')}}');">
             <div class="wrapper">

@@ -1,5 +1,39 @@
 @section('bodyClass', 'project-details-page')
 @section('headerClass', 'overlay-header')
+@section('meta_title', $property->title . ' - Properties')
+
+
+@push('meta_data')
+    <meta name="description" content="{{ $offer->meta_description }}">
+    <meta name="keywords"
+        content="property offers, real estate deals, residential property discounts, commercial property offers, property promotions, Star Unity Development Ltd offers, buy property deals, property investment offers">
+
+
+    <!-- Indexing (VERY IMPORTANT) -->
+    <meta name="robots" content="index, follow">
+    <!-- Alternatives:
+           noindex, nofollow
+           index, nofollow
+           noindex, follow -->
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}" />
+
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="{{ $property->meta_title }} - Star Unity Development Ltd.">
+    <meta property="og:description" content="{{ $property->meta_description }}">
+    <meta property="og:image" content="{{ file_path($property->meta_image_id) }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Star Unity Development Ltd.">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $property->meta_title }} - Star Unity Development Ltd.">
+    <meta name="twitter:description" content="{{ $property->meta_description }}">
+    <meta name="twitter:image" content="{{ file_path($property->meta_image_id) }}">
+    
+@endpush
 <div>
     @if ($property->hero_image_id)
         <section class="details-hero-sec">

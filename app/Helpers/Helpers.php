@@ -15,8 +15,11 @@ if (!function_exists('track_visit')) {
 if (!function_exists('file_path')) {
 
 
-    function file_path($id, $type = 'original')
+    function file_path($id=null, $type = 'original')
     {
+        if (!$id) {
+            return null;
+        }
         $file = File::with('items')->find($id);
 
         if (!$file) {

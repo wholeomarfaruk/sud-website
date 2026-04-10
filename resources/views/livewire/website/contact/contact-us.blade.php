@@ -1,7 +1,38 @@
 @section('bodyClass', 'contact-page')
 @section('headerClass', 'overlay-header')
 @section('showCtaSection', false)
+@section('meta_title', 'Contact Us')
 
+
+@push('meta_data')
+  <meta name="description" content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
+  <meta name="keywords" content="real estate development, property development, residential properties, commercial properties, modern design, trusted construction, exceptional value, Star Unity Development Ltd.">
+
+
+  <!-- Indexing (VERY IMPORTANT) -->
+  <meta name="robots" content="index, follow">
+  <!-- Alternatives:
+       noindex, nofollow
+       index, nofollow
+       noindex, follow -->
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ url()->current() }}" />
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+  <meta property="og:title" content="Contact Us - Star Unity Development Ltd.">
+<meta property="og:description" content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
+<meta property="og:image" content="{{ asset('assets/logo/sud-logo-black.png')}}">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Star Unity Development Ltd.">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us - Star Unity Development Ltd.">
+  <meta name="twitter:description" content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
+  <meta name="twitter:image" content="{{ asset('assets/logo/sud-logo-black.png')}}">
+@endpush
 <div>
 
     <section class="breadcrumb-section" style="background-image: url('assets/images/2.webp');">

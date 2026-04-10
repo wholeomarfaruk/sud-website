@@ -1,3 +1,4 @@
+@section('meta_title', 'Privacy Policy')
 <div>
 
     <section class="breadcrumb-section" style="background-image: url('assets/images/2.webp');">
