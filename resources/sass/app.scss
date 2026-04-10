@@ -969,6 +969,9 @@ body {
                     @include mixins.breakpoint(md) {
                         font-size: mixins.rem(36px);
                     }
+                    @include mixins.breakpoint(sm) {
+                        font-size: mixins.rem(28px);
+                    }
                 }
 
                 & p {
