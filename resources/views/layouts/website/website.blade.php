@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset('assets/logo/sud-logo.png') }}" type="image/x-icon">
-      <meta name="author" content="Star Unity Development Ltd.">
+    <meta name="author" content="Star Unity Development Ltd.">
 
-  <!-- Theme Color (mobile browsers) -->
-  <meta name="theme-color" content="#ffffff">
+    <!-- Theme Color (mobile browsers) -->
+    <meta name="theme-color" content="#ffffff">
     <title>
         @hasSection('meta_title')
             @yield('meta_title') -
@@ -67,13 +67,13 @@
         <div class="wrapper">
             <div class="header-area">
                 <div class="logo" style="width: 150px;">
-                      <a href="/">
-                    <img src="{{ asset('assets/logo/sud-logo-black.png') }}" alt="Logo">
-                      </a>
+                    <a href="/">
+                        <img src="{{ asset('assets/logo/sud-logo-black.png') }}" alt="Logo">
+                    </a>
                 </div>
                 <div class="logo-overlay" style="width: 150px;">
                     <a href="/">
-                    <img src="{{ asset('assets/logo/sud-logo-white.png') }}" alt="Logo">
+                        <img src="{{ asset('assets/logo/sud-logo-white.png') }}" alt="Logo">
                     </a>
                 </div>
                 <nav class="navbar">
@@ -89,9 +89,7 @@
                                 Properties
                             </a>
 
-                            <ul x-show="open" x-transition
-                                class="dropdown-menu "
-                                style="display: none;">
+                            <ul x-show="open" x-transition class="dropdown-menu " style="display: none;">
                                 <li>
                                     <a href="{{ route('properties', ['status' => 'ongoing']) }}"
                                         class="block px-4 py-2 {{ Route::currentRouteName() == 'properties' && request('status') == 'ongoing' ? 'active' : '' }}">
@@ -118,7 +116,8 @@
                         <li> <a href="{{ route('blogs') }}"
                                 class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">Blogs</a></li>
                         <li> <a href="{{ route('landowners') }}"
-                                class="{{ Route::currentRouteName() == 'landowners' ? 'active' : '' }}">Land Owners</a></li>
+                                class="{{ Route::currentRouteName() == 'landowners' ? 'active' : '' }}">Land Owners</a>
+                        </li>
 
                         <li> <a href="{{ route('about') }}"
                                 class="{{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About</a></li>
@@ -150,8 +149,8 @@
 
                     <nav class="offcanvas-nav">
                         <a href="/" class="{{ Route::currentRouteName() == 'home' ? 'active' : '' }}">Home</a>
-                      
-                            <li x-data="{ open: false, screanWidth: window.innerWidth }" class="relative"
+
+                        <li x-data="{ open: false, screanWidth: window.innerWidth }" class="relative"
                             @mouseenter="if (window.innerWidth >= 1024) open = true"
                             @mouseleave="if (window.innerWidth >= 1024) open = false">
                             <a href="{{ route('properties') }}"
@@ -160,9 +159,7 @@
                                 Properties
                             </a>
 
-                            <ul x-show="open" x-transition
-                                class="dropdown-menu "
-                                style="display: none;">
+                            <ul x-show="open" x-transition class="dropdown-menu " style="display: none;">
                                 <li>
                                     <a href="{{ route('properties', ['status' => 'ongoing']) }}"
                                         class="block px-4 py-2 {{ Route::currentRouteName() == 'properties' && request('status') == 'ongoing' ? 'active' : '' }}">
@@ -189,10 +186,13 @@
                         <a href="{{ route('blogs') }}"
                             class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">News & Blogs</a>
 
-                        <a href="{{ route('contact') }}"
-                            class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a>
+                        
                         <a href="{{ route('landowners') }}"
                             class="{{ Route::currentRouteName() == 'landowners' ? 'active' : '' }}">Land Owners</a>
+                            <a href="{{ route('about') }}"
+                            class="{{ Route::currentRouteName() == 'about' ? 'active' : '' }}">About</a>
+                            <a href="{{ route('contact') }}"
+                            class="{{ Route::currentRouteName() == 'contact' ? 'active' : '' }}">Contact</a>
                         <a href="#" class="btn btn-effect-1 flex items-center gap-1">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                                 class="size-5">
@@ -202,29 +202,29 @@
                             Login</a>
 
                     </nav>
-                    
+
                     <div class="follow-up absolute bottom-0 left-0 w-full p-4 bg-gray-100/80">
                         <label for="">Follow Us</label>
                         <div class=" flex gap-1 justify-start mb-5">
-                                <a href="https://wa.me/8801730711003" target="_blank"
-                                    class="flex items-center justify-center w-12  bg-green-700 text-white! rounded-l-lg hover:bg-green-500 transition text-3xl">
-                                    <i class="bx bxl-whatsapp"></i>
-                                </a>
+                            <a href="https://wa.me/8801730711003" target="_blank"
+                                class="flex items-center justify-center w-12  bg-green-700 text-white! rounded-l-lg hover:bg-green-500 transition text-3xl">
+                                <i class="bx bxl-whatsapp"></i>
+                            </a>
 
-                                <a href="https://m.me/starunity.developmentlt/" target="_blank"
-                                    class="flex items-center justify-center w-12  bg-green-700 text-white! rounded hover:bg-green-500 transition text-3xl">
-                                    <i class="bx bxl-facebook"></i>
-                                </a>
-                                <a href="https://m.me/starunity.developmentlt/" target="_blank"
-                                    class="flex items-center justify-center w-12  bg-green-700 text-white! rounded hover:bg-green-500 transition text-3xl">
-                                    <i class="bx bxl-messenger"></i>
-                                </a>
-                                <a href="tel:+8801730711003"
-                                    class="flex items-center gap-2 px-4! py-2! tracking-wider font-semibold  bg-green-700 text-white! rounded-r-lg hover:bg-green-500 transition text-lg">
-                                    <i class="bx bxs-phone text-3xl"></i>
-                                    HOTLINE
-                                </a>
-                            </div>
+                            <a href="https://m.me/starunity.developmentlt/" target="_blank"
+                                class="flex items-center justify-center w-12  bg-green-700 text-white! rounded hover:bg-green-500 transition text-3xl">
+                                <i class="bx bxl-facebook"></i>
+                            </a>
+                            <a href="https://m.me/starunity.developmentlt/" target="_blank"
+                                class="flex items-center justify-center w-12  bg-green-700 text-white! rounded hover:bg-green-500 transition text-3xl">
+                                <i class="bx bxl-messenger"></i>
+                            </a>
+                            <a href="tel:+8801730711003"
+                                class="flex items-center gap-2 px-4! py-2! tracking-wider font-semibold  bg-green-700 text-white! rounded-r-lg hover:bg-green-500 transition text-lg">
+                                <i class="bx bxs-phone text-3xl"></i>
+                                HOTLINE
+                            </a>
+                        </div>
                     </div>
                 </div>
 
