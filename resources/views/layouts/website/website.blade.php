@@ -531,7 +531,7 @@
                 },
                 on: {
                     slideChange: function() {
-                        console.log(this.realIndex); // 👈 এটা ব্যবহার করো
+
                         thumbSwiper.slideTo(this.realIndex);
                     }
                 }

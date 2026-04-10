@@ -46,8 +46,7 @@ FilePond.registerPlugin(
 
 // Initialize
 document.addEventListener('DOMContentLoaded', function () {
-    console.log('Filepond');
-    console.log(FilePond);
+
     document.querySelectorAll('.filepond').forEach(input => {
 
         FilePond.create(input, {

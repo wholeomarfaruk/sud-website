@@ -2,7 +2,7 @@
 const header = document.querySelector(".main-header");
 const hasOverlayHeader = header && header.classList.contains("overlay-header");
 
-window.addEventListener("resize", function () {
+function handleHeaderOverlay() {
     const width = window.innerWidth;
 
     if (header) {
@@ -12,4 +12,10 @@ window.addEventListener("resize", function () {
             header.classList.add("overlay-header");
         }
     }
-});
+}
+
+// Run on initial load
+handleHeaderOverlay();
+
+// Run on resize
+window.addEventListener("resize", handleHeaderOverlay);
