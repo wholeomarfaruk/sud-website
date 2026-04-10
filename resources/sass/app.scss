@@ -882,7 +882,7 @@ body {
     position: relative;
 
     & .mySwiper {
-        height: 100vh;
+        // height: 100vh;
 
         @include mixins.breakpoint(lg) {
             height: inherit;

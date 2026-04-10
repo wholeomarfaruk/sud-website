@@ -150,7 +150,8 @@
                                     </div>
                                 @endif
                             @else
-                                <span class="text-gray-500">Click to Upload Image</span>
+                                <span class="text-gray-500">Click to Upload Image</span><br>
+                                <span class="text-gray-400 text-xs">Recommended size: 1900x900 px</span>
                             @endif
                         </div>
                         @error('image_id')
