@@ -37,6 +37,50 @@
     <section class="hero-sec">
 
         <!-- Swiper -->
+        {{-- <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+                @foreach ($sliders as $slide_item)
+                    <div class="swiper-slide"><img src="{{ file_path($slide_item->image_id) }}" alt="">
+                        <div class="overlay ">
+                            <div class="line"></div>
+                            <p>Location - {{ $slide_item->sub_title }}</p>
+                            <h2>{{ $slide_item->title }}</h2>
+                            <p class="text-sm text-gray-300">{{ $slide_item->description }}
+                            </p>
+                            <a href="{{ $slide_item->link }}" class="btn">See
+                                Details
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            <div class="autoplay-progress">
+                <svg viewBox="0 0 48 48">
+                    <circle cx="24" cy="24" r="20"></circle>
+                </svg>
+                <span></span>
+            </div>
+            <!-- Thumbnail Slider -->
+            <div class="swiper thumbSwiper mt-4">
+                <div class="swiper-wrapper">
+                    @foreach ($sliders as $slide_item)
+                        <div class="swiper-slide"><img src="{{ file_path($slide_item->image_id) }}" alt="">
+                        </div>
+                    @endforeach
+
+                </div>
+            </div>
+        </div> --}}
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 @foreach ($sliders as $slide_item)
