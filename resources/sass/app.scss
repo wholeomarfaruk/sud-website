@@ -785,10 +785,18 @@ body {
         background-color: rgba(184, 182, 182, 0.473);
         border-radius: 50%;
         transition: all ease-in-out 0.3s;
+        @include mixins.breakpoint(md) {
+            width: 20px;
+            height: 20px;
+        }
 
         & svg {
             width: 20px;
             height: 20px;
+             @include mixins.breakpoint(md) {
+            width: 10px;
+            height: 10px;
+        }
         }
 
         &:hover {
