@@ -937,14 +937,14 @@ body {
                 @include mixins.breakpoint(xl) {
                     width: 86%;
                     padding: 30px 50px 50px 50px;
-
+                    bottom: 0;
                 }
 
                 @include mixins.breakpoint(md) {
                     
                     left: 30px;
                     width: 90%;
-                    padding: 30px 50px 50px 50px;
+                    padding: 30px 50px 50px 0px;
 
                 }
 
@@ -967,7 +967,7 @@ body {
                     margin-bottom: 14px;
 
                     @include mixins.breakpoint(md) {
-                        font-size: 50px;
+                        font-size: mixins.rem(36px);
                     }
                 }
 
@@ -975,6 +975,9 @@ body {
                     font-size: 18px;
                     transform: translateY(50px);
                     opacity: 0;
+                    @include mixins.breakpoint(md) {
+                        display: none;
+                    }
                 }
 
                 & .btn {
