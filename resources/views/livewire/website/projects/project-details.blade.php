@@ -4,7 +4,7 @@
 
 
 @push('meta_data')
-    <meta name="description" content="{{ $offer->meta_description }}">
+    <meta name="description" content="{{ $property->meta_description }}">
     <meta name="keywords"
         content="property offers, real estate deals, residential property discounts, commercial property offers, property promotions, Star Unity Development Ltd offers, buy property deals, property investment offers">
 
@@ -32,7 +32,7 @@
     <meta name="twitter:title" content="{{ $property->meta_title }} - Star Unity Development Ltd.">
     <meta name="twitter:description" content="{{ $property->meta_description }}">
     <meta name="twitter:image" content="{{ file_path($property->meta_image_id) }}">
-    
+
 @endpush
 <div>
     @if ($property->hero_image_id)
