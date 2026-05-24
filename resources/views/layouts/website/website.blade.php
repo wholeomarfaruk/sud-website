@@ -44,6 +44,62 @@
     @livewireStyles
     @stack('styles')
 
+    {{-- ═══════════════════════════════════════════════════════════
+         TRACKING & CODE INJECTION — HEAD
+         Managed via Admin › Settings › Tracking & Code Injection
+    ════════════════════════════════════════════════════════════ --}}
+
+    {{-- Google Tag Manager (auto-generated from GTM ID) --}}
+    @if(setting('analytics.gtm_id'))
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','{{ setting('analytics.gtm_id') }}');</script>
+    <!-- End Google Tag Manager -->
+    @endif
+
+    {{-- Meta Pixel: full snippet overrides auto-generated --}}
+    @if(setting('analytics.meta_pixel_head'))
+    {!! setting('analytics.meta_pixel_head') !!}
+    @elseif(setting('analytics.meta_pixel_id'))
+    <!-- Meta Pixel Code -->
+    <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','{{ setting('analytics.meta_pixel_id') }}');fbq('track','PageView');</script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={{ setting('analytics.meta_pixel_id') }}&ev=PageView&noscript=1"/></noscript>
+    <!-- End Meta Pixel Code -->
+    @endif
+
+    {{-- TikTok Pixel: full snippet overrides auto-generated --}}
+    @if(setting('analytics.tiktok_pixel_head'))
+    {!! setting('analytics.tiktok_pixel_head') !!}
+    @elseif(setting('analytics.tiktok_pixel_id'))
+    <!-- TikTok Pixel Code -->
+    <script>!function(w,d,t){w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=i;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript";o.async=!0;o.src=i+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};ttq.load('{{ setting('analytics.tiktok_pixel_id') }}');ttq.page();}(window,document,'ttq');</script>
+    <!-- End TikTok Pixel Code -->
+    @endif
+
+    {{-- SEO Verification meta tags --}}
+    @if(setting('seo.google_verification'))
+    <meta name="google-site-verification" content="{{ setting('seo.google_verification') }}">
+    @endif
+    @if(setting('seo.facebook_verification'))
+    <meta name="facebook-domain-verification" content="{{ setting('seo.facebook_verification') }}">
+    @endif
+
+    {{-- Custom CSS --}}
+    @if(setting('custom.custom_css'))
+    <style>{!! setting('custom.custom_css') !!}</style>
+    @endif
+
+    {{-- Custom JS --}}
+    @if(setting('custom.custom_js'))
+    <script>{!! setting('custom.custom_js') !!}</script>
+    @endif
+
+    {{-- Head Scripts (arbitrary HTML) --}}
+    @if(setting('custom.head_scripts'))
+    {!! setting('custom.head_scripts') !!}
+    @endif
+
+    {{-- ═══════════════════════════════════════════════════════════ --}}
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -54,6 +110,19 @@
 </head>
 
 <body class="@yield('bodyClass')">
+
+    {{-- GTM noscript (must be first element inside <body>) --}}
+    @if(setting('analytics.gtm_id'))
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={{ setting('analytics.gtm_id') }}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    @endif
+
+    {{-- Body Start Scripts --}}
+    @if(setting('custom.body_start_scripts'))
+    {!! setting('custom.body_start_scripts') !!}
+    @endif
+
     <!-- Preloader -->
     <div class="loader-mask">
         <div class="loader">
@@ -592,6 +661,12 @@
 
 
     @stack('scripts')
+
+    {{-- Body End Scripts --}}
+    @if(setting('custom.body_end_scripts'))
+    {!! setting('custom.body_end_scripts') !!}
+    @endif
+
 </body>
 
 </html>

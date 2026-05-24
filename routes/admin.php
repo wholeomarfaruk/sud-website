@@ -55,3 +55,6 @@ Route::get('/inbox', App\Livewire\Admin\Inbox\InquiryList::class)->name('inbox')
 
 //board members
 Route::get('/members', App\Livewire\Admin\Members\Members::class)->name('members');
+
+// tracking & code injection settings
+Route::get('/settings/tracking', App\Livewire\Admin\Settings\TrackingSettings::class)->name('settings.tracking');
