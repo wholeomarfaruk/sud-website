@@ -39,8 +39,8 @@
                   <div class="mt-4">
                       <div class="member-detail-box flex gap-6">
                           <div class="member-card">
-                              <img src="{{ asset('assets/images/members/2.jpg') }}" class="object-cover rounded-sm"
-                                  alt="">
+                              <img src="{{ $selectedMember->image ? file_path($selectedMember->image) : '' }}" class="object-cover rounded-sm"
+                                  alt="{{ $selectedMember->name }}">
                               <div class="text">
                                   <h3>{{ $selectedMember->name }}</h3>
                                   <p>{{ $selectedMember->designation }}</p>

@@ -11,7 +11,7 @@ class Members extends Component
 
 
     public $modalOpen = false;
-    public $id, $name, $designation, $image, $status = 1, $sort_order;
+    public $id, $name, $designation, $image, $status = 1, $sort_order, $link;
     public $editMode = false;
     protected $listeners = ['mediaSelected', 'updateOrder'];
     public function mount(Request $request)
@@ -103,11 +103,12 @@ class Members extends Component
 
             $partner = new ModelsMembers();
             $partner->name = $this->name;
-            $partner->link = $this->link;
+            $partner->designation = $this->designation;
             $partner->status = $this->status;
             $partner->image = $this->image;
             $partner->save();
-            $this->reset('name', 'link', 'status', 'image');
+            $this->modalOpen = false;
+            $this->reset('name', 'designation', 'status', 'image');
             $this->dispatch('toast', [
                 'type' => 'success',
                 'message' => 'Partner added successfully'
