@@ -11,7 +11,7 @@ class Home extends Component
     }
     public function render()
     {
-        $sliders = \App\Models\Slider::orderBy('sort_order', 'asc')->get();
+        $sliders = \App\Models\Slider::where('status', 1)->orderBy('sort_order', 'asc')->get();
         $featured_properties = \App\Models\FeaturedProperties::orderBy('sort_order', 'asc')->take(4)->get();
         $videos = \App\Models\Videos::orderBy('sort_order', 'asc')->take(4)->get();
         $partners = \App\Models\TrustedPartner::orderBy('sort_order', 'asc')->get();

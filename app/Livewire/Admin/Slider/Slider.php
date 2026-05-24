@@ -11,9 +11,7 @@ class Slider extends Component
 
     public function render()
     {
-        $sliders = ModelsSlider::where('status', 1)
-            ->orderBy('sort_order')
-            ->get();
+        $sliders = ModelsSlider::orderBy('sort_order')->get();
         return view('livewire.admin.slider.slider', compact('sliders'))->layout('layouts.admin.admin');
     }
     public function delete($id)
@@ -42,6 +40,6 @@ class Slider extends Component
             'type' => 'success',
             'message' => 'Slide order updated successfully'
         ]);
-        
+
     }
 }
