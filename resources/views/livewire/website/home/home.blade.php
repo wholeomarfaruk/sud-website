@@ -513,6 +513,7 @@
             <button class="swiper-button-next nav-btn" aria-label="Next testimonial"></button>
         </div>
     </section>
+ @livewire('website.partial.connect-explore')
  @livewire('website.partial.board-member-section')
 
 </div>
