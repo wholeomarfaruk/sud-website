@@ -62,69 +62,65 @@
 
         <div class="wrapper mt-8">
             <div class="section-header w-full!">
-                <h2 class="section-title">Are you interested in this offer?</h2>
+                <h2 class="section-title">এই অফারে কি আপনি আগ্রহী?</h2>
                 <p>
                     আমরা আপনাকে সেরা সেবা দিতে প্রতিশ্রুতিবদ্ধ। কোনো প্রশ্ন থাকলে বা বিস্তারিত জানতে এখনই যোগাযোগ করুন
                     <br>—আমরা আপনার জন্য অপেক্ষা করছি।
                 </p>
             </div>
             <form wire:submit.prevent="submit" class="custom-form">
-                <input type="hidden" name="source_page" value="contact" wire:model="source_page">
+                <input type="hidden" wire:model="source_page">
                 <div class="col-2">
                     <div class="form-group">
-                        <label for="floatingInput ">আপনার নাম <span class="text-red-600">*</span></label>
-                        <input wire:model="name" type="text" class="form-control" id="floatingInput"
-                            placeholder="নাম লিখুন" name="name" required="">
+                        <label for="offer_name">আপনার নাম <span class="text-red-600">*</span></label>
+                        <input wire:model="name" type="text" class="form-control" id="offer_name"
+                            placeholder="নাম লিখুন">
                         @error('name')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="floatingInput ">ফোন নাম্বার <span class="text-red-600">*</span></label>
-                        <input wire:model="phone" type="text" class="form-control" id="floatingInput"
-                            placeholder="ফোন নাম্বার লিখুন" name="phone" required="">
+                        <label for="offer_phone">ফোন নাম্বার <span class="text-red-600">*</span></label>
+                        <input wire:model="phone" type="tel" class="form-control" id="offer_phone"
+                            placeholder="ফোন নাম্বার লিখুন">
                         @error('phone')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
                 <div class="col-2">
-
                     <div class="form-group">
-                        <label for="floatingInput ">ইমেল ঠিকানা (ঐচ্ছিক)</label>
-                        <input wire:model="email" type="text" class="form-control" id="floatingInput"
-                            placeholder="example@gmail.com" name="email">
+                        <label for="offer_email">ইমেল ঠিকানা <span class="text-gray-400 text-xs">(ঐচ্ছিক)</span></label>
+                        <input wire:model="email" type="email" class="form-control" id="offer_email"
+                            placeholder="example@gmail.com">
                         @error('email')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="floatingInput ">বিষয় মেসেজ (ঐচ্ছিক)</label>
-                        <input wire:model="subject" type="text" class="form-control" id="floatingInput"
-                            placeholder="বিষয় লিখুন" name="subject" required="">
+                        <label for="offer_subject">বিষয় <span class="text-gray-400 text-xs">(ঐচ্ছিক)</span></label>
+                        <input wire:model="subject" type="text" class="form-control" id="offer_subject"
+                            placeholder="বিষয় লিখুন">
                         @error('subject')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="floatingTextarea">মেসেজ (ঐচ্ছিক)</label>
-                    <textarea wire:model="message" class="form-control" placeholder="মেসেজ লিখুন" rows="3" id="floatingTextarea"
-                        name="message"></textarea>
+                    <label for="offer_message">মেসেজ <span class="text-gray-400 text-xs">(ঐচ্ছিক)</span></label>
+                    <textarea wire:model="message" class="form-control" placeholder="আপনার মেসেজ লিখুন..." rows="4"
+                        id="offer_message"></textarea>
                     @error('message')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
-
                 </div>
                 <button type="submit" wire:loading.attr="disabled"
                     class="submit-btn border border-gray-300! md:w-auto! px-10!">
-
                     <span wire:loading.remove wire:target="submit">
                         সাবমিট করুন
                     </span>
-
                     <span wire:loading wire:target="submit">
-                        মেসেজ পাঠানো হচ্ছে...
+                        পাঠানো হচ্ছে...
                     </span>
                 </button>
             </form>
@@ -138,7 +134,7 @@
                 Swal.fire({
                     title: data[0].title,
                     text: data[0].message,
-                    icon: data[0].type,
+                    icon: data[0].icon,
                 });
             });
         });
