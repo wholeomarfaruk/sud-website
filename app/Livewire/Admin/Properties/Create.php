@@ -297,24 +297,23 @@ class Create extends Component
     }
     public function removeMedia($field, $id = null)
     {
-
-        if ($id && is_array($this->$field)) {
-            // remove specific file from multiple selection
-
-            if (isset($this->{$field}[$id])) {
+        if ($id !== null && is_array($this->$field)) {
+            if (array_key_exists($id, $this->$field)) {
+                // key-based removal (videos array is keyed by video_id)
                 unset($this->{$field}[$id]);
             } else {
-                $this->{$field} = array_filter(
+                // value-based removal for plain ID arrays (gallery, hero_image_id, etc.)
+                $this->{$field} = array_values(array_filter(
                     $this->{$field},
-                    fn($item) => ($item['id'] ?? null) != $id
-                );
+                    fn($item) => is_array($item)
+                        ? ($item['video_id'] ?? $item['id'] ?? null) != $id
+                        : $item != $id
+                ));
             }
-
         } else {
-            // single file
+            // single value — clear it
             $this->$field = null;
         }
-
     }
     public function addVideo()
     {

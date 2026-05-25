@@ -11,7 +11,7 @@ class Members extends Component
 
 
     public $modalOpen = false;
-    public $id, $name, $designation, $image, $status = 1, $sort_order, $link;
+    public $id, $name, $designation, $description, $image, $status = 1;
     public $editMode = false;
     protected $listeners = ['mediaSelected', 'updateOrder'];
     public function mount(Request $request)
@@ -61,24 +61,20 @@ class Members extends Component
     }
     public function removeMedia($field, $id = null)
     {
-
-        if ($id && is_array($this->$field)) {
-            // remove specific file from multiple selection
-
-            if (isset($this->{$field}[$id])) {
+        if ($id !== null && is_array($this->$field)) {
+            if (array_key_exists($id, $this->$field)) {
                 unset($this->{$field}[$id]);
             } else {
-                $this->{$field} = array_filter(
+                $this->{$field} = array_values(array_filter(
                     $this->{$field},
-                    fn($item) => ($item['id'] ?? null) != $id
-                );
+                    fn($item) => is_array($item)
+                        ? ($item['id'] ?? null) != $id
+                        : $item != $id
+                ));
             }
-
         } else {
-            // single file
             $this->$field = null;
         }
-
     }
     public function save()
     {
@@ -86,32 +82,32 @@ class Members extends Component
             $partner = ModelsMembers::find($this->id);
             $partner->name = $this->name;
             $partner->designation = $this->designation;
+            $partner->description = $this->description;
             $partner->status = $this->status;
             $partner->image = $this->image;
             $partner->save();
-            $this->reset('name', 'designation', 'status', 'image');
+            $this->reset('name', 'designation', 'description', 'status', 'image');
             $this->editMode = false;
             $this->modalOpen = false;
 
             $this->dispatch('toast', [
                 'type' => 'success',
-                'message' => 'Partner updated successfully'
+                'message' => 'Member updated successfully'
             ]);
             return;
         } else {
-
-
             $partner = new ModelsMembers();
             $partner->name = $this->name;
             $partner->designation = $this->designation;
+            $partner->description = $this->description;
             $partner->status = $this->status;
             $partner->image = $this->image;
             $partner->save();
             $this->modalOpen = false;
-            $this->reset('name', 'designation', 'status', 'image');
+            $this->reset('name', 'designation', 'description', 'status', 'image');
             $this->dispatch('toast', [
                 'type' => 'success',
-                'message' => 'Partner added successfully'
+                'message' => 'Member added successfully'
             ]);
         }
     }
@@ -139,6 +135,7 @@ class Members extends Component
             $this->id = $partner->id;
             $this->name = $partner->name;
             $this->designation = $partner->designation;
+            $this->description = $partner->description;
             $this->status = $partner->status;
             $this->image = $partner->image;
             $this->editMode = true;

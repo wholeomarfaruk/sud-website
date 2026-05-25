@@ -67,8 +67,9 @@
                             </label>
                         </div>
                         <button wire:click="save()" type="button"
-                            class="flex justify-center items-center gap-2  pb-1 text-gray-700 transition-colors hover:border-gray-400 hover:text-gray-900 cursor-pointer rounded border border-gray-300 px-4 py-2">
+                            class="flex justify-center items-center gap-2 pb-1 text-gray-700 transition-colors hover:border-gray-400 hover:text-gray-900 cursor-pointer rounded border border-gray-300 px-4 py-2">
                             <span class="text-sm font-medium"> {{ $editMode ? 'Update' : 'Save' }}</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -114,122 +115,144 @@
                         @enderror
                     </div>
 
+                    {{-- Featured Image --}}
                     <div class="grid grid-cols-1 gap-1 mb-2">
-                        <label class="block text-sm font-medium text-gray-900" for="featured_image_id">Featured Image
-                            <span class="size-6 text-red-500 mr-1.5">*</span> </label>
+                        <label class="block text-sm font-medium text-gray-900">Featured Image
+                            <span class="text-red-500">*</span>
+                        </label>
                         <input wire:model="featured_image_id" id="featured_image_id" type="hidden" />
-                        <div wire:click="$dispatch('openMediaPicker', { target: 'featured_image_id', multiple: false,type: 'image' })"
-                            class="min-h-30 bg-gray-200 border border-gray-300 rounded-lg shadow-sm w-full
-                        grid   {{ $featured_image_id ? 'grid-cols-4' : 'place-content-center cursor-pointer' }}">
-                            @if ($featured_image_id)
+                        <button type="button"
+                            wire:click="$dispatch('openMediaPicker', { target: 'featured_image_id', multiple: false, type: 'image' })"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-50 transition-all duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                            </svg>
+                            <span class="text-sm font-medium">Choose Featured Image</span>
+                        </button>
+                        @if ($featured_image_id)
+                            <div class="mt-2 flex flex-wrap gap-3">
                                 @if (is_array($featured_image_id))
-
-
                                     @foreach ($featured_image_id as $item)
-                                        <div class="relative inline-block m-2 h-25">
-                                            <img src="{{ file_path($item) }}" class="w-full rounded border">
+                                        <div class="relative group h-24 w-24 flex-shrink-0">
+                                            <img src="{{ file_path($item) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                             <button type="button"
-                                                wire:click="removeMedia('featured_image_id', '{{ $item }}')"
-                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                                wire:click.stop="removeMedia('featured_image_id', '{{ $item }}')"
+                                                class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                                 ✕
                                             </button>
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="relative inline-block m-2">
-                                        <img src="{{ file_path($featured_image_id) }}" class="w-full rounded border">
+                                    <div class="relative group h-24 w-24 flex-shrink-0">
+                                        <img src="{{ file_path($featured_image_id) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                         <button type="button"
-                                            wire:click="removeMedia('featured_image_id', '{{ $featured_image_id }}')"
-                                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                            wire:click.stop="removeMedia('featured_image_id', '{{ $featured_image_id }}')"
+                                            class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                             ✕
                                         </button>
                                     </div>
                                 @endif
-                            @else
-                                <span class="text-gray-500">Click to Upload Image</span>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                         @error('featured_image_id')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    {{-- Featured Video --}}
                     <div class="grid grid-cols-1 gap-1 mb-2">
-                        <label class="block text-sm font-medium text-gray-900" for="hero_video_id">Featured Video
-                            <span class="size-6 text-red-500 mr-1.5">*</span> </label>
+                        <label class="block text-sm font-medium text-gray-900">Featured Video
+                            <span class="text-red-500">*</span>
+                        </label>
                         <input wire:model="hero_video_id" id="hero_video_id" type="hidden" />
-                        <div wire:click="$dispatch('openMediaPicker', { target: 'hero_video_id', multiple: false, type: 'video' })"
-                            class=" min-h-30 bg-gray-200 border border-gray-300 rounded-lg shadow-sm w-full
-                        grid   {{ $hero_video_id ? 'grid-cols-4' : ' place-content-center cursor-pointer' }}">
-                            @if ($hero_video_id)
+                        <button type="button"
+                            wire:click="$dispatch('openMediaPicker', { target: 'hero_video_id', multiple: false, type: 'video' })"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-50 transition-all duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                            </svg>
+                            <span class="text-sm font-medium">Choose Featured Video</span>
+                        </button>
+                        @if ($hero_video_id)
+                            <div class="mt-2 flex flex-wrap gap-3">
                                 @if (is_array($hero_video_id))
-
-
                                     @foreach ($hero_video_id as $item)
-                                        <div class="relative inline-block m-2 h-25">
-                                            <img src="{{ file_path($item) }}" class="w-full rounded border">
+                                        <div class="relative group h-24 w-24 flex-shrink-0">
+                                            <img src="{{ file_path($item) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                             <button type="button"
-                                                wire:click="removeMedia('hero_video_id', '{{ $item }}')"
-                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                                wire:click.stop="removeMedia('hero_video_id', '{{ $item }}')"
+                                                class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                                 ✕
                                             </button>
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="relative inline-block m-2">
-                                        <img src="{{ file_path($hero_video_id) }}" class="w-full rounded border replace-video-preview">
-                                        <button type="button"
-                                            wire:click="removeMedia('hero_video_id', '{{ $hero_video_id }}')"
-                                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
-                                            ✕
-                                        </button>
+                                    <div class="relative group flex-shrink-0">
+                                        <div class="flex items-center gap-3 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                            </svg>
+                                            <span class="text-sm text-gray-600 max-w-[200px] truncate">{{ basename(file_path($hero_video_id)) }}</span>
+                                            <button type="button"
+                                                wire:click.stop="removeMedia('hero_video_id', '{{ $hero_video_id }}')"
+                                                class="ml-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors flex-shrink-0">
+                                                ✕
+                                            </button>
+                                        </div>
                                     </div>
                                 @endif
-                            @else
-                                <span class="text-gray-500">Click to Upload Video</span>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                         @error('hero_video_id')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="grid grid-cols-1 gap-1 mb-2">
-                        <label class="block text-sm font-medium text-gray-900" for="hero_image_id">Slider Images
-                            <span class="size-6 text-red-500 mr-1.5">*</span> </label>
-                        <input wire:model="hero_image_id" id="hero_image_id" type="hidden" />
-                        <div wire:click="$dispatch('openMediaPicker', { target: 'hero_image_id', multiple: true, type: 'image' })"
-                            class=" min-h-30 bg-gray-200 border border-gray-300 rounded-lg shadow-sm w-full
-                        grid   {{ $hero_image_id ? 'grid-cols-4' : ' place-content-center cursor-pointer' }}">
-                            @if ($hero_image_id)
-                                @if (is_array($hero_image_id))
 
+                    {{-- Slider Images --}}
+                    <div class="grid grid-cols-1 gap-1 mb-2">
+                        <label class="block text-sm font-medium text-gray-900">Slider Images
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input wire:model="hero_image_id" id="hero_image_id" type="hidden" />
+                        <button type="button"
+                            wire:click="$dispatch('openMediaPicker', { target: 'hero_image_id', multiple: true, type: 'image' })"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-50 transition-all duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                            </svg>
+                            <span class="text-sm font-medium">Choose Slider Images</span>
+                        </button>
+                        @if ($hero_image_id)
+                            <div class="mt-2 flex flex-wrap gap-3">
+                                @if (is_array($hero_image_id))
                                     @foreach ($hero_image_id as $item)
-                                        <div class="relative inline-block m-2 h-25">
-                                            <img src="{{ file_path($item) }}" class="h-full rounded border">
+                                        <div class="relative group h-24 w-24 flex-shrink-0">
+                                            <img src="{{ file_path($item) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                             <button type="button"
-                                                wire:click="removeMedia('hero_image_id', '{{ $item }}')"
-                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                                wire:click.stop="removeMedia('hero_image_id', '{{ $item }}')"
+                                                class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                                 ✕
                                             </button>
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="relative inline-block m-2">
-                                        <img src="{{ file_path($hero_image_id) }}" class="w-full rounded border">
+                                    <div class="relative group h-24 w-24 flex-shrink-0">
+                                        <img src="{{ file_path($hero_image_id) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                         <button type="button"
-                                            wire:click="removeMedia('hero_image_id', '{{ $hero_image_id }}')"
-                                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                            wire:click.stop="removeMedia('hero_image_id', '{{ $hero_image_id }}')"
+                                            class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                             ✕
                                         </button>
                                     </div>
                                 @endif
-                            @else
-                                <span class="text-gray-500">Click to Upload images</span>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                         @error('hero_image_id')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
                     <div class="grid grid-cols-1 gap-1 mb-2 mt-3">
                         <h3 class="text-2xl font-extrabold bg-gray-300 px-1 py-1 rounded ">Project Details</h3>
                     </div>
@@ -243,44 +266,51 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="grid grid-cols-1 gap-1 mb-2">
-                        <label class="block text-sm font-medium text-gray-900" for="gallery">gallery Images
-                            <span class="size-6 text-red-500 mr-1.5">*</span> </label>
-                        <input wire:model="gallery" id="gallery" type="hidden" />
-                        <div wire:click="$dispatch('openMediaPicker', { target: 'gallery', multiple: true, type: 'image' })"
-                            class=" min-h-30 bg-gray-200 border border-gray-300 rounded-lg shadow-sm w-full
-                        grid   {{ $gallery ? 'grid-cols-4' : 'place-content-center cursor-pointer' }}">
-                            @if ($gallery)
-                                @if (is_array($gallery))
 
+                    {{-- Gallery Images --}}
+                    <div class="grid grid-cols-1 gap-1 mb-2">
+                        <label class="block text-sm font-medium text-gray-900">Gallery Images
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input wire:model="gallery" id="gallery" type="hidden" />
+                        <button type="button"
+                            wire:click="$dispatch('openMediaPicker', { target: 'gallery', multiple: true, type: 'image' })"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-50 transition-all duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                            </svg>
+                            <span class="text-sm font-medium">Choose Gallery Images</span>
+                        </button>
+                        @if ($gallery)
+                            <div class="mt-2 flex flex-wrap gap-3">
+                                @if (is_array($gallery))
                                     @foreach ($gallery as $item)
-                                        <div class="relative inline-block m-2 h-25">
-                                            <img src="{{ file_path($item) }}" class="h-full rounded border">
+                                        <div class="relative group h-24 w-24 flex-shrink-0">
+                                            <img src="{{ file_path($item) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                             <button type="button"
-                                                wire:click="removeMedia('gallery', '{{ $item }}')"
-                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                                wire:click.stop="removeMedia('gallery', '{{ $item }}')"
+                                                class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                                 ✕
                                             </button>
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="relative inline-block m-2">
-                                        <img src="{{ file_path($gallery) }}" class="w-full rounded border">
+                                    <div class="relative group h-24 w-24 flex-shrink-0">
+                                        <img src="{{ file_path($gallery) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                         <button type="button"
-                                            wire:click="removeMedia('gallery', '{{ $gallery }}')"
-                                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                            wire:click.stop="removeMedia('gallery', '{{ $gallery }}')"
+                                            class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                             ✕
                                         </button>
                                     </div>
                                 @endif
-                            @else
-                                <span class="text-gray-500">Click to Upload images</span>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                         @error('gallery')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
                     <div class="grid grid-cols-1 gap-1 mb-2">
                         <label class="block text-sm font-medium text-gray-900" for="videos">Video Gallery
                             <span class="size-6 text-red-500 mr-1.5">*</span> </label>
@@ -506,42 +536,48 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    {{-- Meta Image --}}
                     <div class="grid grid-cols-1 gap-1 mb-2">
-                        <label class="block text-sm font-medium text-gray-900" for="meta_image_id">Meta Image
-                            <span class="size-6 text-red-500 mr-1.5">*</span> </label>
+                        <label class="block text-sm font-medium text-gray-900">Meta Image
+                            <span class="text-red-500">*</span>
+                        </label>
                         <input wire:model="meta_image_id" id="meta_image_id" type="hidden" />
-                        <div wire:click="$dispatch('openMediaPicker', { target: 'meta_image_id', multiple: false,type: 'image' })"
-                            class=" min-h-30 bg-gray-200 border border-gray-300 rounded-lg shadow-sm w-full
-                        grid   {{ $meta_image_id ? 'grid-cols-4' : 'place-content-center cursor-pointer' }}">
-                            @if ($meta_image_id)
+                        <button type="button"
+                            wire:click="$dispatch('openMediaPicker', { target: 'meta_image_id', multiple: false, type: 'image' })"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-50 transition-all duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                            </svg>
+                            <span class="text-sm font-medium">Choose Meta Image</span>
+                        </button>
+                        @if ($meta_image_id)
+                            <div class="mt-2 flex flex-wrap gap-3">
                                 @if (is_array($meta_image_id))
                                     @foreach ($meta_image_id as $meta_image_item)
-                                        <div class="relative inline-block m-2 h-25">
-                                            <img src="{{ file_path($meta_image_item) }}"
-                                                class="h-full rounded border">
+                                        <div class="relative group h-24 w-24 flex-shrink-0">
+                                            <img src="{{ file_path($meta_image_item) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                             <button type="button"
-                                                wire:click="removeMedia('meta_image_id', '{{ $meta_image_item }}')"
-                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                                wire:click.stop="removeMedia('meta_image_id', '{{ $meta_image_item }}')"
+                                                class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                                 ✕
                                             </button>
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="relative inline-block m-2">
-                                        <img src="{{ file_path($meta_image_id) }}" class="w-full rounded border">
+                                    <div class="relative group h-24 w-24 flex-shrink-0">
+                                        <img src="{{ file_path($meta_image_id) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                         <button type="button"
-                                            wire:click="removeMedia('meta_image_id', '{{ $meta_image_id }}')"
-                                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                            wire:click.stop="removeMedia('meta_image_id', '{{ $meta_image_id }}')"
+                                            class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                             ✕
                                         </button>
                                     </div>
                                 @endif
-                            @else
-                                <span class="text-gray-500">Click to Upload Image</span>
-                            @endif
-                        </div>
-                        @error('featured_image_id')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            </div>
+                        @endif
+                        @error('meta_image_id')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
@@ -557,7 +593,7 @@
                              @foreach (\App\Enums\Project\PropertyType::cases() as $property_type_item)
                             <option value="{{ $property_type_item->value }}">{{ $property_type_item->value }}</option>
                             @endforeach
-                           
+
                         </select>
                         @error('property_type')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -573,8 +609,8 @@
                             @foreach (\App\Enums\Project\ProjectType::cases() as $project_type_item)
                             <option value="{{ $project_type_item->value }}">{{ $project_type_item->value }}</option>
                             @endforeach
-                           
-                          
+
+
                         </select>
                         @error('project_type')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -678,7 +714,7 @@
                         @enderror
                     </div>
                     <div class="grid grid-cols-1 gap-1">
-                        <label class="block text-sm font-medium text-gray-900" for="video_duration">video duration
+                        <label class="block text-sm font-medium text-gray-900" for="video_duration">Video Duration
                             (seconds)</label>
                         <input wire:model="video_duration"
                             class="mt-1 w-full rounded-lg border border-gray-300 focus:border-indigo-500 focus:outline-none p-2"
@@ -687,79 +723,100 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="grid grid-cols-1 gap-1 mb-2">
-                        <label class="block text-sm font-medium text-gray-900" for="video_thumbnail">Video humbnail
-                            <span class="size-6 text-red-500 mr-1.5">*</span> </label>
+
+                    {{-- Video Thumbnail --}}
+                    <div class="grid grid-cols-1 gap-1">
+                        <label class="block text-sm font-medium text-gray-900">Video Thumbnail
+                            <span class="text-red-500">*</span>
+                        </label>
                         <input wire:model="video_thumbnail" id="video_thumbnail" type="hidden" />
-                        <div wire:click="$dispatch('openMediaPicker', { target: 'video_thumbnail', multiple: false,type: 'image' })"
-                            class=" min-h-30 bg-gray-200 border border-gray-300 rounded-lg shadow-sm w-full
-                        grid  place-content-center {{ $video_thumbnail ? '' : ' cursor-pointer' }}">
-                            @if ($video_thumbnail)
+                        <button type="button"
+                            wire:click="$dispatch('openMediaPicker', { target: 'video_thumbnail', multiple: false, type: 'image' })"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-50 transition-all duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                            </svg>
+                            <span class="text-sm font-medium">Choose Thumbnail</span>
+                        </button>
+                        @if ($video_thumbnail)
+                            <div class="mt-2 flex flex-wrap gap-3">
                                 @if (is_array($video_thumbnail))
                                     @foreach ($video_thumbnail as $video_thumbnail_item)
-                                        <div class="relative inline-block m-2 h-25">
-                                            <img src="{{ file_path($video_thumbnail_item) }}"
-                                                class="h-full rounded border replace-video-preview">
+                                        <div class="relative h-24 w-24 flex-shrink-0">
+                                            <img src="{{ file_path($video_thumbnail_item) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                             <button type="button"
-                                                wire:click="removeMedia('video_thumbnail', '{{ $video_thumbnail_item }}')"
-                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                                wire:click.stop="removeMedia('video_thumbnail', '{{ $video_thumbnail_item }}')"
+                                                class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                                 ✕
                                             </button>
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="relative inline-block m-2">
-                                        <img src="{{ file_path($video_thumbnail) }}" class="w-full rounded border">
+                                    <div class="relative h-24 w-24 flex-shrink-0">
+                                        <img src="{{ file_path($video_thumbnail) }}" class="h-full w-full object-cover rounded-lg border border-gray-200 shadow-sm">
                                         <button type="button"
-                                            wire:click="removeMedia('video_thumbnail', '{{ $video_thumbnail }}')"
-                                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                            wire:click.stop="removeMedia('video_thumbnail', '{{ $video_thumbnail }}')"
+                                            class="absolute -top-2 -right-2 bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors">
                                             ✕
                                         </button>
                                     </div>
                                 @endif
-                            @else
-                                <span class="text-gray-500">Click to Upload Image</span>
-                            @endif
-                        </div>
-                        @error('featured_image_id')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            </div>
+                        @endif
+                        @error('video_thumbnail')
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="grid grid-cols-1 gap-1 mb-2">
-                        <label class="block text-sm font-medium text-gray-900" for="video_id">Video humbnail
-                            <span class="size-6 text-red-500 mr-1.5">*</span> </label>
+
+                    {{-- Video File --}}
+                    <div class="grid grid-cols-1 gap-1">
+                        <label class="block text-sm font-medium text-gray-900">Video File
+                            <span class="text-red-500">*</span>
+                        </label>
                         <input wire:model="video_id" id="video_id" type="hidden" />
-                        <div wire:click="$dispatch('openMediaPicker', { target: 'video_id', multiple: false,type: 'video' })"
-                            class=" min-h-30 bg-gray-200 border border-gray-300 rounded-lg shadow-sm w-full
-                        grid  place-content-center {{ $video_id ? '' : ' cursor-pointer' }}">
-                            @if ($video_id)
+                        <button type="button"
+                            wire:click="$dispatch('openMediaPicker', { target: 'video_id', multiple: false, type: 'video' })"
+                            class="flex items-center justify-center gap-2 w-full px-4 py-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-50 transition-all duration-200">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                            </svg>
+                            <span class="text-sm font-medium">Choose Video</span>
+                        </button>
+                        @if ($video_id)
+                            <div class="mt-2">
                                 @if (is_array($video_id))
                                     @foreach ($video_id as $video_id_item)
-                                        <div class="relative inline-block m-2 h-25">
-                                            <img src="{{ file_path($video_id_item) }}" class="h-full rounded border">
+                                        <div class="flex items-center gap-3 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg mb-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                            </svg>
+                                            <span class="text-sm text-gray-600 flex-1 truncate">{{ basename(file_path($video_id_item)) }}</span>
                                             <button type="button"
-                                                wire:click="removeMedia('video_id', '{{ $video_id_item }}')"
-                                                class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                                wire:click.stop="removeMedia('video_id', '{{ $video_id_item }}')"
+                                                class="bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors flex-shrink-0">
                                                 ✕
                                             </button>
                                         </div>
                                     @endforeach
                                 @else
-                                    <div class="relative inline-block m-2">
-                                        <img src="{{ file_path($video_id) }}" class="w-full rounded border">
+                                    <div class="flex items-center gap-3 px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 0 1 0 .656l-5.603 3.113a.375.375 0 0 1-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112Z" />
+                                        </svg>
+                                        <span class="text-sm text-gray-600 flex-1 truncate">{{ basename(file_path($video_id)) }}</span>
                                         <button type="button"
-                                            wire:click="removeMedia('video_id', '{{ $video_id }}')"
-                                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 text-xs flex items-center justify-center">
+                                            wire:click.stop="removeMedia('video_id', '{{ $video_id }}')"
+                                            class="bg-red-500 hover:bg-red-600 text-white rounded-full w-5 h-5 text-xs flex items-center justify-center shadow transition-colors flex-shrink-0">
                                             ✕
                                         </button>
                                     </div>
                                 @endif
-                            @else
-                                <span class="text-gray-500">Click to Upload video</span>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
                         @error('video_id')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
@@ -876,7 +933,6 @@
                 }
 
             });
-
 
 
 
