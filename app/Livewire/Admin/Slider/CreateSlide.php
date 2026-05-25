@@ -18,20 +18,23 @@ class CreateSlide extends Component
         if($request->has('edit')){
             $edit = $request->edit;
             $slider = Slider::find($edit);
-            $this->id = $slider->id;
-            $this->title = $slider->title;
-            $this->sub_title = $slider->sub_title;
-            $this->description = $slider->description;
-            $this->link = $slider->link;
-            $this->status = $slider->status;
-            $this->sort_order = $slider->sort_order;
-            $this->image_id = $slider->image_id;
-            $this->is_edit = true;
-        }else{
-            return redirect()->back()->with('toast', [
-                'type' => 'error',
-                'message' => 'Invalid request'
-            ]);
+
+            if (!$slider) {
+                return redirect()->route('admin.sliders')->with('toast', [
+                    'type' => 'error',
+                    'message' => 'Slide not found'
+                ]);
+            }
+
+            $this->id           = $slider->id;
+            $this->title        = $slider->title;
+            $this->sub_title    = $slider->sub_title;
+            $this->description  = $slider->description;
+            $this->link         = $slider->link;
+            $this->status       = $slider->status;
+            $this->sort_order   = $slider->sort_order;
+            $this->image_id     = $slider->image_id;
+            $this->is_edit      = true;
         }
     }
      public function mediaSelected($field, $id)
@@ -51,23 +54,21 @@ class CreateSlide extends Component
 
     public function removeMedia($field, $id = null)
     {
-        if ($id && is_array($this->$field)) {
-            // remove specific file from multiple selection
-            $this->{$field} = array_filter($this->{$field}, fn($i) => $i != $id);
+        if ($id !== null && is_array($this->$field)) {
+            $this->{$field} = array_values(array_filter($this->{$field}, fn($i) => $i != $id));
         } else {
-            // single file
             $this->$field = null;
         }
     }
     public function save(){
         $this->validate([
-            'title' => 'required',
-            'sub_title' => 'required',
+            'title'       => 'required',
+            'sub_title'   => 'required',
             'description' => 'required',
-            'link' => 'required',
-            'status' => 'required',
-            'sort_order' => 'required',
-            'image_id' => 'required',
+            'link'        => 'required',
+            'status'      => 'boolean',
+            'sort_order'  => 'required|integer|min:0',
+            'image_id'    => 'required',
         ]);
         $slider = Slider::updateOrCreate(
             ['id' =>$this->id],

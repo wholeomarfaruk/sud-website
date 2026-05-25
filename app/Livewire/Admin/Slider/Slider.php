@@ -14,6 +14,18 @@ class Slider extends Component
         $sliders = ModelsSlider::orderBy('sort_order')->get();
         return view('livewire.admin.slider.slider', compact('sliders'))->layout('layouts.admin.admin');
     }
+    public function toggleStatus($id)
+    {
+        $slider = ModelsSlider::find($id);
+        if ($slider) {
+            $slider->status = !$slider->status;
+            $slider->save();
+            $this->dispatch('toast', [
+                'type' => 'success',
+                'message' => 'Status updated to ' . ($slider->status ? 'Active' : 'Inactive'),
+            ]);
+        }
+    }
     public function delete($id)
     {
         $slider = ModelsSlider::find($id);
