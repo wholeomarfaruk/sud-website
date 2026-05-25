@@ -4,34 +4,37 @@
 
 
 @push('meta_data')
-  <meta name="description" content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
-  <meta name="keywords" content="real estate development, property development, residential properties, commercial properties, modern design, trusted construction, exceptional value, Star Unity Development Ltd.">
+    <meta name="description"
+        content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
+    <meta name="keywords"
+        content="real estate development, property development, residential properties, commercial properties, modern design, trusted construction, exceptional value, Star Unity Development Ltd.">
 
 
-  <!-- Indexing (VERY IMPORTANT) -->
-  <meta name="robots" content="index, follow">
-  <!-- Alternatives:
-       noindex, nofollow
-       index, nofollow
-       noindex, follow -->
+    <!-- Indexing (VERY IMPORTANT) -->
+    <meta name="robots" content="index, follow">
+    <!-- Alternatives:
+           noindex, nofollow
+           index, nofollow
+           noindex, follow -->
 
-  <!-- Canonical URL -->
-  <link rel="canonical" href="{{ url()->current() }}" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}" />
 
-  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
-  <meta property="og:title" content="Star Unity Development Ltd.  - We Make Your Dreams.">
-  <meta property="og:description" content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
-  <meta property="og:image" content="{{ asset('assets/logo/sud-logo-black.png')}}">
-  <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Star Unity Development Ltd.">
+    <!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+    <meta property="og:title" content="Star Unity Development Ltd.  - We Make Your Dreams.">
+    <meta property="og:description"
+        content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
+    <meta property="og:image" content="{{ asset('assets/logo/sud-logo-black.png') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Star Unity Development Ltd.">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Star Unity Development Ltd.  - We Make Your Dreams.">
-  <meta name="twitter:description" content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
-  <meta name="twitter:image" content="{{ asset('assets/logo/sud-logo-black.png')}}">
-
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Star Unity Development Ltd.  - We Make Your Dreams.">
+    <meta name="twitter:description"
+        content="Star Unity Development Ltd. is committed to delivering high-quality residential and commercial properties with modern design, trusted construction, and exceptional value for our clients and partners.">
+    <meta name="twitter:image" content="{{ asset('assets/logo/sud-logo-black.png') }}">
 @endpush
 <div>
     <section class="hero-sec">
@@ -41,27 +44,25 @@
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 @foreach ($sliders as $slide_item)
-                @if ($slide_item->image_id)
+                    @if ($slide_item->image_id)
+                        <div class="swiper-slide"><img src="{{ file_path($slide_item->image_id) }}" alt="">
+                            <div class="overlay ">
+                                <div class="line"></div>
+                                <p>Location - {{ $slide_item->sub_title }}</p>
+                                <h2>{{ $slide_item->title }}</h2>
+                                <p class="text-sm text-gray-300">{{ $slide_item->description }}
+                                </p>
+                                <a href="{{ $slide_item->link }}" class="btn">See
+                                    Details
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                    </svg>
 
-
-                    <div class="swiper-slide"><img src="{{ file_path($slide_item->image_id) }}" alt="">
-                        <div class="overlay ">
-                            <div class="line"></div>
-                            <p>Location - {{ $slide_item->sub_title }}</p>
-                            <h2>{{ $slide_item->title }}</h2>
-                            <p class="text-sm text-gray-300">{{ $slide_item->description }}
-                            </p>
-                            <a href="{{ $slide_item->link }}" class="btn">See
-                                Details
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                                </svg>
-
-                            </a>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     @endif
                 @endforeach
 
@@ -79,9 +80,9 @@
             <div class="swiper thumbSwiper mt-4">
                 <div class="swiper-wrapper">
                     @foreach ($sliders as $slide_item)
-                    @if ($slide_item->image_id)
-                        <div class="swiper-slide"><img src="{{ file_path($slide_item->image_id) }}" alt="">
-                        </div>
+                        @if ($slide_item->image_id)
+                            <div class="swiper-slide"><img src="{{ file_path($slide_item->image_id) }}" alt="">
+                            </div>
                         @endif
                     @endforeach
                 </div>
@@ -218,7 +219,8 @@
             <div class="section-header">
                 <h2 class="text-center font-bold text-2xl text-white mb-4">WHY CHOOSE US
                 </h2>
-                <p class="text-center text-gray-200 ">Transforming everyday spaces into exceptional living environments.
+                <p class="text-center text-gray-200 ">Transforming everyday spaces into exceptional living
+                    environments.
                     With innovative design, trusted expertise, and uncompromising quality, we create properties that
                     inspire modern lifestyles and lasting value.</p>
             </div>
@@ -229,8 +231,8 @@
 
 
                         <span>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24 " stroke-width="1"
-                                stroke="currentColor" class="size-25">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24 "
+                                stroke-width="1" stroke="currentColor" class="size-25">
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
                             </svg>
@@ -375,146 +377,9 @@
         </div>
 
     </section>
-        <section class="relative flex  items-center justify-center overflow-hidden px-4 py-10 sm:px-4 lg:px-8">
-        <!-- subtle background decoration -->
-        <div class="pointer-events-none absolute inset-0 opacity-10">
-            <div class="absolute left-[8%] top-0 h-full w-px bg-white"></div>
-            <div class="absolute right-[12%] top-0 h-full w-px bg-white"></div>
-            <div class="absolute left-0 top-[18%] h-px w-full bg-white"></div>
-        </div>
-
-        <div
-            class="testimonial-card relative w-full max-w-[1260px] overflow-visible rounded-[2px] bg-white px-6 py-10 shadow-[0_20px_60px_rgba(0,0,0,0.12)] sm:px-10 md:px-16 md:py-14">
-            <!-- heading -->
-            <div class="mb-12 text-center">
-                <div class="mx-auto mb-4 h-[3px] w-10 rounded-full bg-[#0a7806]"></div>
-                <h2 class="text-3xl font-semibold tracking-[0.16em] text-zinc-900 sm:text-4xl">
-                    Reviews
-                </h2>
-                <p class="mt-3 text-base text-zinc-500 sm:text-lg">
-                    See what our land owners & clients are saying.
-                </p>
-            </div>
-
-            <!-- Swiper -->
-            <div class="swiper testimonialSwiper pb-16 md:pb-14">
-                <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                        <article class="grid items-center gap-12 lg:grid-cols-[340px_1fr]">
-                            <div class="relative mx-auto h-[280px] w-[280px] sm:h-[300px] sm:w-[300px]">
-                                <span class="absolute left-3 top-8 h-36 w-36 rounded-full bg-[#0a7806]"></span>
-                                <span class="absolute left-10 top-0 h-56 w-56 rounded-full bg-[#0a7806]"></span>
-
-                                <img src="https://i.pravatar.cc/320?img=12" alt="Abdur Rahman"
-                                    class="absolute bottom-0 left-[58px] h-[210px] w-[210px] rounded-full object-cover shadow-[0_20px_40px_rgba(0,0,0,0.18)] ring-8 ring-white/70 sm:left-[64px] sm:h-[220px] sm:w-[220px]" />
-                            </div>
-
-                            <div class="text-center lg:text-left">
-                                <p
-                                    class="mx-auto max-w-[560px] text-lg italic leading-8 text-zinc-500 sm:text-xl lg:mx-0">
-                                    "Working with Star Unity Development transformed my land investment.
-                                    Their professionalism and transparent process delivered exceptional returns."
-                                </p>
-
-                                <h3 class="mt-8 text-3xl font-semibold tracking-[0.04em] text-[#0a7806] sm:text-4xl">
-                                    Abdur Rahman
-                                </h3>
-                                <p class="mt-2 text-lg text-zinc-400">Client</p>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide">
-                        <article class="grid items-center gap-12 lg:grid-cols-[340px_1fr]">
-                            <div class="relative mx-auto h-[280px] w-[280px] sm:h-[300px] sm:w-[300px]">
-                                <span class="absolute left-3 top-8 h-36 w-36 rounded-full bg-[#0a7806]"></span>
-                                <span class="absolute left-10 top-0 h-56 w-56 rounded-full bg-[#0a7806]"></span>
-
-                                <img src="https://i.pravatar.cc/320?img=32" alt="Sarah Ghosh"
-                                    class="absolute bottom-0 left-[58px] h-[210px] w-[210px] rounded-full object-cover shadow-[0_20px_40px_rgba(0,0,0,0.18)] ring-8 ring-white/70 sm:left-[64px] sm:h-[220px] sm:w-[220px]" />
-                            </div>
-
-                            <div class="text-center lg:text-left">
-                                <p
-                                    class="mx-auto max-w-[560px] text-lg italic leading-8 text-zinc-500 sm:text-xl lg:mx-0">
-                                    "The team understood our brand immediately and delivered a
-                                    campaign that increased both engagement and conversions."
-                                </p>
-
-                                <h3 class="mt-8 text-3xl font-semibold tracking-[0.04em] text-[#0a7806] sm:text-4xl">
-                                    Sarah Ghosh
-                                </h3>
-                                <p class="mt-2 text-lg text-zinc-400">Land owner</p>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide">
-                        <article class="grid items-center gap-12 lg:grid-cols-[340px_1fr]">
-                            <div class="relative mx-auto h-[280px] w-[280px] sm:h-[300px] sm:w-[300px]">
-                                <span class="absolute left-3 top-8 h-36 w-36 rounded-full bg-[#0a7806]"></span>
-                                <span class="absolute left-10 top-0 h-56 w-56 rounded-full bg-[#0a7806]"></span>
-
-                                <img src="https://i.pravatar.cc/320?img=56" alt="Saiful Islam"
-                                    class="absolute bottom-0 left-[58px] h-[210px] w-[210px] rounded-full object-cover shadow-[0_20px_40px_rgba(0,0,0,0.18)] ring-8 ring-white/70 sm:left-[64px] sm:h-[220px] sm:w-[220px]" />
-                            </div>
-
-                            <div class="text-center lg:text-left">
-                                <p
-                                    class="mx-auto max-w-[560px] text-lg italic leading-8 text-zinc-500 sm:text-xl lg:mx-0">
-                                    “Their expertise in property development exceeded our expectations.
-                                    The team delivered exceptional results that maximized our land's potential.”
-                                </p>
-
-                                <h3 class="mt-8 text-3xl font-semibold tracking-[0.04em] text-[#0a7806] sm:text-4xl">
-                                    Saiful Islam
-                                </h3>
-                                <p class="mt-2 text-lg text-zinc-400">Client</p>
-                            </div>
-                        </article>
-                    </div>
-
-                    <!-- Slide 4 -->
-                    <div class="swiper-slide">
-                        <article class="grid items-center gap-12 lg:grid-cols-[340px_1fr]">
-                            <div class="relative mx-auto h-[280px] w-[280px] sm:h-[300px] sm:w-[300px]">
-                                <span class="absolute left-3 top-8 h-36 w-36 rounded-full bg-[#0a7806]"></span>
-                                <span class="absolute left-10 top-0 h-56 w-56 rounded-full bg-[#0a7806]"></span>
-
-                                <img src="https://i.pravatar.cc/320?img=68" alt="Ismail Hossain"
-                                    class="absolute bottom-0 left-[58px] h-[210px] w-[210px] rounded-full object-cover shadow-[0_20px_40px_rgba(0,0,0,0.18)] ring-8 ring-white/70 sm:left-[64px] sm:h-[220px] sm:w-[220px]" />
-                            </div>
-
-                            <div class="text-center lg:text-left">
-                                <p
-                                    class="mx-auto max-w-[560px] text-lg italic leading-8 text-zinc-500 sm:text-xl lg:mx-0">
-                                    “Their process was smooth, transparent, and professional. They
-                                    handled everything from paperwork to final settlement with great care.”
-                                </p>
-
-                                <h3 class="mt-8 text-3xl font-semibold tracking-[0.04em] text-[#0a7806] sm:text-4xl">
-                                   Ismail Hossain
-                                </h3>
-                                <p class="mt-2 text-lg text-zinc-400">Land owner</p>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-
-                <!-- Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>
-
-            <!-- Nav buttons -->
-            <button class="swiper-button-prev nav-btn" aria-label="Previous testimonial"></button>
-            <button class="swiper-button-next nav-btn" aria-label="Next testimonial"></button>
-        </div>
-    </section>
- @livewire('website.partial.connect-explore')
- @livewire('website.partial.board-member-section')
+    @livewire('website.partial.testimonials-section')
+    @livewire('website.partial.connect-explore')
+    @livewire('website.partial.board-member-section')
 
 </div>
 @push('scripts')
@@ -543,7 +408,7 @@
             }
         }
     </script>
-       <script>
+    <script>
         addEventListener("DOMContentLoaded", () => {
 
             new Swiper(".testimonialSwiper", {

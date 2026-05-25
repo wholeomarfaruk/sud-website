@@ -98,72 +98,103 @@
                 </div>
             </div>
         </section>
-        <section class="video-section section">
-            <div class="wrapper">
-                <div class="video-gallery">
-
-                    <h2 class="section-title">Reviews</h2>
-                    <hr class="dividor">
-                    <div class="video-grid">
-                        <div href="assets/videos/Ads - 002_2.mp4" data-fancybox="video-gallery" class="item"
-                            style="background-image: url(assets/videos/thumbnail.png)">
-                            <div class="inner-box">
-                                <span class="play-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
-                                        </path>
-                                        <path d="m9 17 8-5-8-5z"></path>
-                                    </svg>
-                                </span>
-                                <div class="footer-area">
-                                    <h3>Flat overview</h3>
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" class="size-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        02:30</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div href="assets/videos/Ads - 001.mp4" data-fancybox="video-gallery" class="item"
-                            style="background-image: url(assets/videos/thumbnail-2.png)">
-                            <div class="inner-box">
-                                <span class="play-btn">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8">
-                                        </path>
-                                        <path d="m9 17 8-5-8-5z"></path>
-                                    </svg>
-                                </span>
-                                <div class="footer-area">
-                                    <h3>Flat overview</h3>
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="2" stroke="currentColor" class="size-5">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                                stroke-linecap="round" stroke-linejoin="round" />
-                                        </svg>
-                                        02:30</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @livewire('website.partial.testimonials-section')
 
 </div>
 
+@push('styles')
+    <style>
+        .testimonial-card .swiper-button-prev,
+        .testimonial-card .swiper-button-next {
+            top: 50%;
+            transform: translateY(-50%);
+            margin-top: 0 !important;
+        }
+
+        .testimonial-card .swiper-button-prev svg,
+        .testimonial-card .swiper-button-next svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            color: white;
+        }
+
+        .nav-btn {
+            width: 58px !important;
+            height: 58px !important;
+            border-radius: 9999px;
+            background: #0a7806;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.14);
+            --swiper-navigation-size: 18px;
+        }
+
+        .nav-btn::after {
+            font-weight: 800;
+        }
+
+        .testimonialSwiper .swiper-pagination {
+            bottom: 0 !important;
+        }
+
+        .testimonialSwiper .swiper-pagination-bullet {
+            width: 34px;
+            height: 4px;
+            border-radius: 999px;
+            background: #d4d4d8;
+            opacity: 1;
+        }
+
+        .testimonialSwiper .swiper-pagination-bullet-active {
+            background: #0a7806;
+        }
+
+        @media (min-width: 768px) {
+            .testimonial-card .swiper-button-prev {
+                left: -28px !important;
+            }
+
+            .testimonial-card .swiper-button-next {
+                right: -28px !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .testimonial-card .swiper-button-prev,
+            .testimonial-card .swiper-button-next {
+                top: auto;
+                bottom: 16px;
+                transform: none;
+            }
+
+            .testimonial-card .swiper-button-prev {
+                left: 16px !important;
+            }
+
+            .testimonial-card .swiper-button-next {
+                right: 16px !important;
+            }
+        }
+    </style>
+@endpush
 @push('scripts')
-
-
     <script>
-        Fancybox.bind('[data-fancybox="video-gallery"]', {
-            // Your custom options for a specific gallery
+        addEventListener("DOMContentLoaded", () => {
+            new Swiper(".testimonialSwiper", {
+                loop: true,
+                speed: 700,
+                spaceBetween: 24,
+                grabCursor: true,
+                keyboard: { enabled: true },
+                pagination: {
+                    el: ".testimonialSwiper .swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".testimonial-card .swiper-button-next",
+                    prevEl: ".testimonial-card .swiper-button-prev",
+                },
+            });
         });
     </script>
 @endpush
