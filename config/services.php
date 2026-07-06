@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'client' => [
+        'api_key' => env('CLIENT_APP_API_KEY'),
+    ],
+
 ];

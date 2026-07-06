@@ -24,6 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
          $middleware->alias([
             'panel' => \App\Http\Middleware\PanelMiddleware::class,
             'admin' => AdminMiddleware::class,
+            'client.api' => \App\Http\Middleware\ApiKeyMiddleware::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
