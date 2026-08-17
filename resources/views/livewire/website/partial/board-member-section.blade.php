@@ -41,11 +41,12 @@
           </div>
           <div x-cloak x-data="{ open: @entangle('memberModalOpen') }" x-show="open" x-transition.opacity @click.self="open = false"
               @keydown.escape.window="open = false"
-              class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-              <div x-transition class="w-full max-w-2xl rounded-2xl bg-white shadow-2xl overflow-hidden">
+              x-effect="document.body.style.overflow = open ? 'hidden' : ''"
+              class="fixed inset-0 z-9999 flex items-center justify-center bg-black/50 p-4">
+              <div x-transition class="flex w-full max-w-2xl max-h-[90vh] flex-col rounded-2xl bg-white shadow-2xl overflow-hidden">
 
                   {{-- Modal Header --}}
-                  <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+                  <div class="flex shrink-0 items-center justify-between px-5 py-4 border-b border-gray-100">
                       <span class="text-xs font-semibold uppercase tracking-widest text-green-700">Board Member</span>
                       <button @click="open = false"
                           class="w-8 h-8 flex items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition cursor-pointer text-lg leading-none">
@@ -54,12 +55,12 @@
                   </div>
 
                   @if ($selectedMember)
-                      {{-- Body: stacked on mobile, side-by-side on sm+ --}}
-                      <div class="flex flex-col sm:flex-row">
+                      {{-- Body: stacked on mobile, side-by-side on sm+, scrolls when content overflows --}}
+                      <div class="flex flex-col sm:flex-row overflow-y-auto">
 
                           {{-- Left: photo + name --}}
                           <div class="sm:w-52 shrink-0 flex flex-col items-center justify-start bg-gray-50 px-6 py-8 gap-3">
-                              <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden ring-4 ring-white shadow-md">
+                              <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden ring-4 ring-white shadow-md shrink-0">
                                   <img src="{{ $selectedMember->image ? file_path($selectedMember->image) : '' }}"
                                       class="w-full h-full object-cover"
                                       alt="{{ $selectedMember->name }}">
@@ -71,8 +72,8 @@
                           </div>
 
                           {{-- Right: message --}}
-                          <div class="flex-1 px-6 py-8 flex flex-col justify-center">
-                              <div class="flex items-center gap-2 mb-3">
+                          <div class="flex-1 px-6 py-8 flex flex-col">
+                              <div class="flex items-center gap-2 mb-3 shrink-0">
                                   <svg class="w-5 h-5 text-green-700 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                                       <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                                   </svg>
