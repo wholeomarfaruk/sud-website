@@ -1,27 +1,9 @@
   <section class="board_of_members_sec section">
       @if ($members->count() > 0)
 
-          <style>
-              .boardSwiper .swiper-pagination {
-                  bottom: 0 !important;
-                  position: relative;
-                  margin-top: 32px;
-              }
-              .boardSwiper .swiper-pagination-bullet {
-                  width: 10px;
-                  height: 10px;
-                  background: #d1d5db;
-                  opacity: 1;
-              }
-              .boardSwiper .swiper-pagination-bullet-active {
-                  background: #0a7806;
-                  width: 26px;
-                  border-radius: 999px;
-              }
-          </style>
-
           <div class="wrapper">
               <div class="section-header">
+                  <span class="eyebrow">Leadership</span>
                   <h2 class="">Board of Members</h2>
                   <p class="text-gray-600">Meet the visionary leaders and industry experts who guide our company towards
                       excellence and innovation in real estate development.</p>
@@ -32,16 +14,17 @@
                       <div class="swiper-wrapper">
                           @foreach ($members as $member)
                               <div class="swiper-slide">
-                                  <div class="member-card">
+                                  <div class="member-card" wire:click="memberDetails({{ $member->id }})">
                                       <div class="member-photo">
                                           <img src="{{ $member->image ? file_path($member->image) : '' }}"
                                               alt="{{ $member->name }}">
+                                          <span class="ring"></span>
                                       </div>
                                       <div class="text">
                                           <h3>{{ $member->name }}</h3>
                                           <p>{{ $member->designation }}</p>
-                                          <button type="button" wire:click="memberDetails({{ $member->id }})"
-                                              class="seemore cursor-pointer">See More <i
+                                          <button type="button" wire:click.stop="memberDetails({{ $member->id }})"
+                                              class="seemore cursor-pointer">View Profile <i
                                                   class="bx bx-chevrons-right bx-fade-right"></i></button>
                                       </div>
                                   </div>

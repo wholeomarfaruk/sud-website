@@ -1622,6 +1622,9 @@ body {
 
 // board of members start==================================
 .board_of_members_sec {
+    position: relative;
+    overflow: hidden;
+
     .section-header {
         width: 50%;
         margin: 0 auto;
@@ -1630,11 +1633,31 @@ body {
         @include mixins.breakpoint(md) {
             width: 100%;
         }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: mixins.rem(13px);
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #0a7806;
+            margin-bottom: 10px;
+
+            &::before {
+                content: "";
+                width: 24px;
+                height: 2px;
+                border-radius: 999px;
+                background: #0a7806;
+            }
+        }
     }
 
     .board-carousel {
-        margin-top: 40px;
-        padding: 0 55px;
+        margin-top: 44px;
+        padding: 0 60px;
 
         @include mixins.breakpoint(sm) {
             padding: 0;
@@ -1642,15 +1665,36 @@ body {
 
         .swiper {
             overflow: hidden;
-            padding: 8px 8px 8px;
+            padding: 10px 6px 54px;
+        }
+
+        .swiper-pagination {
+            bottom: 0 !important;
+            position: absolute;
+        }
+
+        .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            background: #d1d5db;
+            opacity: 1;
+            margin: 0 4px !important;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #0a7806;
+            width: 24px;
+            border-radius: 999px;
         }
 
         .nav-btn {
             position: absolute;
-            top: 40%;
+            top: 42%;
             transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
+            padding: 9px;
             border-radius: 50%;
             background: #fff;
             border: 1px solid #e5e5e5;
@@ -1658,18 +1702,19 @@ body {
             align-items: center;
             justify-content: center;
             color: #0a7806;
-            box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 16px;
+            box-shadow: rgba(149, 157, 165, 0.25) 0px 6px 18px;
             transition: all 0.3s ease-in-out;
             z-index: 10;
 
             &:after {
-                font-size: mixins.rem(16px);
+                font-size: mixins.rem(15px);
                 font-weight: 700;
             }
 
             &:hover {
                 background: #0a7806;
                 color: #fff;
+                border-color: #0a7806;
             }
 
             @include mixins.breakpoint(sm) {
@@ -1679,23 +1724,42 @@ body {
 
         .board-nav-prev {
             left: 0;
+            padding: 9px;
         }
 
         .board-nav-next {
             right: 0;
+            padding: 9px;
         }
     }
 
     .member-card {
+        position: relative;
         background: #fff;
-        border: 1px solid #e5e5e5;
-        border-radius: 12px;
+        border-radius: 18px;
         overflow: hidden;
-        transition: all 0.35s ease-in-out;
         height: 100%;
+        text-align: center;
+        padding: 34px 20px 28px;
+        border: 1px solid #ececec;
+        cursor: pointer;
+        transition: all 0.35s ease-in-out;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10, 120, 6, 0.05) 0%, rgba(10, 120, 6, 0) 40%);
+            opacity: 0;
+            transition: opacity 0.35s ease-in-out;
+        }
 
         .member-photo {
-            aspect-ratio: 1 / 1;
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
             overflow: hidden;
             background: #f4f4f4;
 
@@ -1703,46 +1767,86 @@ body {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                border-radius: 50%;
                 transition: transform 0.5s ease-in-out;
+                position: relative;
+                z-index: 1;
+            }
+
+            .ring {
+                position: absolute;
+                inset: -6px;
+                border-radius: 50%;
+                border: 1.5px dashed rgba(10, 120, 6, 0.35);
+                opacity: 0;
+                transform: scale(0.85);
+                transition: all 0.4s ease-in-out;
             }
         }
 
         .text {
-            text-align: center;
-            padding: 20px 14px;
+            position: relative;
+            z-index: 1;
 
             h3 {
                 font-size: mixins.rem(18px);
-                font-weight: 600;
+                font-weight: 700;
                 color: variables.$heading-color;
             }
 
             p {
-                font-size: mixins.rem(14px);
-                color: #2e2d2d;
+                font-size: mixins.rem(13.5px);
+                color: #0a7806;
+                font-weight: 600;
                 margin-top: 4px;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
             }
 
             .seemore {
-                margin-top: 14px;
-                color: #0a7806;
+                margin-top: 18px;
+                color: #2e2d2d;
                 display: inline-flex;
                 gap: mixins.rem(5px);
                 justify-content: center;
                 align-items: center;
                 font-weight: 600;
+                font-size: mixins.rem(14px);
                 font-family: variables.$secondary-font, sans-serif;
                 transition: all 0.3s ease-in-out;
+
+                i {
+                    transition: transform 0.3s ease-in-out;
+                }
             }
         }
 
         &:hover {
-            box-shadow: rgba(149, 157, 165, 0.25) 0px 12px 30px;
-            border-color: #0a7806;
-            transform: translateY(-4px);
+            box-shadow: rgba(149, 157, 165, 0.3) 0px 16px 36px;
+            border-color: rgba(10, 120, 6, 0.25);
+            transform: translateY(-6px);
 
-            .member-photo img {
-                transform: scale(1.06);
+            &::before {
+                opacity: 1;
+            }
+
+            .member-photo {
+                img {
+                    transform: scale(1.06);
+                }
+
+                .ring {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            .text .seemore {
+                color: #0a7806;
+
+                i {
+                    transform: translateX(3px);
+                }
             }
         }
     }
