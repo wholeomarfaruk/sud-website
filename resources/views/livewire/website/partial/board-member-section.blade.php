@@ -1,6 +1,24 @@
   <section class="board_of_members_sec section">
       @if ($members->count() > 0)
 
+          <style>
+              .boardSwiper .swiper-pagination {
+                  bottom: 0 !important;
+                  position: relative;
+                  margin-top: 32px;
+              }
+              .boardSwiper .swiper-pagination-bullet {
+                  width: 10px;
+                  height: 10px;
+                  background: #d1d5db;
+                  opacity: 1;
+              }
+              .boardSwiper .swiper-pagination-bullet-active {
+                  background: #0a7806;
+                  width: 26px;
+                  border-radius: 999px;
+              }
+          </style>
 
           <div class="wrapper">
               <div class="section-header">
@@ -8,22 +26,34 @@
                   <p class="text-gray-600">Meet the visionary leaders and industry experts who guide our company towards
                       excellence and innovation in real estate development.</p>
               </div>
-              <div class="grid-box">
-                  @foreach ($members as $member)
-                      <div class="member-card">
-                          <img class="" src="{{ $member->image ? file_path($member->image) : '' }}" alt="">
-                          <div class="text">
 
-                              <h3>{{ $member->name }}</h3>
-                              <p>{{ $member->designation }}</p>
-                              <button type="button" wire:click="memberDetails({{ $member->id }})"
-                                  class="seemore cursor-pointer">See More <i
-                                      class="bx bx-chevrons-right bx-fade-right"></i></button>
-                          </div>
+              <div class="board-carousel relative">
+                  <div class="swiper boardSwiper">
+                      <div class="swiper-wrapper">
+                          @foreach ($members as $member)
+                              <div class="swiper-slide">
+                                  <div class="member-card">
+                                      <div class="member-photo">
+                                          <img src="{{ $member->image ? file_path($member->image) : '' }}"
+                                              alt="{{ $member->name }}">
+                                      </div>
+                                      <div class="text">
+                                          <h3>{{ $member->name }}</h3>
+                                          <p>{{ $member->designation }}</p>
+                                          <button type="button" wire:click="memberDetails({{ $member->id }})"
+                                              class="seemore cursor-pointer">See More <i
+                                                  class="bx bx-chevrons-right bx-fade-right"></i></button>
+                                      </div>
+                                  </div>
+                              </div>
+                          @endforeach
                       </div>
-                  @endforeach
 
+                      <div class="swiper-pagination"></div>
+                  </div>
 
+                  <button class="swiper-button-prev nav-btn board-nav-prev" aria-label="Previous member"></button>
+                  <button class="swiper-button-next nav-btn board-nav-next" aria-label="Next member"></button>
               </div>
           </div>
           <div x-cloak x-data="{ open: @entangle('memberModalOpen') }" x-show="open" x-transition.opacity @click.self="open = false"
@@ -81,3 +111,39 @@
 
       @endif
   </section>
+
+  @push('scripts')
+      <script>
+          addEventListener("DOMContentLoaded", () => {
+              new Swiper(".boardSwiper", {
+                  loop: true,
+                  speed: 700,
+                  grabCursor: true,
+                  spaceBetween: 20,
+                  slidesPerView: 1,
+                  keyboard: {
+                      enabled: true,
+                  },
+                  breakpoints: {
+                      576: {
+                          slidesPerView: 2,
+                      },
+                      992: {
+                          slidesPerView: 3,
+                      },
+                      1200: {
+                          slidesPerView: 4,
+                      },
+                  },
+                  pagination: {
+                      el: ".boardSwiper .swiper-pagination",
+                      clickable: true,
+                  },
+                  navigation: {
+                      nextEl: ".board-nav-next",
+                      prevEl: ".board-nav-prev",
+                  },
+              });
+          });
+      </script>
+  @endpush
