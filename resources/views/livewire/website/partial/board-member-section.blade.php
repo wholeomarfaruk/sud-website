@@ -9,7 +9,7 @@
                       excellence and innovation in real estate development.</p>
               </div>
 
-              <div class="board-carousel relative">
+              <div class="board-carousel relative" wire:ignore>
                   <div class="swiper boardSwiper">
                       <div class="swiper-wrapper">
                           @foreach ($members as $member)
