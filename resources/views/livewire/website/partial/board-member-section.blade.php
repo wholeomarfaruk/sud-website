@@ -90,10 +90,10 @@
                       <div class="flex flex-col sm:flex-row overflow-y-auto">
 
                           {{-- Left: photo + name --}}
-                          <div class="sm:w-52 shrink-0 flex flex-col items-center justify-start bg-gray-50 px-6 py-8 gap-3">
-                              <div class="w-28 h-28 sm:w-36 sm:h-36 rounded-full overflow-hidden ring-4 ring-white shadow-md shrink-0">
+                          <div class="sm:w-60 shrink-0 flex flex-col items-center justify-start bg-gray-50 px-6 py-6 sm:py-8 gap-3">
+                              <div class="w-full max-w-[260px] sm:max-w-none aspect-[4/5] rounded-xl overflow-hidden bg-white ring-1 ring-gray-200 shadow-md shrink-0">
                                   <img src="{{ $selectedMember->image ? file_path($selectedMember->image) : '' }}"
-                                      class="w-full h-full object-cover"
+                                      class="w-full h-full object-cover object-top"
                                       alt="{{ $selectedMember->name }}">
                               </div>
                               <div class="text-center">
