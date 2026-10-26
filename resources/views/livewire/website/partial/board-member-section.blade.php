@@ -15,7 +15,6 @@
                           @foreach ($featuredMembers as $member)
                               <div class="leader-item" wire:key="featured-member-{{ $member->id }}">
                                   <article class="leader-card" wire:click="memberDetails({{ $member->id }})">
-                                      <div class="leader-cover"></div>
                                       <div class="leader-photo">
                                           <img src="{{ $member->image ? file_path($member->image) : '' }}"
                                               alt="{{ $member->name }}" loading="lazy">
