@@ -79,6 +79,9 @@
                                     @else
                                         <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-0.5 text-xs font-medium text-red-700 ring-1 ring-red-600/20">Inactive</span>
                                     @endif
+                                    @if ($member->is_featured)
+                                        <span class="ml-1 inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700 ring-1 ring-amber-600/20">Featured</span>
+                                    @endif
                                 </td>
 
                                 <td class="px-3 py-3 whitespace-nowrap">
@@ -204,6 +207,17 @@
                             <p class="mt-1 text-xs text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    {{-- Featured --}}
+                    <label for="is_featured"
+                        class="flex items-start gap-3 rounded-lg border border-gray-200 bg-gray-50 px-3 py-3 cursor-pointer">
+                        <input wire:model="is_featured" id="is_featured" type="checkbox"
+                            class="mt-0.5 size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500" />
+                        <span>
+                            <span class="block text-sm font-medium text-gray-700">Featured leader</span>
+                            <span class="block text-xs text-gray-400 mt-0.5">Highlight above the slider on the website (e.g. Chairman, CEO, Founder).</span>
+                        </span>
+                    </label>
 
                     {{-- Image --}}
                     <div>

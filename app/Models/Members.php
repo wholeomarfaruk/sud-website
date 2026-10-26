@@ -13,6 +13,7 @@ class Members extends Model
         'description',
         'status',
         'order',
+        'is_featured',
     ];
 
  

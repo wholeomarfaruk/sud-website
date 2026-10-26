@@ -9,10 +9,37 @@
                       excellence and innovation in real estate development.</p>
               </div>
 
+              @if ($featuredMembers->count() > 0)
+                  <div class="featured-leaders {{ $featuredMembers->count() === 1 ? 'is-single' : '' }}"
+                      style="--leader-cols: {{ min($featuredMembers->count(), 3) }}">
+                      @foreach ($featuredMembers as $member)
+                          <article class="leader-card" wire:key="featured-member-{{ $member->id }}"
+                              wire:click="memberDetails({{ $member->id }})">
+                              <div class="leader-photo">
+                                  <img src="{{ $member->image ? file_path($member->image) : '' }}"
+                                      alt="{{ $member->name }}" loading="lazy">
+                              </div>
+                              <div class="leader-body">
+                                  @if ($member->designation)
+                                      <span class="leader-role">{{ $member->designation }}</span>
+                                  @endif
+                                  <h3>{{ $member->name }}</h3>
+                                  @if ($member->description)
+                                      <p class="leader-quote">{{ \Illuminate\Support\Str::limit($member->description, $featuredMembers->count() === 1 ? 260 : 140) }}</p>
+                                  @endif
+                                  <button type="button" wire:click.stop="memberDetails({{ $member->id }})"
+                                      class="leader-cta">Read Message <i class="bx bx-right-arrow-alt"></i></button>
+                              </div>
+                          </article>
+                      @endforeach
+                  </div>
+              @endif
+
+              @if ($sliderMembers->count() > 0)
               <div class="board-carousel relative" wire:ignore>
                   <div class="swiper boardSwiper">
                       <div class="swiper-wrapper">
-                          @foreach ($members as $member)
+                          @foreach ($sliderMembers as $member)
                               <div class="swiper-slide">
                                   <div class="member-card" wire:click="memberDetails({{ $member->id }})">
                                       <div class="member-photo">
@@ -38,6 +65,7 @@
                   <button class="swiper-button-prev nav-btn board-nav-prev" aria-label="Previous member"></button>
                   <button class="swiper-button-next nav-btn board-nav-next" aria-label="Next member"></button>
               </div>
+              @endif
           </div>
           <div x-cloak x-data="{ open: @entangle('memberModalOpen') }" x-show="open" x-transition.opacity @click.self="open = false"
               @keydown.escape.window="open = false"
@@ -99,6 +127,8 @@
   @push('scripts')
       <script>
           addEventListener("DOMContentLoaded", () => {
+              if (!document.querySelector(".boardSwiper")) return;
+
               new Swiper(".boardSwiper", {
                   loop: true,
                   speed: 700,

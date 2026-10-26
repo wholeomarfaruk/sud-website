@@ -14,7 +14,10 @@ class BoardMemberSection extends Component
     {
         $members = Members::where('status', 1)->orderBy('order', 'asc')->get();
 
-        return view('livewire.website.partial.board-member-section', compact('members'));
+        // Split in memory so the page keeps working even before the is_featured migration runs
+        [$featuredMembers, $sliderMembers] = $members->partition(fn($member) => (bool) $member->is_featured);
+
+        return view('livewire.website.partial.board-member-section', compact('members', 'featuredMembers', 'sliderMembers'));
     }
     public function memberDetails($id)
     {

@@ -11,7 +11,7 @@ class Members extends Component
 
 
     public $modalOpen = false;
-    public $id, $name, $designation, $description, $image, $status = 1;
+    public $id, $name, $designation, $description, $image, $status = 1, $is_featured = false;
     public $editMode = false;
     protected $listeners = ['mediaSelected', 'updateOrder'];
     public function mount(Request $request)
@@ -84,9 +84,10 @@ class Members extends Component
             $partner->designation = $this->designation;
             $partner->description = $this->description;
             $partner->status = $this->status;
+            $partner->is_featured = (bool) $this->is_featured;
             $partner->image = $this->image;
             $partner->save();
-            $this->reset('name', 'designation', 'description', 'status', 'image');
+            $this->reset('name', 'designation', 'description', 'status', 'image', 'is_featured');
             $this->editMode = false;
             $this->modalOpen = false;
 
@@ -101,10 +102,11 @@ class Members extends Component
             $partner->designation = $this->designation;
             $partner->description = $this->description;
             $partner->status = $this->status;
+            $partner->is_featured = (bool) $this->is_featured;
             $partner->image = $this->image;
             $partner->save();
             $this->modalOpen = false;
-            $this->reset('name', 'designation', 'description', 'status', 'image');
+            $this->reset('name', 'designation', 'description', 'status', 'image', 'is_featured');
             $this->dispatch('toast', [
                 'type' => 'success',
                 'message' => 'Member added successfully'
@@ -137,6 +139,7 @@ class Members extends Component
             $this->designation = $partner->designation;
             $this->description = $partner->description;
             $this->status = $partner->status;
+            $this->is_featured = (bool) $partner->is_featured;
             $this->image = $partner->image;
             $this->editMode = true;
             $this->modalOpen = true;

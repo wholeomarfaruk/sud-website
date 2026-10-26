@@ -255,7 +255,7 @@
                         <a href="{{ route('blogs') }}"
                             class="{{ Route::currentRouteName() == 'blogs' ? 'active' : '' }}">News & Blogs</a>
 
-                        
+
                         <a href="{{ route('landowners') }}"
                             class="{{ Route::currentRouteName() == 'landowners' ? 'active' : '' }}">Land Owners</a>
                             <a href="{{ route('about') }}"
@@ -319,7 +319,6 @@
             <div class=" footer-card">
                 <h3 class=" mb-3 footer-card-title">Star Unity <br> Development Ltd</h3>
                 <p class=" mb-2 footer-card-text">
-
                     Star Unity Development Ltd. is committed to delivering high-quality residential and commercial
                     properties with modern design, trusted construction, and exceptional value for our clients and
                     partners.
