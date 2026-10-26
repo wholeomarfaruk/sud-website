@@ -24,9 +24,6 @@
                                           @if ($member->designation)
                                               <span class="leader-role">{{ $member->designation }}</span>
                                           @endif
-                                          @if ($member->description)
-                                              <p class="leader-quote">{{ \Illuminate\Support\Str::limit($member->description, 160) }}</p>
-                                          @endif
                                           <button type="button" wire:click.stop="memberDetails({{ $member->id }})"
                                               class="leader-cta">Read Message <i class="bx bx-right-arrow-alt"></i></button>
                                       </div>
