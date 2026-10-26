@@ -10,28 +10,35 @@
               </div>
 
               @if ($featuredMembers->count() > 0)
-                  <div class="featured-leaders {{ $featuredMembers->count() === 1 ? 'is-single' : '' }}"
-                      style="--leader-cols: {{ min($featuredMembers->count(), 3) }}">
-                      @foreach ($featuredMembers as $member)
-                          <article class="leader-card" wire:key="featured-member-{{ $member->id }}"
-                              wire:click="memberDetails({{ $member->id }})">
-                              <div class="leader-photo">
-                                  <img src="{{ $member->image ? file_path($member->image) : '' }}"
-                                      alt="{{ $member->name }}" loading="lazy">
+                  <div class="featured-leaders {{ $featuredMembers->count() === 1 ? 'is-single' : 'is-multi' }}">
+                      <div class="leader-row">
+                          @foreach ($featuredMembers as $member)
+                              <div class="leader-item" wire:key="featured-member-{{ $member->id }}">
+                                  <article class="leader-card" wire:click="memberDetails({{ $member->id }})">
+                                      <div class="leader-cover"></div>
+                                      <div class="leader-photo">
+                                          <img src="{{ $member->image ? file_path($member->image) : '' }}"
+                                              alt="{{ $member->name }}" loading="lazy">
+                                      </div>
+                                      <div class="leader-body">
+                                          <h3>{{ $member->name }}</h3>
+                                          @if ($member->designation)
+                                              <span class="leader-role">{{ $member->designation }}</span>
+                                          @endif
+                                          @if ($member->description)
+                                              <p class="leader-quote">{{ \Illuminate\Support\Str::limit($member->description, 160) }}</p>
+                                          @endif
+                                          <button type="button" wire:click.stop="memberDetails({{ $member->id }})"
+                                              class="leader-cta">Read Message <i class="bx bx-right-arrow-alt"></i></button>
+                                      </div>
+                                  </article>
                               </div>
-                              <div class="leader-body">
-                                  @if ($member->designation)
-                                      <span class="leader-role">{{ $member->designation }}</span>
-                                  @endif
-                                  <h3>{{ $member->name }}</h3>
-                                  @if ($member->description)
-                                      <p class="leader-quote">{{ \Illuminate\Support\Str::limit($member->description, $featuredMembers->count() === 1 ? 260 : 140) }}</p>
-                                  @endif
-                                  <button type="button" wire:click.stop="memberDetails({{ $member->id }})"
-                                      class="leader-cta">Read Message <i class="bx bx-right-arrow-alt"></i></button>
-                              </div>
-                          </article>
-                      @endforeach
+                          @endforeach
+                      </div>
+
+                      @if ($sliderMembers->count() > 0)
+                          <span class="leader-trunk" aria-hidden="true"></span>
+                      @endif
                   </div>
               @endif
 
